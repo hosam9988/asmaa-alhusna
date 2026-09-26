@@ -1,18 +1,90 @@
-:root {
+// ---------- Colour themes ----------
+// Picked in the header and stored per browser; index.html sets data-theme before first paint.
+// The gold accent is the app's identity, so every theme keeps it; the light themes use a darker
+// gold so text stays readable. RGB channels exist for colours used at partial opacity.
+
+:root,
+:root[data-theme='black'] {
   color-scheme: dark;
 
-  --black: #0a0907;
-  --black-soft: #13110d;
+  --bg-rgb: 10 9 7;
+  --bg-soft: #13110d;
   --surface: #17140f;
   --surface-raised: #1e1a13;
+  --accent-rgb: 212 175 55;
   --gold: #d4af37;
   --gold-light: #f1d98a;
   --gold-deep: #9c7a24;
+  --on-accent: #0a0907;
   --text: #efe6d0;
   --text-muted: #a99c7d;
-  --line: rgb(212 175 55 / 22%);
-  --line-strong: rgb(212 175 55 / 45%);
   --gold-gradient: linear-gradient(135deg, #f8e9a8 0%, #d4af37 38%, #a8841f 62%, #f1d98a 100%);
+  --pattern-alpha: 6%;
+}
+
+:root[data-theme='blue'] {
+  color-scheme: dark;
+
+  --bg-rgb: 21 57 109;
+  --bg-soft: #1a4480;
+  --surface: #1a4480;
+  --surface-raised: #1f4c8c;
+  --text: #f1f4fa;
+  --text-muted: #b9c6dc;
+  // A brighter gold than the default keeps small gold labels readable on the blue cards.
+  --accent-rgb: 226 191 74;
+  --gold: #e2bf4a;
+  --on-accent: #15396d;
+  --pattern-alpha: 9%;
+}
+
+:root[data-theme='navy'] {
+  color-scheme: dark;
+
+  --bg-rgb: 7 14 31;
+  --bg-soft: #0b1529;
+  --surface: #0e1a33;
+  --surface-raised: #13223f;
+  --text: #e9ebf2;
+  --text-muted: #9ba7c0;
+  --on-accent: #070e1f;
+}
+
+:root[data-theme='white'],
+:root[data-theme='pink'] {
+  color-scheme: light;
+
+  --accent-rgb: 138 102 20;
+  --gold: #8a6614;
+  --gold-light: #7a5a0e;
+  --gold-deep: #c9a24a;
+  --on-accent: #ffffff;
+  --gold-gradient: linear-gradient(135deg, #b8892a 0%, #8f6a14 45%, #6e510b 70%, #a67c1a 100%);
+  --pattern-alpha: 10%;
+}
+
+:root[data-theme='white'] {
+  --bg-rgb: 250 247 240;
+  --bg-soft: #ffffff;
+  --surface: #ffffff;
+  --surface-raised: #fffdf8;
+  --text: #2b2419;
+  --text-muted: #6e6350;
+}
+
+:root[data-theme='pink'] {
+  --bg-rgb: 252 236 242;
+  --bg-soft: #fff7fa;
+  --surface: #fff5f8;
+  --surface-raised: #ffffff;
+  --text: #3b2430;
+  --text-muted: #7e5a69;
+}
+
+:root {
+  --bg: rgb(var(--bg-rgb));
+  --line: rgb(var(--accent-rgb) / 22%);
+  --line-strong: rgb(var(--accent-rgb) / 45%);
 
   --font-calligraphy: 'Aref Ruqaa', 'Amiri', serif;
   --font-quran: 'Amiri Quran', 'Amiri', serif;
@@ -43,24 +115,36 @@ body {
   min-block-size: 100dvh;
   overflow-x: clip;
   color: var(--text);
-  background-color: var(--black);
+  background-color: var(--bg);
   font-family: var(--font-body-en);
   font-size: 1.125rem;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   -webkit-tap-highlight-color: transparent;
+  transition:
+    background-color 0.3s var(--ease),
+    color 0.3s var(--ease);
 
-  // Faint eight-pointed-star lattice, drawn in gold. A fixed layer instead of
-  // `background-attachment: fixed`, which iOS ignores and Android repaints on every scroll.
-  &::before {
+  // Fixed layers instead of `background-attachment: fixed`, which iOS ignores and Android
+  // repaints on every scroll: a soft glow at the top, and a faint eight-pointed-star lattice
+  // painted through a mask so it takes the theme's accent colour.
+  &::before,
+  &::after {
     content: '';
     position: fixed;
     inset: 0;
     z-index: -1;
     pointer-events: none;
-    background-image:
-      radial-gradient(ellipse at 50% -10%, rgb(212 175 55 / 12%), transparent 55%),
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='88' height='88' viewBox='0 0 88 88'%3E%3Cg fill='none' stroke='%23d4af37' stroke-opacity='0.06'%3E%3Crect x='26' y='26' width='36' height='36'/%3E%3Crect x='26' y='26' width='36' height='36' transform='rotate(45 44 44)'/%3E%3Cpath d='M0 0L26 26M88 0L62 26M0 88L26 62M88 88L62 62M44 0V18.5M44 88V69.5M0 44H18.5M88 44H69.5'/%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  &::before {
+    background: radial-gradient(ellipse at 50% -10%, rgb(var(--accent-rgb) / 12%), transparent 55%);
+  }
+
+  &::after {
+    background-color: rgb(var(--accent-rgb) / var(--pattern-alpha));
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='88' height='88' viewBox='0 0 88 88'%3E%3Cg fill='none' stroke='%23000'%3E%3Crect x='26' y='26' width='36' height='36'/%3E%3Crect x='26' y='26' width='36' height='36' transform='rotate(45 44 44)'/%3E%3Cpath d='M0 0L26 26M88 0L62 26M0 88L26 62M88 88L62 62M44 0V18.5M44 88V69.5M0 44H18.5M88 44H69.5'/%3E%3C/g%3E%3C/svg%3E")
+      0 0 / 88px 88px repeat;
   }
 }
 
@@ -77,7 +161,7 @@ a {
 
 ::selection {
   background: var(--gold);
-  color: var(--black);
+  color: var(--on-accent);
 }
 
 :focus-visible {
@@ -150,7 +234,7 @@ html[lang='ar'] .eyebrow {
     content: '';
     position: absolute;
     inset: 6px;
-    border: 1px solid rgb(212 175 55 / 10%);
+    border: 1px solid rgb(var(--accent-rgb) / 10%);
     border-radius: calc(var(--radius) - 5px);
     pointer-events: none;
   }
@@ -179,13 +263,13 @@ html[lang='ar'] .eyebrow {
 
   &:hover {
     border-color: var(--gold);
-    background: rgb(212 175 55 / 10%);
+    background: rgb(var(--accent-rgb) / 10%);
   }
 
   &.solid {
     background: var(--gold-gradient);
     border-color: transparent;
-    color: var(--black);
+    color: var(--on-accent);
     font-weight: 700;
   }
 }

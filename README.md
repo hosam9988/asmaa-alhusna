@@ -15,6 +15,8 @@ Abdur-Rahman as-Sa‘di, compiled by ‘Ubayd ibn ‘Ali al-‘Ubayd (Islamic Un
   by that name, the evidence from the Qur'an or Sunnah, and the printed page number in the book
 - **Arabic ⇄ English:** switch languages at any time. The layout flips between right-to-left and
   left-to-right.
+- **Colour themes:** black, white, blue, dark blue or pink, all with gold accents (saved in your
+  browser)
 - **Name of the day:** a different name shown on the home page each day
 - **Search:** finds names in Arabic or English, with or without tashkeel or hamza
 - **Track your progress:** mark names as studied (saved in your browser)
@@ -69,6 +71,7 @@ src/app/
     services/names.service.ts  loads names.json, name of the day, prev/next
     services/language.service  Arabic ⇄ English, sets <html dir/lang>
     services/studied.service   "studied" progress, kept in localStorage
+    services/theme.service     colour theme, sets <html data-theme> (palettes in styles.scss)
     i18n/ui-text.ts            interface labels in both languages
     utils/search.ts            search that ignores tashkeel and hamza forms
   shared/                      star badge and ornament divider

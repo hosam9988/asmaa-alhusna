@@ -26,7 +26,7 @@
     font-size: clamp(3.2rem, 16vw, 7.5rem);
     overflow-wrap: anywhere;
     line-height: 1.45;
-    filter: drop-shadow(0 4px 28px rgb(212 175 55 / 28%));
+    filter: drop-shadow(0 4px 28px rgb(var(--accent-rgb) / 28%));
   }
 }
 
@@ -57,7 +57,7 @@
   padding: 0.9rem 1.1rem;
   border: 1px dashed var(--line-strong);
   border-radius: var(--radius);
-  background: rgb(212 175 55 / 5%);
+  background: rgb(var(--accent-rgb) / 5%);
   color: var(--text-muted);
   font-size: 0.98rem;
 
@@ -163,12 +163,12 @@ details {
     transition: background-color 0.25s;
 
     &:active {
-      background: rgb(212 175 55 / 8%);
+      background: rgb(var(--accent-rgb) / 8%);
     }
 
     @media (hover: hover) {
       &:hover {
-        background: rgb(212 175 55 / 8%);
+        background: rgb(var(--accent-rgb) / 8%);
       }
     }
   }

@@ -27,7 +27,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
       overflow: visible;
     }
     rect {
-      fill: var(--black);
+      fill: var(--bg);
       stroke: var(--gold);
       stroke-width: 2.5;
     }

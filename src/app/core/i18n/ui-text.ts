@@ -1,4 +1,5 @@
 import { Lang } from '../models/divine-name';
+import { Theme } from '../models/theme';
 
 export interface UiText {
   appTitle: string;
@@ -7,6 +8,8 @@ export interface UiText {
   /** Label used where the header is too narrow for `about`. */
   aboutShort: string;
   switchLang: string;
+  themeLabel: string;
+  themeNames: Record<Theme, string>;
   bookTitle: string;
   author: string;
   heroIntro: string;
@@ -40,6 +43,8 @@ export const UI_TEXT: Record<Lang, UiText> = {
     about: 'عن الكتاب',
     aboutShort: 'عن الكتاب',
     switchLang: 'English',
+    themeLabel: 'لون الموقع',
+    themeNames: { black: 'أسود', white: 'أبيض', blue: 'أزرق', navy: 'كحلي', pink: 'وردي' },
     bookTitle: 'تفسير أسماء الله الحسنى',
     author: 'للعلامة عبد الرحمن بن ناصر السعدي رحمه الله',
     heroIntro:
@@ -72,6 +77,8 @@ export const UI_TEXT: Record<Lang, UiText> = {
     about: 'About the book',
     aboutShort: 'About',
     switchLang: 'العربية',
+    themeLabel: 'Site colour',
+    themeNames: { black: 'Black', white: 'White', blue: 'Blue', navy: 'Dark blue', pink: 'Pink' },
     bookTitle: 'Explanation of the Beautiful Names of Allah',
     author: 'by Shaykh Abdur-Rahman ibn Nasir as-Sa‘di',
     heroIntro:

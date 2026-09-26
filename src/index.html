@@ -7,6 +7,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="ملخصات أسماء الله الحسنى من كتاب تفسير أسماء الله الحسنى للشيخ عبد الرحمن السعدي — Learn Tawheed through the Beautiful Names of Allah.">
   <meta name="theme-color" content="#0a0907">
+  <!-- Apply the saved colour theme before first paint, so a light theme never flashes black. -->
+  <script>
+    try {
+      var theme = localStorage.getItem('asmaa.theme');
+      if (/^(black|white|blue|navy|pink)$/.test(theme)) document.documentElement.dataset.theme = theme;
+    } catch (e) {}
+  </script>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

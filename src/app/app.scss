@@ -13,7 +13,7 @@ main {
   top: 0;
   z-index: 10;
   padding-top: env(safe-area-inset-top);
-  background: rgb(10 9 7 / 82%);
+  background: rgb(var(--bg-rgb) / 85%);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-block-end: 1px solid var(--line);
