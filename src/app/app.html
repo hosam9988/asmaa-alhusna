@@ -1,0 +1,36 @@
+<header class="site-header">
+  <div class="container bar">
+    <a routerLink="/" class="brand" [attr.aria-label]="t().appTitle">
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <rect x="22" y="22" width="56" height="56" />
+        <rect x="22" y="22" width="56" height="56" transform="rotate(45 50 50)" />
+        <circle cx="50" cy="50" r="7" />
+      </svg>
+      <span class="calligraphy gold-text">الأسماء الحسنى</span>
+    </a>
+
+    <nav>
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        {{ t().home }}
+      </a>
+      <a routerLink="/about" routerLinkActive="active">
+        <span class="label-full">{{ t().about }}</span>
+        <span class="label-short">{{ t().aboutShort }}</span>
+      </a>
+      <button type="button" class="btn lang" (click)="language.toggle()">
+        {{ t().switchLang }}
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <router-outlet />
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="quran gold-text verse">﴿ وَلِلَّهِ الْأَسْمَاءُ الْحُسْنَىٰ فَادْعُوهُ بِهَا ﴾</p>
+    <p class="note">{{ t().footerNote }}</p>
+  </div>
+</footer>

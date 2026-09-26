@@ -1,0 +1,149 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  min-block-size: 100dvh;
+}
+
+main {
+  flex: 1;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding-top: env(safe-area-inset-top);
+  background: rgb(10 9 7 / 82%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-block-end: 1px solid var(--line);
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  min-block-size: 4.25rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  flex-shrink: 0;
+
+  svg {
+    inline-size: 2rem;
+    fill: none;
+    stroke: var(--gold);
+    stroke-width: 4;
+  }
+
+  circle {
+    fill: var(--gold);
+    stroke: none;
+  }
+
+  span {
+    font-size: 1.6rem;
+    line-height: 1;
+    padding-block: 0.3rem;
+    white-space: nowrap;
+  }
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.25rem, 2vw, 1.6rem);
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: 2.75rem;
+    padding-inline: 0.4rem;
+    color: var(--text-muted);
+    font-size: 1rem;
+    white-space: nowrap;
+    transition: color 0.2s;
+
+    &:hover,
+    &.active {
+      color: var(--gold-light);
+    }
+  }
+}
+
+.label-short {
+  display: none;
+}
+
+.lang {
+  padding: 0.3rem 0.95rem;
+  font-size: 0.9rem;
+}
+
+.site-footer {
+  margin-block-start: 4rem;
+  padding-block: 2.5rem calc(2.5rem + env(safe-area-inset-bottom));
+  border-block-start: 1px solid var(--line);
+  text-align: center;
+
+  .verse {
+    margin: 0;
+    font-size: clamp(1.3rem, 5vw, 1.6rem);
+  }
+
+  .note {
+    margin: 0.5rem auto 0;
+    max-inline-size: 36rem;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+  }
+}
+
+// ---------- Phones ----------
+
+@media (max-width: 560px) {
+  .bar {
+    min-block-size: 3.75rem;
+  }
+  .brand {
+    gap: 0.5rem;
+
+    svg {
+      inline-size: 1.75rem;
+    }
+    span {
+      font-size: 1.3rem;
+    }
+  }
+  // The brand already links home, so the separate link can go.
+  nav a[href='/'] {
+    display: none;
+  }
+  .label-full {
+    display: none;
+  }
+  .label-short {
+    display: inline;
+  }
+  .lang {
+    padding-inline: 0.8rem;
+  }
+}
+
+// Foldables and other very narrow screens: keep only the star as the home link.
+@media (max-width: 340px) {
+  .brand span {
+    display: none;
+  }
+}
+
+// Phones in landscape have little height to spare, so let the header scroll away.
+@media (max-height: 480px) and (orientation: landscape) {
+  .site-header {
+    position: static;
+  }
+}

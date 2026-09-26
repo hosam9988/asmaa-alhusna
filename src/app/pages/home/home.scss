@@ -1,0 +1,363 @@
+// ---------- Hero ----------
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(3rem, 8vw, 6rem) clamp(2rem, 5vw, 3.5rem);
+  text-align: center;
+}
+
+.rosette {
+  position: absolute;
+  top: 50%;
+  left: 50%; // physical, so translate centres it in both LTR and RTL
+  inline-size: min(46rem, 130vw);
+  translate: -50% -50%;
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 0.35;
+  opacity: 0.16;
+  animation: spin 240s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes spin {
+  to {
+    rotate: 360deg;
+  }
+}
+
+.hero-content {
+  position: relative;
+}
+
+.bismillah {
+  margin: 0;
+  color: var(--gold-light);
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  font-weight: 400;
+  opacity: 0.85;
+}
+
+h1 {
+  margin: 0.25rem 0 0.5rem;
+  font-size: clamp(3.6rem, 12vw, 7.5rem);
+  line-height: 1.35;
+  filter: drop-shadow(0 4px 24px rgb(212 175 55 / 25%));
+}
+
+.book {
+  margin: 1.25rem 0 0;
+  color: var(--gold-light);
+  font-size: clamp(1.25rem, 3vw, 1.6rem);
+  font-weight: 700;
+}
+
+html[lang='en'] .book {
+  font-family: var(--font-display-en);
+}
+
+.author {
+  margin: 0.15rem 0 0;
+  color: var(--text-muted);
+}
+
+.intro {
+  max-inline-size: 38rem;
+  margin: 1.25rem auto 0;
+  font-size: 1.1em;
+}
+
+// ---------- Verse & hadith ----------
+
+.quotes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr));
+  gap: 1.25rem;
+
+  figure {
+    margin: 0;
+    text-align: center;
+  }
+
+  blockquote {
+    margin: 0;
+    font-size: clamp(1.25rem, 4.6vw, 1.55rem);
+    direction: rtl;
+  }
+
+  .hadith {
+    color: var(--gold-light);
+    font-family: var(--font-body-ar);
+    font-size: clamp(1.1rem, 4.2vw, 1.35rem);
+    line-height: 2;
+  }
+
+  .translation {
+    margin: 0.5rem 0 0;
+    color: var(--text-muted);
+    font-style: italic;
+    font-size: 1rem;
+  }
+
+  figcaption {
+    margin-block-start: 0.6rem;
+    color: var(--gold);
+    font-size: 0.95rem;
+  }
+}
+
+// ---------- Name of the day ----------
+
+.today {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1.5rem 2rem;
+  margin-block-start: 1.25rem;
+  color: inherit;
+  transition: border-color 0.3s var(--ease);
+
+  &:hover {
+    border-color: var(--line-strong);
+  }
+}
+
+.today-name {
+  margin: 0;
+  font-size: clamp(2.3rem, 10vw, 3rem);
+}
+
+.today-meta {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.today-summary {
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@media (max-width: 760px) {
+  .today {
+    grid-template-columns: 1fr;
+    text-align: center;
+    justify-items: center;
+  }
+}
+
+// ---------- Search, progress, grid ----------
+
+.names {
+  margin-block-start: 3rem;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  margin-block-end: 1.5rem;
+}
+
+.search {
+  position: relative;
+  flex: 1 1 18rem;
+  max-inline-size: 28rem;
+
+  svg {
+    position: absolute;
+    inset-inline-start: 1rem;
+    inset-block-start: 50%;
+    translate: 0 -50%;
+    inline-size: 1.15rem;
+    fill: none;
+    stroke: var(--gold);
+    stroke-width: 2;
+    stroke-linecap: round;
+  }
+
+  input {
+    inline-size: 100%;
+    padding: 0.7rem 1rem;
+    padding-inline-start: 2.8rem;
+    background: var(--black-soft);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--text);
+    font: inherit;
+    font-size: 1rem;
+
+    &::placeholder {
+      color: var(--text-muted);
+    }
+
+    &:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgb(212 175 55 / 15%);
+    }
+  }
+}
+
+.progress {
+  flex: 0 1 18rem;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+
+  .track {
+    block-size: 4px;
+    margin-block-start: 0.35rem;
+    background: var(--line);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .fill {
+    block-size: 100%;
+    background: var(--gold-gradient);
+    transition: inline-size 0.6s var(--ease);
+  }
+}
+
+.order-note {
+  margin: 0 0 1rem;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(12.5rem, 1fr));
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  block-size: 100%;
+  padding: 1.25rem 1rem 1.1rem;
+  background: linear-gradient(180deg, var(--surface-raised), var(--surface));
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--text);
+  text-align: center;
+  --badge-size: 2.6rem;
+  transition:
+    transform 0.35s var(--ease),
+    border-color 0.35s var(--ease),
+    box-shadow 0.35s var(--ease);
+
+  // Only on real pointers: on touch screens a hover state sticks after tapping.
+  @media (hover: hover) {
+    &:hover {
+      transform: translateY(-4px);
+      border-color: var(--gold);
+      box-shadow: 0 12px 32px -12px rgb(212 175 55 / 35%);
+    }
+  }
+
+  &:active {
+    border-color: var(--gold);
+  }
+
+  &.done {
+    border-color: var(--line-strong);
+  }
+}
+
+.card-name {
+  margin-block-start: 0.4rem;
+  font-size: 2.1rem;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.card-translit {
+  color: var(--gold-light);
+  font-family: var(--font-display-en);
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.card-meaning {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.4;
+}
+
+.check {
+  position: absolute;
+  inset-block-start: 0.7rem;
+  inset-inline-end: 0.7rem;
+  inline-size: 1.2rem;
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.state {
+  grid-column: 1 / -1;
+  padding-block: 3rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+// ---------- Phones ----------
+
+@media (max-width: 640px) {
+  .hero {
+    padding-block: 2.25rem 1.5rem;
+  }
+
+  .names {
+    margin-block-start: 2rem;
+  }
+
+  .search,
+  .progress {
+    flex-basis: 100%;
+    max-inline-size: none;
+  }
+
+  // Two columns, so a phone shows several names per screen instead of one.
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  .card {
+    padding: 1rem 0.5rem 0.9rem;
+    --badge-size: 2.2rem;
+  }
+
+  .card-name {
+    font-size: clamp(1.45rem, 7.5vw, 1.9rem);
+  }
+
+  .card-translit {
+    font-size: 0.95rem;
+  }
+
+  .card-meaning {
+    font-size: 0.85rem;
+  }
+
+  .check {
+    inset-block-start: 0.5rem;
+    inset-inline-end: 0.5rem;
+  }
+}

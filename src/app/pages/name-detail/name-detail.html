@@ -1,0 +1,98 @@
+@let tx = t();
+@let lang = language.lang();
+
+<div class="container page">
+  <a routerLink="/" class="back">
+    <span aria-hidden="true">{{ language.isArabic() ? '→' : '←' }}</span>
+    {{ tx.backToAll }}
+  </a>
+
+  @if (namesService.isLoading()) {
+    <p class="state">{{ tx.loading }}</p>
+  } @else if (item(); as name) {
+    <article>
+      <header class="head">
+        <app-star-badge [label]="language.number(name.id)" />
+        <h1 class="calligraphy gold-text">{{ name.name }}</h1>
+        <p class="translit" dir="ltr">{{ name.transliteration }}</p>
+        <p class="meaning" dir="ltr">{{ name.meaning }}</p>
+        <app-ornament />
+      </header>
+
+      @if (name.note; as note) {
+        <aside class="note">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" />
+            <path d="M12 11v5M12 8h.01" />
+          </svg>
+          <p>{{ note[lang] }}</p>
+        </aside>
+      }
+
+      <section class="panel">
+        <h2 class="eyebrow">{{ tx.explanation }}</h2>
+        <p class="body">{{ name.summary[lang] }}</p>
+        @if (lang === 'en') {
+          <details>
+            <summary>{{ tx.showArabicOriginal }}</summary>
+            <p class="body arabic" lang="ar" dir="rtl">{{ name.summary.ar }}</p>
+          </details>
+        }
+        <p class="source">{{ tx.bookSource(language.number(name.bookPage)) }}</p>
+      </section>
+
+      <section class="panel">
+        <h2 class="eyebrow">{{ tx.lesson }}</h2>
+        <p class="body">{{ name.lesson[lang] }}</p>
+      </section>
+
+      @if (name.evidence; as evidence) {
+        <section class="panel evidence">
+          <h2 class="eyebrow">{{ tx.evidence }}</h2>
+          @if (evidence.type === 'quran') {
+            <blockquote class="quran gold-text" lang="ar" dir="rtl">﴿ {{ evidence.text }} ﴾</blockquote>
+          } @else {
+            <blockquote class="hadith" lang="ar" dir="rtl">« {{ evidence.text }} »</blockquote>
+          }
+          <p class="ref">{{ evidence.ref[lang] }}</p>
+        </section>
+      }
+
+      <div class="actions">
+        <button
+          type="button"
+          class="btn"
+          [class.solid]="studied.has(name.slug)"
+          [attr.aria-pressed]="studied.has(name.slug)"
+          (click)="studied.toggle(name.slug)"
+        >
+          @if (studied.has(name.slug)) {
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5" /></svg>
+            {{ tx.studied }}
+          } @else {
+            {{ tx.markStudied }}
+          }
+        </button>
+      </div>
+
+      <nav class="pager">
+        @if (neighbours().prev; as prev) {
+          <a [routerLink]="['/name', prev.slug]" class="prev">
+            <span class="dir">{{ tx.previous }}</span>
+            <span class="calligraphy gold-text">{{ prev.name }}</span>
+          </a>
+        } @else {
+          <span></span>
+        }
+        @if (neighbours().next; as next) {
+          <a [routerLink]="['/name', next.slug]" class="next">
+            <span class="dir">{{ tx.next }}</span>
+            <span class="calligraphy gold-text">{{ next.name }}</span>
+          </a>
+        }
+      </nav>
+    </article>
+  } @else {
+    <p class="state">{{ tx.notFound }}</p>
+  }
+</div>

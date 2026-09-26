@@ -1,0 +1,118 @@
+@let tx = t();
+
+<section class="hero">
+  <svg class="rosette" viewBox="0 0 200 200" aria-hidden="true">
+    <circle cx="100" cy="100" r="96" />
+    <circle cx="100" cy="100" r="60" />
+    @for (deg of rosette; track deg) {
+      <g [attr.transform]="'rotate(' + deg + ' 100 100)'">
+        <rect x="32" y="32" width="136" height="136" />
+        <rect x="32" y="32" width="136" height="136" transform="rotate(45 100 100)" />
+      </g>
+    }
+  </svg>
+
+  <div class="container hero-content">
+    <p class="bismillah calligraphy">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
+    <h1 class="calligraphy gold-text">الأسماء الحسنى</h1>
+    <app-ornament />
+    <p class="book">{{ tx.bookTitle }}</p>
+    <p class="author">{{ tx.author }}</p>
+    <p class="intro">{{ tx.heroIntro }}</p>
+  </div>
+</section>
+
+<section class="container quotes">
+  <figure class="panel">
+    <blockquote class="quran gold-text">﴿ وَلِلَّهِ الْأَسْمَاءُ الْحُسْنَىٰ فَادْعُوهُ بِهَا ﴾</blockquote>
+    @if (!language.isArabic()) {
+      <p class="translation">“And to Allah belong the best names, so invoke Him by them.”</p>
+    }
+    <figcaption>{{ language.isArabic() ? 'الأعراف: ١٨٠' : 'Al-A‘raf 7:180' }}</figcaption>
+  </figure>
+  <figure class="panel">
+    <blockquote class="hadith">
+      «إِنَّ لِلَّهِ تِسْعَةً وَتِسْعِينَ اسْمًا، مِائَةً إِلَّا وَاحِدًا، مَنْ أَحْصَاهَا دَخَلَ الْجَنَّةَ»
+    </blockquote>
+    @if (!language.isArabic()) {
+      <p class="translation">
+        “Allah has ninety-nine names, one hundred less one; whoever preserves them will enter
+        Paradise.” Preserving them means learning them, understanding their meanings and
+        worshipping Allah by them.
+      </p>
+    }
+    <figcaption>{{ language.isArabic() ? 'متفق عليه' : 'Al-Bukhari & Muslim' }}</figcaption>
+  </figure>
+</section>
+
+@if (namesService.nameOfTheDay(); as today) {
+  <section class="container">
+    <a class="panel today" [routerLink]="['/name', today.slug]">
+      <div>
+        <p class="eyebrow">{{ tx.nameOfTheDay }}</p>
+        <p class="today-name calligraphy gold-text">{{ today.name }}</p>
+        <p class="today-meta">
+          <bdi dir="ltr">{{ today.transliteration }} · {{ today.meaning }}</bdi>
+        </p>
+      </div>
+      <p class="today-summary">{{ today.summary[language.lang()] }}</p>
+      <span class="btn solid">{{ tx.readMore }}</span>
+    </a>
+  </section>
+}
+
+<section class="container names" aria-labelledby="names-heading">
+  <h2 id="names-heading" class="visually-hidden">{{ tx.appTitle }}</h2>
+
+  <div class="toolbar">
+    <label class="search">
+      <span class="visually-hidden">{{ tx.searchPlaceholder }}</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="11" cy="11" r="7" />
+        <path d="m20 20-4-4" />
+      </svg>
+      <input
+        type="search"
+        [placeholder]="tx.searchPlaceholder"
+        [value]="query()"
+        (input)="query.set($any($event.target).value)"
+      />
+    </label>
+
+    @if (namesService.names().length) {
+      <div class="progress" role="status">
+        <span>{{ tx.studiedProgress(studied.count(), namesService.names().length) }}</span>
+        <div class="track"><div class="fill" [style.inline-size.%]="progress()"></div></div>
+      </div>
+    }
+  </div>
+
+  @if (namesService.isLoading()) {
+    <p class="state">{{ tx.loading }}</p>
+  } @else if (namesService.error()) {
+    <p class="state">{{ tx.loadError }}</p>
+  } @else {
+    <p class="order-note">{{ tx.orderNote(namesService.names().length) }}</p>
+    <ul class="grid">
+      @for (item of filtered(); track item.id) {
+        <li>
+          <a class="card" [routerLink]="['/name', item.slug]" [class.done]="studied.has(item.slug)">
+            <app-star-badge [label]="language.number(item.id)" />
+            <span class="card-name calligraphy gold-text">{{ item.name }}</span>
+            <span class="card-translit" dir="ltr">{{ item.transliteration }}</span>
+            @if (!language.isArabic()) {
+              <span class="card-meaning">{{ item.meaning }}</span>
+            }
+            @if (studied.has(item.slug)) {
+              <svg class="check" viewBox="0 0 24 24" [attr.aria-label]="tx.studied">
+                <path d="m5 12.5 4.5 4.5L19 7.5" />
+              </svg>
+            }
+          </a>
+        </li>
+      } @empty {
+        <li class="state">{{ tx.noResults }}</li>
+      }
+    </ul>
+  }
+</section>

@@ -1,0 +1,104 @@
+.page {
+  max-inline-size: var(--reading-width);
+  padding-block-start: 1rem;
+}
+
+.head {
+  padding-block: 2rem 2.5rem;
+  text-align: center;
+
+  h1 {
+    margin: 0;
+    font-size: clamp(3.2rem, 14vw, 6.5rem);
+    line-height: 1.5;
+  }
+}
+
+.panel + .panel {
+  margin-block-start: 1.25rem;
+}
+
+.panel p {
+  margin: 0.75rem 0 0;
+}
+
+.types {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(11rem, 100%), 1fr));
+  gap: 1rem;
+  margin-block-start: 1rem;
+
+  > div {
+    padding: 1rem;
+    border: 1px solid var(--line);
+    border-radius: calc(var(--radius) - 4px);
+  }
+
+  h3 {
+    margin: 0;
+    font-size: 1.25rem;
+  }
+
+  small {
+    display: block;
+    color: var(--text-muted);
+    -webkit-text-fill-color: var(--text-muted);
+    font-size: 0.8rem;
+    font-weight: 400;
+  }
+
+  p {
+    margin: 0.4rem 0 0;
+    color: var(--text-muted);
+    font-size: 0.98rem;
+  }
+}
+
+.rules {
+  margin: 0.75rem 0 0;
+  padding-inline-start: 1.25rem;
+
+  li::marker {
+    content: '✦  ';
+    color: var(--gold);
+  }
+
+  li + li {
+    margin-block-start: 0.4rem;
+  }
+}
+
+blockquote {
+  margin: 1.5rem 0 0;
+  font-size: clamp(1.3rem, 5vw, 1.7rem);
+  text-align: center;
+  direction: rtl;
+}
+
+.translation,
+.ref {
+  text-align: center;
+}
+
+.translation {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.ref {
+  color: var(--gold);
+  font-size: 0.95rem;
+}
+
+.note {
+  margin-block-start: 2rem;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .head {
+    padding-block: 1rem 1.75rem;
+  }
+}
