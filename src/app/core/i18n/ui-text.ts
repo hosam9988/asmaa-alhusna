@@ -28,6 +28,12 @@ export interface UiText {
   evidence: string;
   showArabicOriginal: string;
   editorNote: string;
+  listen: string;
+  pause: string;
+  resume: string;
+  stop: string;
+  noVoice: string;
+  versesSkipped: string;
   markStudied: string;
   studied: string;
   previous: string;
@@ -65,6 +71,12 @@ export const UI_TEXT: Record<Lang, UiText> = {
     evidence: 'الدليل',
     showArabicOriginal: 'النص العربي',
     editorNote: 'حاشية المحقق',
+    listen: 'استمع',
+    pause: 'إيقاف مؤقت',
+    resume: 'متابعة',
+    stop: 'إيقاف',
+    noVoice: 'لا يتوفر صوت عربي على هذا الجهاز. يمكنك إضافته من إعدادات اللغة والكلام في جهازك.',
+    versesSkipped: 'قراءة آلية؛ تُتخطّى الآيات القرآنية.',
     markStudied: 'علّمه كمدروس',
     studied: 'تمت دراسته',
     previous: 'السابق',
@@ -101,6 +113,12 @@ export const UI_TEXT: Record<Lang, UiText> = {
     evidence: 'Evidence',
     showArabicOriginal: 'Read the original Arabic text',
     editorNote: 'Editor’s footnote',
+    listen: 'Listen',
+    pause: 'Pause',
+    resume: 'Resume',
+    stop: 'Stop',
+    noVoice: 'No English voice is available on this device. You can add one in your device’s language and speech settings.',
+    versesSkipped: 'Computer voice; Qur’an verses are skipped.',
     markStudied: 'Mark as studied',
     studied: 'Studied',
     previous: 'Previous',

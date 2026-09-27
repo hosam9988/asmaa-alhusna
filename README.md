@@ -17,6 +17,8 @@ Abdur-Rahman as-Sa‘di, compiled by ‘Ubayd ibn ‘Ali al-‘Ubayd (Islamic Un
   and the printed pages in the book
 - **Arabic ⇄ English:** switch languages at any time. The layout flips between right-to-left and
   left-to-right.
+- **Listen:** each name page can read the name, explanation and lesson aloud with the device's
+  built-in voice (free, works offline; Qur'an verses are skipped, not recited by a computer voice)
 - **Colour themes:** black, white, blue, dark blue or pink, all with gold accents (saved in your
   browser)
 - **Name of the day:** a different name shown on the home page each day
@@ -75,6 +77,7 @@ src/app/
     services/names.service.ts  loads names.json, name of the day, prev/next
     services/language.service  Arabic ⇄ English, sets <html dir/lang>
     services/studied.service   "studied" progress, kept in localStorage
+    services/speech.service    read-aloud with the browser's speech synthesis
     services/theme.service     colour theme, sets <html data-theme> (palettes in styles.scss)
     i18n/ui-text.ts            interface labels in both languages
     utils/search.ts            search that ignores tashkeel and hamza forms

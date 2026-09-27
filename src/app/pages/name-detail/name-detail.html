@@ -13,10 +13,11 @@
     <article>
       <header class="head">
         <app-star-badge [label]="language.number(name.id)" />
-        <h1 class="name-script gold-text">{{ name.name }}</h1>
+        <h1 class="name-script gold-text" [class.reading]="speech.activeKey() === 'name'">{{ name.name }}</h1>
         <p class="translit" dir="ltr">{{ name.transliteration }}</p>
         <p class="meaning" dir="ltr">{{ name.meaning }}</p>
         <app-ornament />
+        <app-read-aloud class="listen" [segments]="readAloud()" />
       </header>
 
       @if (name.note; as note) {
@@ -38,7 +39,7 @@
         <h2 class="eyebrow">{{ tx.explanation }}</h2>
         <div class="body">
           @for (paragraph of paragraphs(name.summary[lang]); track $index) {
-            <p>{{ paragraph }}</p>
+            <p [class.reading]="speech.activeKey() === 'p' + $index">{{ paragraph }}</p>
           }
         </div>
         @if (lang === 'en') {
@@ -56,7 +57,7 @@
 
       <section class="panel">
         <h2 class="eyebrow">{{ tx.lesson }}</h2>
-        <p class="body">{{ name.lesson[lang] }}</p>
+        <p class="body" [class.reading]="speech.activeKey() === 'lesson'">{{ name.lesson[lang] }}</p>
       </section>
 
       @if (name.evidence; as evidence) {
