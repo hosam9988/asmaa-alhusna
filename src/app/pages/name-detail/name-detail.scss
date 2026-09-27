@@ -24,8 +24,8 @@
   h1 {
     margin: 0.75rem 0 0;
     font-size: clamp(3.2rem, 16vw, 7.5rem);
-    overflow-wrap: anywhere;
-    line-height: 1.45;
+    overflow-wrap: normal; // wrap between words only, never inside a name
+    line-height: 1.9;
     filter: drop-shadow(0 4px 28px rgb(var(--accent-rgb) / 28%));
   }
 }
@@ -206,9 +206,9 @@ details {
     font-size: 0.9rem;
   }
 
-  .calligraphy {
-    font-size: clamp(1.35rem, 6vw, 1.8rem);
-    line-height: 1.6;
+  .name-script {
+    font-size: clamp(1.4rem, 6vw, 1.9rem);
+    line-height: 2;
   }
 }
 

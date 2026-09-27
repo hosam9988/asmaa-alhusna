@@ -279,9 +279,9 @@ html[lang='en'] .book {
 
 .card-name {
   margin-block-start: 0.4rem;
-  font-size: 2.1rem;
-  line-height: 1.6;
-  overflow-wrap: anywhere;
+  font-size: 2.2rem;
+  line-height: 2;
+  overflow-wrap: normal; // wrap between words only, never inside a name
 }
 
 .card-translit {

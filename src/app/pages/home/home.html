@@ -13,7 +13,7 @@
   </svg>
 
   <div class="container hero-content">
-    <p class="bismillah calligraphy">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
+    <p class="bismillah name-script">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
     <h1 class="calligraphy gold-text">الأسماء الحسنى</h1>
     <app-ornament />
     <p class="book">{{ tx.bookTitle }}</p>
@@ -50,7 +50,7 @@
     <a class="panel today" [routerLink]="['/name', today.slug]">
       <div>
         <p class="eyebrow">{{ tx.nameOfTheDay }}</p>
-        <p class="today-name calligraphy gold-text">{{ today.name }}</p>
+        <p class="today-name name-script gold-text">{{ today.name }}</p>
         <p class="today-meta">
           <bdi dir="ltr">{{ today.transliteration }} · {{ today.meaning }}</bdi>
         </p>
@@ -98,7 +98,7 @@
         <li>
           <a class="card" [routerLink]="['/name', item.slug]" [class.done]="studied.has(item.slug)">
             <app-star-badge [label]="language.number(item.id)" />
-            <span class="card-name calligraphy gold-text">{{ item.name }}</span>
+            <span class="card-name name-script gold-text">{{ item.name }}</span>
             <span class="card-translit" dir="ltr">{{ item.transliteration }}</span>
             @if (!language.isArabic()) {
               <span class="card-meaning">{{ item.meaning }}</span>

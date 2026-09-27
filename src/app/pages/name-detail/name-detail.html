@@ -13,7 +13,7 @@
     <article>
       <header class="head">
         <app-star-badge [label]="language.number(name.id)" />
-        <h1 class="calligraphy gold-text">{{ name.name }}</h1>
+        <h1 class="name-script gold-text">{{ name.name }}</h1>
         <p class="translit" dir="ltr">{{ name.transliteration }}</p>
         <p class="meaning" dir="ltr">{{ name.meaning }}</p>
         <app-ornament />
@@ -95,7 +95,7 @@
         @if (neighbours().prev; as prev) {
           <a [routerLink]="['/name', prev.slug]" class="prev">
             <span class="dir">{{ tx.previous }}</span>
-            <span class="calligraphy gold-text">{{ prev.name }}</span>
+            <span class="name-script gold-text">{{ prev.name }}</span>
           </a>
         } @else {
           <span></span>
@@ -103,7 +103,7 @@
         @if (neighbours().next; as next) {
           <a [routerLink]="['/name', next.slug]" class="next">
             <span class="dir">{{ tx.next }}</span>
-            <span class="calligraphy gold-text">{{ next.name }}</span>
+            <span class="name-script gold-text">{{ next.name }}</span>
           </a>
         }
       </nav>

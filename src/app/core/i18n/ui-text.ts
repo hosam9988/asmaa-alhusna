@@ -50,7 +50,7 @@ export const UI_TEXT: Record<Lang, UiText> = {
     author: 'للعلامة عبد الرحمن بن ناصر السعدي رحمه الله',
     heroIntro:
       'شرح أسماء الله الحسنى بنصّ كلام الشيخ السعدي، يُعرّفك بربك، ويغرس في قلبك توحيده ومحبته وتعظيمه.',
-    searchPlaceholder: 'ابحث عن اسم أو معنى…',
+    searchPlaceholder: 'ابحث عن اسم…',
     noResults: 'لا توجد نتائج مطابقة.',
     loading: 'جارٍ التحميل…',
     loadError: 'تعذّر تحميل البيانات. حاول مرة أخرى.',
@@ -85,7 +85,7 @@ export const UI_TEXT: Record<Lang, UiText> = {
     author: 'by Shaykh Abdur-Rahman ibn Nasir as-Sa‘di',
     heroIntro:
       'The Beautiful Names of Allah explained in the words of Shaykh as-Sa‘di, to help you know your Lord and build Tawheed, love and reverence for Him in your heart.',
-    searchPlaceholder: 'Search a name or meaning…',
+    searchPlaceholder: 'Search for a name…',
     noResults: 'No matching names.',
     loading: 'Loading…',
     loadError: 'Could not load the names. Please try again.',

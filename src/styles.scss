@@ -180,17 +180,33 @@ a {
   padding-right: max(1rem, env(safe-area-inset-right));
 }
 
+// The gradient is clipped to the text, but only paints inside the element's box. Arabic letters,
+// swashes and vowel marks often reach past that box, and whatever sticks out would be invisible,
+// so pad the box to cover the full glyphs.
 .gold-text {
   background: var(--gold-gradient);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  padding: 0.12em 0.25em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
 
+// Decorative titles without tashkeel.
 .calligraphy {
   font-family: var(--font-calligraphy);
   font-weight: 700;
   line-height: 1.5;
+}
+
+// The names (and other vowelled text set large). Amiri Quran places every haraka and shadda
+// clear of the letters; it has one weight only, so never synthesise bold, and give the marks
+// room above and below.
+.name-script {
+  font-family: var(--font-quran);
+  font-weight: 400;
+  line-height: 2.1;
 }
 
 .quran {
