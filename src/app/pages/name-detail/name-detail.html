@@ -68,6 +68,9 @@
             <blockquote class="hadith" lang="ar" dir="rtl">« {{ evidence.text }} »</blockquote>
           }
           <p class="ref">{{ evidence.ref[lang] }}</p>
+          @if (evidence.bookNote; as bookNote) {
+            <p class="book-note">{{ bookNote[lang] }}</p>
+          }
         </section>
       }
 

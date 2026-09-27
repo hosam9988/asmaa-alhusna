@@ -2,10 +2,16 @@ export type Lang = 'ar' | 'en';
 
 export type Localized = Record<Lang, string>;
 
+/**
+ * The evidence the book gives for a name — the editor's footnote or a quotation in the Shaykh's
+ * text — as in Shamela's edition (shamela.ws/book/10090).
+ */
 export interface Evidence {
   type: 'quran' | 'hadith';
   text: string;
   ref: Localized;
+  /** Where the book's reference is wrong: what the book has. `ref` holds the correct one. */
+  bookNote?: Localized;
 }
 
 /** One entry of `public/data/names.json`, in the order of the book. */
@@ -25,7 +31,7 @@ export interface DivineName {
    */
   summary: Localized;
   lesson: Localized;
-  /** Null when the book gives no evidence for the name. */
+  /** Null when the book gives no evidence for the name, or the editor says it has none. */
   evidence: Evidence | null;
   /**
    * The editor's footnote(s) on the name's heading, verbatim ("\n" between footnotes), with an

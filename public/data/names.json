@@ -17,7 +17,7 @@
     },
     "evidence": {
       "type": "quran",
-      "text": "إِنَّمَا اللَّهُ إِلَٰهٌ وَاحِدٌ ۖ سُبْحَانَهُ أَن يَكُونَ لَهُ وَلَدٌ",
+      "text": "إِنَّمَا اللَّهُ إِلَهٌ وَاحِدٌ سُبْحَانَهُ أَنْ يَكُونَ لَهُ وَلَدٌ لَهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ وَكَفَى بِاللَّهِ وَكِيلاً",
       "ref": {
         "ar": "النساء: ١٧١",
         "en": "An-Nisa 4:171"
@@ -43,7 +43,7 @@
     },
     "evidence": {
       "type": "quran",
-      "text": "اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ",
+      "text": "اللَّهُ لا إِلَهَ إِلا هُوَ الْحَيُّ الْقَيُّومُ",
       "ref": {
         "ar": "البقرة: ٢٥٥",
         "en": "Al-Baqarah 2:255"
@@ -95,7 +95,7 @@
     },
     "evidence": {
       "type": "quran",
-      "text": "سَبِّحِ اسْمَ رَبِّكَ الْأَعْلَى",
+      "text": "سَبِّحِ اسْمَ رَبِّكَ الأَعْلَى",
       "ref": {
         "ar": "الأعلى: ١",
         "en": "Al-A'la 87:1"
@@ -121,7 +121,7 @@
     },
     "evidence": {
       "type": "quran",
-      "text": "هُوَ الْأَوَّلُ وَالْآخِرُ وَالظَّاهِرُ وَالْبَاطِنُ ۖ وَهُوَ بِكُلِّ شَيْءٍ عَلِيمٌ",
+      "text": "هُوَ الأَوَّلُ وَالآخِرُ وَالظَّاهِرُ وَالْبَاطِنُ",
       "ref": {
         "ar": "الحديد: ٣",
         "en": "Al-Hadid 57:3"
@@ -147,7 +147,7 @@
     },
     "evidence": {
       "type": "quran",
-      "text": "هُوَ الْأَوَّلُ وَالْآخِرُ وَالظَّاهِرُ وَالْبَاطِنُ ۖ وَهُوَ بِكُلِّ شَيْءٍ عَلِيمٌ",
+      "text": "هُوَ الأَوَّلُ وَالآخِرُ وَالظَّاهِرُ وَالْبَاطِنُ",
       "ref": {
         "ar": "الحديد: ٣",
         "en": "Al-Hadid 57:3"
@@ -171,14 +171,7 @@
       "ar": "أن يعترف العبد بأن ربه هو الذي خلقه وسواه وصوره، فيشكره ويفرده بالعبادة.",
       "en": "Acknowledge that it is your Lord who created you, proportioned you and shaped you, so thank Him and worship Him alone."
     },
-    "evidence": {
-      "type": "quran",
-      "text": "هُوَ اللَّهُ الْخَالِقُ الْبَارِئُ الْمُصَوِّرُ",
-      "ref": {
-        "ar": "الحشر: ٢٤",
-        "en": "Al-Hashr 59:24"
-      }
-    },
+    "evidence": null,
     "note": null
   },
   {
@@ -197,14 +190,7 @@
       "ar": "على العبد أن يعترف بحكمة الله وفضله، ويشكره بلسانه وجنانه وأركانه، ويعتمد على ربه في حصول ما يحب، ويجتهد في فعل الأسباب النافعة.",
       "en": "Acknowledge Allah's wisdom and His favour, thank Him with your tongue, heart and limbs, rely on your Lord to obtain what you love, and work hard at the beneficial means He has set."
     },
-    "evidence": {
-      "type": "quran",
-      "text": "وَاللَّهُ يَقْبِضُ وَيَبْسُطُ وَإِلَيْهِ تُرْجَعُونَ",
-      "ref": {
-        "ar": "البقرة: ٢٤٥",
-        "en": "Al-Baqarah 2:245"
-      }
-    },
+    "evidence": null,
     "note": null
   },
   {
@@ -225,7 +211,7 @@
     },
     "evidence": {
       "type": "quran",
-      "text": "هُوَ الْأَوَّلُ وَالْآخِرُ وَالظَّاهِرُ وَالْبَاطِنُ ۖ وَهُوَ بِكُلِّ شَيْءٍ عَلِيمٌ",
+      "text": "هُوَ الأَوَّلُ وَالآخِرُ وَالظَّاهِرُ وَالْبَاطِنُ",
       "ref": {
         "ar": "الحديد: ٣",
         "en": "Al-Hadid 57:3"
@@ -252,14 +238,7 @@
       "ar": "أن يتفكر العبد في إتقان السماوات والأرض وحسن نظامهما، فيزداد تعظيمًا لخالقهما.",
       "en": "Reflect on how perfectly and beautifully the heavens and the earth are made and ordered, so that your reverence for their Creator grows."
     },
-    "evidence": {
-      "type": "quran",
-      "text": "بَدِيعُ السَّمَاوَاتِ وَالْأَرْضِ ۖ وَإِذَا قَضَىٰ أَمْرًا فَإِنَّمَا يَقُولُ لَهُ كُن فَيَكُونُ",
-      "ref": {
-        "ar": "البقرة: ١١٧",
-        "en": "Al-Baqarah 2:117"
-      }
-    },
+    "evidence": null,
     "note": {
       "ar": "هذا الاسم من أسماء الله المضافة، وقد تقدم في الدراسة أنها لا تدخل ضمن أسماء الله الحسنى.",
       "en": "This is one of Allah's names in the construct form (a name joined to another word); it was explained in the study that these are not counted among Allah's Beautiful Names."
@@ -283,7 +262,7 @@
     },
     "evidence": {
       "type": "quran",
-      "text": "إِنَّا كُنَّا مِن قَبْلُ نَدْعُوهُ ۖ إِنَّهُ هُوَ الْبَرُّ الرَّحِيمُ",
+      "text": "إِنَّا كُنَّا مِنْ قَبْلُ نَدْعُوهُ إِنَّهُ هُوَ الْبَرُّ الرَّحِيمُ",
       "ref": {
         "ar": "الطور: ٢٨",
         "en": "At-Tur 52:28"
@@ -312,7 +291,7 @@
       "text": "إِنَّهُ هُوَ السَّمِيعُ الْبَصِيرُ",
       "ref": {
         "ar": "الإسراء: ١",
-        "en": "Al-Isra 17:1"
+        "en": "Al-Isra' 17:1"
       }
     },
     "note": null
@@ -333,14 +312,7 @@
       "ar": "أن يبادر العبد إلى التوبة النصوح بشروطها، ويسأل ربه أن يوفقه لها ثم يقبلها منه، ولا ييأس من رحمته مهما عظمت ذنوبه.",
       "en": "Hurry to sincere repentance with its conditions, ask your Lord to guide you to it and then to accept it from you, and never despair of His mercy however great your sins."
     },
-    "evidence": {
-      "type": "quran",
-      "text": "ثُمَّ تَابَ عَلَيْهِمْ لِيَتُوبُوا إِنَّ اللَّهَ هُوَ التَّوَّابُ الرَّحِيمُ",
-      "ref": {
-        "ar": "التوبة: ١١٨",
-        "en": "At-Tawbah 9:118"
-      }
-    },
+    "evidence": null,
     "note": null
   },
   {
@@ -359,14 +331,7 @@
       "ar": "أن يستعد العبد ليوم الجمع، ويحاسب نفسه على أعماله صغيرها وكبيرها، فإنها محصاة عليه.",
       "en": "Prepare for the Day of Gathering and hold yourself to account for your deeds, small and large, because every one of them is recorded."
     },
-    "evidence": {
-      "type": "quran",
-      "text": "رَبَّنَا إِنَّكَ جَامِعُ النَّاسِ لِيَوْمٍ لَّا رَيْبَ فِيهِ",
-      "ref": {
-        "ar": "آل عمران: ٩",
-        "en": "Al 'Imran 3:9"
-      }
-    },
+    "evidence": null,
     "note": {
       "ar": "أورده الشيخ رحمه الله تعالى ضمن أسماء الله الحسنى، وهذا الإسم من أسمائه المضافة إلى أفعاله، وقد بينت في الدراسة من أقوال أهل العلم أنه لا يشتق من الأفعال أسماء، ولا تدخل الأسماء المضافة في الأسماء الحسنى والله أعلم.",
       "en": "The Shaykh (may Allah have mercy on him) listed it among the Beautiful Names. This name is one of His names that is joined to His actions, and I have shown in the study, from the words of the scholars, that names are not derived from actions, and that names in the construct form are not counted among the Beautiful Names. And Allah knows best."
@@ -390,7 +355,7 @@
     },
     "evidence": {
       "type": "quran",
-      "text": "الْعَزِيزُ الْجَبَّارُ الْمُتَكَبِّرُ سُبْحَانَ اللَّهِ عَمَّا يُشْرِكُونَ",
+      "text": "هُوَ اللَّهُ الَّذِي لا إِلَهَ إِلا هُوَ الْمَلِكُ الْقُدُّوسُ السَّلامُ الْمُؤْمِنُ الْمُهَيْمِنُ الْعَزِيزُ الْجَبَّارُ",
       "ref": {
         "ar": "الحشر: ٢٣",
         "en": "Al-Hashr 59:23"
@@ -438,10 +403,10 @@
     },
     "evidence": {
       "type": "hadith",
-      "text": "إِنَّ اللَّهَ جَمِيلٌ يُحِبُّ الْجَمَالَ",
+      "text": "إن الله جميل يحب الجمال ...",
       "ref": {
-        "ar": "رواه مسلم",
-        "en": "Sahih Muslim"
+        "ar": "مسلم (١/ ٩٣) كتاب الإيمان باب تحريم",
+        "en": "Muslim (1/93), Book of Faith, chapter on the prohibition of … (the reference breaks off here in the print)."
       }
     },
     "note": null
@@ -464,10 +429,10 @@
     },
     "evidence": {
       "type": "hadith",
-      "text": "إِنَّ اللَّهَ جَوَادٌ يُحِبُّ الْجُودَ",
+      "text": "إن الله جواد يحب الجود",
       "ref": {
-        "ar": "رواه أبو نعيم في الحلية، وصححه الألباني",
-        "en": "Abu Nu'aym, al-Hilyah (graded authentic by al-Albani)"
+        "ar": "أخرجه أبو نعيم في الحلية (٥/ ٢٩) وصححه الألباني في صحيح الجامع (١/ ١٠٥)",
+        "en": "Recorded by Abu Nu'aym in al-Hilyah (5/29). Graded authentic by al-Albani in Sahih al-Jami' (1/105)."
       }
     },
     "note": null
@@ -490,7 +455,7 @@
     },
     "evidence": {
       "type": "quran",
-      "text": "وَكَفَىٰ بِاللَّهِ حَسِيبًا",
+      "text": "وَكَفَى بِاللَّهِ حَسِيباً",
       "ref": {
         "ar": "النساء: ٦",
         "en": "An-Nisa 4:6"
@@ -514,14 +479,7 @@
       "ar": "«احفظ الله يحفظك»: أي احفظ أوامره بالامتثال ونواهيه بالاجتناب وحدوده بعدم تعديها، يحفظك في نفسك ودينك ومالك وولدك، وعلى حسب ما عند العبد من الإيمان تكون مدافعة الله عنه.",
       "en": "«Guard Allah and He will guard you»: keep His commands by obeying them, His prohibitions by avoiding them and His limits by not crossing them, and He will guard you in yourself, your religion, your wealth and your children; the more faith you have, the more Allah defends you."
     },
-    "evidence": {
-      "type": "quran",
-      "text": "وَرَبُّكَ عَلَىٰ كُلِّ شَيْءٍ حَفِيظٌ",
-      "ref": {
-        "ar": "سبأ: ٢١",
-        "en": "Saba 34:21"
-      }
-    },
+    "evidence": null,
     "note": {
       "ar": "لم أقف على دليل يدل على اسميته لله تعالى وإنما ورد بصيغة الصفة كما قال تعالى: ﴿وَرَبُّكَ عَلَى كُلِّ شَيْءٍ حَفِيظٌ﴾ (سبأ: ٢١).",
       "en": "I have not found evidence that it is a name of Allah the Exalted; it has only come in the form of a description, as He the Exalted said: ﴿And your Lord, over all things, is Guardian﴾ (Saba: 21)."
@@ -545,7 +503,7 @@
     },
     "evidence": {
       "type": "quran",
-      "text": "ذَٰلِكَ بِأَنَّ اللَّهَ هُوَ الْحَقُّ وَأَنَّ مَا يَدْعُونَ مِن دُونِهِ هُوَ الْبَاطِلُ",
+      "text": "ذَلِكَ بِأَنَّ اللَّهَ هُوَ الْحَقُّ وَأَنَّ مَا يَدْعُونَ مِنْ دُونِهِ هُوَ الْبَاطِلُ وَأَنَّ اللَّهَ هُوَ الْعَلِيُّ الْكَبِيرُ",
       "ref": {
         "ar": "الحج: ٦٢",
         "en": "Al-Hajj 22:62"
@@ -571,10 +529,10 @@
     },
     "evidence": {
       "type": "hadith",
-      "text": "إِنَّ اللَّهَ هُوَ الْحَكَمُ، وَإِلَيْهِ الْحُكْمُ",
+      "text": "إن الله هو الحكم وإليه الحكم",
       "ref": {
-        "ar": "رواه أبو داود والنسائي، وصححه الألباني",
-        "en": "Sunan Abi Dawud and Sunan an-Nasa'i (graded authentic by al-Albani)"
+        "ar": "أخرجه أبو داود (٥/ ٢٤٠) كتاب الأدب باب في تغيير الاسم القبيح، والنسائي كتاب القضاء حديث (٥٣٨٩) باب إذا حكموا رجلاً فقضى بينهم، وصححه الألباني في صحيح سنن أبي داود (٣/ ٩٣٦) حديث (٤١٤٥)",
+        "en": "Recorded by Abu Dawud (5/240), Book of Manners, chapter on changing an ugly name, and by an-Nasa'i, Book of Judgements, hadith 5389, chapter on when they appoint a man to judge between them. Graded authentic by al-Albani in Sahih Sunan Abi Dawud (3/936), hadith 4145."
       }
     },
     "note": null
@@ -623,10 +581,14 @@
     },
     "evidence": {
       "type": "quran",
-      "text": "وَاعْلَمُوا أَنَّ اللَّهَ غَفُورٌ حَلِيمٌ",
+      "text": "وَاعْلَمُوا أَنَّ اللَّهَ يَعْلَمُ مَا فِي أَنْفُسِكُمْ فَاحْذَرُوهُ وَاعْلَمُوا أَنَّ اللَّهَ غَفُورٌ حَلِيمٌ",
       "ref": {
         "ar": "البقرة: ٢٣٥",
         "en": "Al-Baqarah 2:235"
+      },
+      "bookNote": {
+        "ar": "في الكتاب: (البقرة: ٣٥)",
+        "en": "The book has: (البقرة: ٣٥)"
       }
     },
     "note": null
@@ -649,7 +611,7 @@
     },
     "evidence": {
       "type": "quran",
-      "text": "يَا أَيُّهَا النَّاسُ أَنتُمُ الْفُقَرَاءُ إِلَى اللَّهِ ۖ وَاللَّهُ هُوَ الْغَنِيُّ الْحَمِيدُ",
+      "text": "يَا أَيُّهَا النَّاسُ أَنْتُمُ الْفُقَرَاءُ إِلَى اللَّهِ وَاللَّهُ هُوَ الْغَنِيُّ الْحَمِيدُ",
       "ref": {
         "ar": "فاطر: ١٥",
         "en": "Fatir 35:15"
@@ -675,7 +637,7 @@
     },
     "evidence": {
       "type": "quran",
-      "text": "اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ",
+      "text": "اللَّهُ لا إِلَهَ إِلا هُوَ الْحَيُّ الْقَيُّوم",
       "ref": {
         "ar": "البقرة: ٢٥٥",
         "en": "Al-Baqarah 2:255"
@@ -701,10 +663,10 @@
     },
     "evidence": {
       "type": "hadith",
-      "text": "إِنَّ اللَّهَ عَزَّ وَجَلَّ حَلِيمٌ حَيِيٌّ سِتِّيرٌ يُحِبُّ الْحَيَاءَ وَالسَّتْرَ",
+      "text": "إن الله عز وجل حليم حيي ستير يحب الحياء والستر فإذا اغتسل أحدكم فليستتر",
       "ref": {
-        "ar": "رواه أبو داود والنسائي",
-        "en": "Sunan Abi Dawud and Sunan an-Nasa'i"
+        "ar": "أخرجه أبو داود (٤/ ٣٠٢) كتاب الحمام باب النهي عن التعري، والنسائي في سننه (١/ ٢٠٠) كتاب الغسل والتيمم باب الاستتار عند الاغتسال، وأحمد في المسند (٤/ ٢٢٤) والبيهقي في سننه (١/ ١٩٨) كتاب الطهارة باب الستر في الغسل عند الناس، من حديث يعلي بن أمية رضي الله عنه، وصححه الألباني في إرواء الغليل (٧/ ٣٦٧)",
+        "en": "Recorded by Abu Dawud (4/302), Book of Bathing, chapter on the prohibition of nakedness; by an-Nasa'i in his Sunan (1/200), Book of Ghusl and Tayammum, chapter on covering oneself when bathing; by Ahmad in al-Musnad (4/224); and by al-Bayhaqi in his Sunan (1/198), Book of Purification, chapter on covering while bathing in front of people, from the hadith of Ya'la ibn Umayyah (may Allah be pleased with him). Graded authentic by al-Albani in Irwa' al-Ghalil (7/367)."
       }
     },
     "note": {
@@ -728,14 +690,7 @@
       "ar": "أن يعترف العبد بحكمة الله في خفض من يخفضه، فيجتنب أسباب الخفض من معصيته ومعاداته، ويجتهد في الأسباب النافعة معتمداً على ربه.",
       "en": "Acknowledge Allah's wisdom in lowering whom He lowers, keep away from what brings a person down, namely disobeying Him and opposing Him, and strive in the beneficial causes while relying on your Lord."
     },
-    "evidence": {
-      "type": "quran",
-      "text": "وَمَن يُهِنِ اللَّهُ فَمَا لَهُ مِن مُّكْرِمٍ",
-      "ref": {
-        "ar": "الحج: ١٨",
-        "en": "Al-Hajj 22:18"
-      }
-    },
+    "evidence": null,
     "note": {
       "ar": "سبق الكلام على هذين الاسمين مع اسمه تعالى \"الباسط\".",
       "en": "These two names have already been discussed together with His name \"Al-Basit\" (the Extender)."
@@ -757,14 +712,7 @@
       "ar": "أن يشهد العبد حكمة الله وحمده في كل ما خلق وصور، فيعظمه ويفرده بالعبادة، إذ لا خالق سواه.",
       "en": "See Allah's wisdom and praiseworthiness in everything He has created and shaped, so glorify Him and worship Him alone, for there is no creator besides Him."
     },
-    "evidence": {
-      "type": "quran",
-      "text": "هُوَ اللَّهُ الْخَالِقُ الْبَارِئُ الْمُصَوِّرُ",
-      "ref": {
-        "ar": "الحشر: ٢٤",
-        "en": "Al-Hashr 59:24"
-      }
-    },
+    "evidence": null,
     "note": {
       "ar": "سبق الكلام على هذا الإسم مع اسمه تعالى \"الباري\".",
       "en": "This name has already been discussed together with His name \"Al-Bari'\" (the Originator)."
@@ -812,14 +760,7 @@
       "ar": "أن يجل العبد ربه ويعظمه ويحبه، ليكون من أوليائه الذين يكرمهم.",
       "en": "Revere your Lord, glorify Him and love Him, so that you may be among His close servants whom He honours."
     },
-    "evidence": {
-      "type": "quran",
-      "text": "وَيَبْقَىٰ وَجْهُ رَبِّكَ ذُو الْجَلَالِ وَالْإِكْرَامِ",
-      "ref": {
-        "ar": "الرحمن: ٢٧",
-        "en": "Ar-Rahman 55:27"
-      }
-    },
+    "evidence": null,
     "note": {
       "ar": "هذا الاسم من أسماء الله المضافة وقد تقدم في الدراسة أنها لا تدخل ضمن أسماء الله الحسنى.",
       "en": "This is one of Allah's names in the construct form (a name joined to another word); it was explained in the study that these are not counted among Allah's Beautiful Names."
@@ -843,7 +784,7 @@
     },
     "evidence": {
       "type": "quran",
-      "text": "وَيُحَذِّرُكُمُ اللَّهُ نَفْسَهُ ۗ وَاللَّهُ رَءُوفٌ بِالْعِبَادِ",
+      "text": "وَيُحَذِّرُكُمُ اللَّهُ نَفْسَهُ وَاللَّهُ رَؤُوفٌ بِالْعِبَادِ",
       "ref": {
         "ar": "آل عمران: ٣٠",
         "en": "Al 'Imran 3:30"
@@ -867,14 +808,7 @@
       "ar": "أن يعترف العبد بفضل الله على من رفعه ويشكره بلسانه وقلبه وجوارحه، ويجتهد في أسباب الرفعة من العلم والإيمان معتمداً على ربه.",
       "en": "Acknowledge Allah's favour upon those He raises and thank Him with your tongue, heart and limbs, and strive in the causes of being raised, knowledge and faith, while relying on your Lord."
     },
-    "evidence": {
-      "type": "quran",
-      "text": "يَرْفَعِ اللَّهُ الَّذِينَ آمَنُوا مِنكُمْ وَالَّذِينَ أُوتُوا الْعِلْمَ دَرَجَاتٍ",
-      "ref": {
-        "ar": "المجادلة: ١١",
-        "en": "Al-Mujadilah 58:11"
-      }
-    },
+    "evidence": null,
     "note": {
       "ar": "سبق الكلام على هذين الاسمين مع اسمه تعالى \"الباسط\".",
       "en": "These two names have already been discussed together with His name \"Al-Basit\" (the Extender)."
@@ -898,7 +832,7 @@
     },
     "evidence": {
       "type": "quran",
-      "text": "قُلْ أَغَيْرَ اللَّهِ أَبْغِي رَبًّا وَهُوَ رَبُّ كُلِّ شَيْءٍ",
+      "text": "قُلْ أَغَيْرَ اللَّهِ أَبْغِي رَبّاً وَهُوَ رَبُّ كُلِّ شَيْء",
       "ref": {
         "ar": "الأنعام: ١٦٤",
         "en": "Al-An'am 6:164"
@@ -924,10 +858,10 @@
     },
     "evidence": {
       "type": "quran",
-      "text": "الرَّحْمَٰنِ الرَّحِيمِ",
+      "text": "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ الرَّحْمَنِ الرَّحِيمِ",
       "ref": {
-        "ar": "الفاتحة: ٣",
-        "en": "Al-Fatihah 1:3"
+        "ar": "الفاتحة: ٢، ٣",
+        "en": "Al-Fatihah 1:2–3"
       }
     },
     "note": null
@@ -950,10 +884,10 @@
     },
     "evidence": {
       "type": "quran",
-      "text": "الرَّحْمَٰنِ الرَّحِيمِ",
+      "text": "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ الرَّحْمَنِ الرَّحِيمِ",
       "ref": {
-        "ar": "الفاتحة: ٣",
-        "en": "Al-Fatihah 1:3"
+        "ar": "الفاتحة: ٢، ٣",
+        "en": "Al-Fatihah 1:2–3"
       }
     },
     "note": null
@@ -976,7 +910,7 @@
     },
     "evidence": {
       "type": "quran",
-      "text": "إِنَّ اللَّهَ هُوَ الرَّزَّاقُ ذُو الْقُوَّةِ الْمَتِينُ",
+      "text": "إِنَّ اللَّهَ هُوَ الرَّزَّاق",
       "ref": {
         "ar": "الذاريات: ٥٨",
         "en": "Adh-Dhariyat 51:58"
@@ -1024,10 +958,10 @@
     },
     "evidence": {
       "type": "hadith",
-      "text": "إِنَّ اللَّهَ رَفِيقٌ يُحِبُّ الرِّفْقَ، وَيُعْطِي عَلَى الرِّفْقِ مَا لَا يُعْطِي عَلَى الْعُنْفِ",
+      "text": "إن الله رفيق يحب أهل الرفق، وإن الله يعطي على الرفق ما لا يعطي على العنف",
       "ref": {
-        "ar": "رواه مسلم",
-        "en": "Sahih Muslim"
+        "ar": "أخرجه مسلم في صحيحه (٤/ ٢٠٠٣، ٢٠٠٤) كتاب البر والصلة باب فضل الرفق من حديث عائشة رضي الله عنها بنحوه",
+        "en": "Recorded by Muslim in his Sahih (4/2003–2004), Book of Righteousness and Keeping Ties, chapter on the virtue of gentleness, from the hadith of 'A'ishah (may Allah be pleased with her), with similar wording."
       }
     },
     "note": null
@@ -1050,7 +984,7 @@
     },
     "evidence": {
       "type": "quran",
-      "text": "إِنَّ اللَّهَ كَانَ عَلَيْكُمْ رَقِيبًا",
+      "text": "إِنَّ اللَّهَ كَانَ عَلَيْكُمْ رَقِيباً",
       "ref": {
         "ar": "النساء: ١",
         "en": "An-Nisa 4:1"
@@ -1098,10 +1032,10 @@
     },
     "evidence": {
       "type": "hadith",
-      "text": "إِنَّ اللَّهَ عَزَّ وَجَلَّ حَلِيمٌ حَيِيٌّ سِتِّيرٌ يُحِبُّ الْحَيَاءَ وَالسَّتْرَ",
+      "text": "إن الله عز وجل حليم حيي ستير يحب الحياء والستر فإذا اغتسل أحدكم فليستتر",
       "ref": {
-        "ar": "رواه أبو داود والنسائي",
-        "en": "Sunan Abi Dawud and Sunan an-Nasa'i"
+        "ar": "أخرجه أبو داود (٤/ ٣٠٢) كتاب الحمام باب النهي عن التعري، والنسائي في سننه (١/ ٢٠٠) كتاب الغسل والتيمم باب الاستتار عند الاغتسال، وأحمد في المسند (٤/ ٢٢٤) والبيهقي في سننه (١/ ١٩٨) كتاب الطهارة باب الستر في الغسل عند الناس، من حديث يعلي بن أمية رضي الله عنه، وصححه الألباني في إرواء الغليل (٧/ ٣٦٧)",
+        "en": "Recorded by Abu Dawud (4/302), Book of Bathing, chapter on the prohibition of nakedness; by an-Nasa'i in his Sunan (1/200), Book of Ghusl and Tayammum, chapter on covering oneself when bathing; by Ahmad in al-Musnad (4/224); and by al-Bayhaqi in his Sunan (1/198), Book of Purification, chapter on covering while bathing in front of people, from the hadith of Ya'la ibn Umayyah (may Allah be pleased with him). Graded authentic by al-Albani in Irwa' al-Ghalil (7/367)."
       }
     },
     "note": {
@@ -1127,7 +1061,7 @@
     },
     "evidence": {
       "type": "quran",
-      "text": "هُوَ اللَّهُ الَّذِي لَا إِلَهَ إِلَّا هُوَ الْمَلِكُ الْقُدُّوسُ السَّلَامُ",
+      "text": "هُوَ اللَّهُ الَّذِي لا إِلَهَ إِلَّا هُوَ الْمَلِكُ الْقُدُّوسُ السَّلام ...",
       "ref": {
         "ar": "الحشر: ٢٣",
         "en": "Al-Hashr 59:23"
@@ -1182,7 +1116,7 @@
     },
     "evidence": {
       "type": "quran",
-      "text": "وَكَانَ اللَّهُ شَاكِرًا عَلِيمًا",
+      "text": "وَكَانَ اللَّهُ شَاكِراً عَلِيماً",
       "ref": {
         "ar": "النساء: ١٤٧",
         "en": "An-Nisa 4:147"
@@ -1208,7 +1142,7 @@
     },
     "evidence": {
       "type": "quran",
-      "text": "إِن تُقْرِضُوا اللَّهَ قَرْضًا حَسَنًا يُضَاعِفْهُ لَكُمْ وَيَغْفِرْ لَكُمْ ۚ وَاللَّهُ شَكُورٌ حَلِيمٌ",
+      "text": "إِنْ تُقْرِضُوا اللَّهَ قَرْضاً حَسَناً يُضَاعِفْهُ لَكُمْ وَيَغْفِرْ لَكُمْ وَاللَّهُ شَكُورٌ حَلِيمٌ",
       "ref": {
         "ar": "التغابن: ١٧",
         "en": "At-Taghabun 64:17"
@@ -1234,7 +1168,7 @@
     },
     "evidence": {
       "type": "quran",
-      "text": "وَاللَّهُ عَلَىٰ كُلِّ شَيْءٍ شَهِيدٌ",
+      "text": "وَاللَّهُ عَلَى كُلِّ شَيْءٍ شَهِيدٌ",
       "ref": {
         "ar": "المجادلة: ٦",
         "en": "Al-Mujadilah 58:6"
@@ -1285,10 +1219,10 @@
     },
     "evidence": {
       "type": "quran",
-      "text": "اللَّهُ الصَّمَدُ",
+      "text": "قُلْ هُوَ اللَّهُ أَحَدٌ اللَّهُ الصَّمَدُ",
       "ref": {
-        "ar": "الإخلاص: ٢",
-        "en": "Al-Ikhlas 112:2"
+        "ar": "الإخلاص: ١، ٢",
+        "en": "Al-Ikhlas 112:1–2"
       }
     },
     "note": null
@@ -1333,7 +1267,7 @@
     },
     "evidence": {
       "type": "quran",
-      "text": "هُوَ الْأَوَّلُ وَالْآخِرُ وَالظَّاهِرُ وَالْبَاطِنُ ۖ وَهُوَ بِكُلِّ شَيْءٍ عَلِيمٌ",
+      "text": "هُوَ الأَوَّلُ وَالآخِرُ وَالظَّاهِرُ وَالْبَاطِنُ",
       "ref": {
         "ar": "الحديد: ٣",
         "en": "Al-Hadid 57:3"
@@ -1384,10 +1318,10 @@
     },
     "evidence": {
       "type": "quran",
-      "text": "سَبَّحَ لِلَّهِ مَا فِي السَّمَاوَاتِ وَالْأَرْضِ وَهُوَ الْعَزِيزُ الْحَكِيمُ",
+      "text": "إِنَّ رَبَّكَ هُوَ الْقَوِيُّ الْعَزِيزُ",
       "ref": {
-        "ar": "الحديد: ١",
-        "en": "Al-Hadid 57:1"
+        "ar": "هود: ٦٦",
+        "en": "Hud 11:66"
       }
     },
     "note": null
@@ -1410,7 +1344,7 @@
     },
     "evidence": {
       "type": "quran",
-      "text": "وَلَا يَئُودُهُ حِفْظُهُمَا وَهُوَ الْعَلِيُّ الْعَظِيمُ",
+      "text": "وَلا يَؤُودُهُ حِفْظُهُمَا وَهُوَ الْعَلِيُّ الْعَظِيمُ",
       "ref": {
         "ar": "البقرة: ٢٥٥",
         "en": "Al-Baqarah 2:255"
@@ -1436,7 +1370,7 @@
     },
     "evidence": {
       "type": "quran",
-      "text": "إِنَّ اللَّهَ لَعَفُوٌّ غَفُورٌ",
+      "text": "إن الله لعفو غفور",
       "ref": {
         "ar": "الحج: ٦٠",
         "en": "Al-Hajj 22:60"
@@ -1465,7 +1399,7 @@
     },
     "evidence": {
       "type": "quran",
-      "text": "وَلَا يَئُودُهُ حِفْظُهُمَا وَهُوَ الْعَلِيُّ الْعَظِيمُ",
+      "text": "وَلا يَؤُودُهُ حِفْظُهُمَا وَهُوَ الْعَلِيُّ الْعَظِيمُ",
       "ref": {
         "ar": "البقرة: ٢٥٥",
         "en": "Al-Baqarah 2:255"
@@ -1521,14 +1455,7 @@
       "ar": "أن يكثر العبد من التوبة والاستغفار ولا ييأس من مغفرة ربه مهما كثرت ذنوبه، مع الأخذ بأسبابها من الإيمان والعمل الصالح والإحسان إلى الخلق.",
       "en": "Repent and seek forgiveness often, and never despair of your Lord's forgiveness however many your sins, while taking its means: faith, good deeds and kindness to others."
     },
-    "evidence": {
-      "type": "quran",
-      "text": "وَإِنِّي لَغَفَّارٌ لِّمَن تَابَ وَآمَنَ وَعَمِلَ صَالِحًا ثُمَّ اهْتَدَىٰ",
-      "ref": {
-        "ar": "طه: ٨٢",
-        "en": "Ta-Ha 20:82"
-      }
-    },
+    "evidence": null,
     "note": {
       "ar": "سبق زيادة إيضاح لهذين الاسمين مع اسمه تعالى \"العفو\".",
       "en": "These two names have already been explained further together with His name \"Al-'Afuww\" (the Pardoner)."
@@ -1552,10 +1479,10 @@
     },
     "evidence": {
       "type": "quran",
-      "text": "نَبِّئْ عِبَادِي أَنِّي أَنَا الْغَفُورُ الرَّحِيمُ",
+      "text": "إن الله لعفو غفور",
       "ref": {
-        "ar": "الحجر: ٤٩",
-        "en": "Al-Hijr 15:49"
+        "ar": "الحج: ٦٠",
+        "en": "Al-Hajj 22:60"
       }
     },
     "note": {
@@ -1581,7 +1508,7 @@
     },
     "evidence": {
       "type": "quran",
-      "text": "يَا أَيُّهَا النَّاسُ أَنتُمُ الْفُقَرَاءُ إِلَى اللَّهِ ۖ وَاللَّهُ هُوَ الْغَنِيُّ الْحَمِيدُ",
+      "text": "يَا أَيُّهَا النَّاسُ أَنْتُمُ الْفُقَرَاءُ إِلَى اللَّهِ وَاللَّهُ هُوَ الْغَنِيُّ الْحَمِيد",
       "ref": {
         "ar": "فاطر: ١٥",
         "en": "Fatir 35:15"
@@ -1610,7 +1537,7 @@
       "text": "قُلْ يَجْمَعُ بَيْنَنَا رَبُّنَا ثُمَّ يَفْتَحُ بَيْنَنَا بِالْحَقِّ وَهُوَ الْفَتَّاحُ الْعَلِيمُ",
       "ref": {
         "ar": "سبأ: ٢٦",
-        "en": "Saba 34:26"
+        "en": "Saba' 34:26"
       }
     },
     "note": null
@@ -1653,14 +1580,7 @@
       "ar": "أن يعترف العبد بحكمة الله فيما قبضه عنه، وبفضله فيما بسطه له فيشكره بلسانه وجنانه وأركانه، ويعتمد على ربه في حصول ما يحب، ويجتهد في فعل الأسباب النافعة.",
       "en": "Acknowledge Allah's wisdom in what He withholds from you and His grace in what He extends to you, thanking Him with your tongue, heart and limbs; rely on your Lord to obtain what you love, and work hard at the beneficial means."
     },
-    "evidence": {
-      "type": "quran",
-      "text": "وَاللَّهُ يَقْبِضُ وَيَبْسُطُ وَإِلَيْهِ تُرْجَعُونَ",
-      "ref": {
-        "ar": "البقرة: ٢٤٥",
-        "en": "Al-Baqarah 2:245"
-      }
-    },
+    "evidence": null,
     "note": {
       "ar": "سبق الكلام على هذا الاسم مع اسمه تعالى \"الباسط\".",
       "en": "This name has already been discussed together with His name \"Al-Basit\" (the Extender)."
@@ -1684,7 +1604,7 @@
     },
     "evidence": {
       "type": "quran",
-      "text": "وَإِذَا سَأَلَكَ عِبَادِي عَنِّي فَإِنِّي قَرِيبٌ ۖ أُجِيبُ دَعْوَةَ الدَّاعِ إِذَا دَعَانِ",
+      "text": "وَإِذَا سَأَلَكَ عِبَادِي عَنِّي فَإِنِّي قَرِيبٌ أُجِيبُ دَعْوَةَ الدَّاعِ إِذَا دَعَانِ",
       "ref": {
         "ar": "البقرة: ١٨٦",
         "en": "Al-Baqarah 2:186"
@@ -1710,7 +1630,7 @@
     },
     "evidence": {
       "type": "quran",
-      "text": "هُوَ اللَّهُ الَّذِي لَا إِلَهَ إِلَّا هُوَ الْمَلِكُ الْقُدُّوسُ السَّلَامُ",
+      "text": "هُوَ اللَّهُ الَّذِي لا إِلَهَ إِلَّا هُوَ الْمَلِكُ الْقُدُّوسُ السَّلام ...",
       "ref": {
         "ar": "الحشر: ٢٣",
         "en": "Al-Hashr 59:23"
@@ -1739,7 +1659,7 @@
     },
     "evidence": {
       "type": "quran",
-      "text": "وَاللَّهُ قَدِيرٌ ۚ وَاللَّهُ غَفُورٌ رَّحِيمٌ",
+      "text": "وَاللَّهُ قَدِيرٌ وَاللَّهُ غَفُورٌ رَحِيمٌ",
       "ref": {
         "ar": "الممتحنة: ٧",
         "en": "Al-Mumtahanah 60:7"
@@ -1823,7 +1743,7 @@
     },
     "evidence": {
       "type": "quran",
-      "text": "اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ",
+      "text": "اللَّهُ لا إِلَهَ إِلا هُوَ الْحَيُّ الْقَيُّوم",
       "ref": {
         "ar": "البقرة: ٢٥٥",
         "en": "Al-Baqarah 2:255"
@@ -1900,10 +1820,14 @@
     },
     "evidence": {
       "type": "quran",
-      "text": "وَمَن شَكَرَ فَإِنَّمَا يَشْكُرُ لِنَفْسِهِ ۖ وَمَن كَفَرَ فَإِنَّ رَبِّي غَنِيٌّ كَرِيمٌ",
+      "text": "وَمَنْ شَكَرَ فَإِنَّمَا يَشْكُرُ لِنَفْسِهِ وَمَنْ كَفَرَ فَإِنَّ رَبِّي غَنِيٌّ كَرِيمٌ",
       "ref": {
         "ar": "النمل: ٤٠",
         "en": "An-Naml 27:40"
+      },
+      "bookNote": {
+        "ar": "في الكتاب: (النحل: ٤٠)",
+        "en": "The book has: (النحل: ٤٠)"
       }
     },
     "note": null
@@ -1926,10 +1850,14 @@
     },
     "evidence": {
       "type": "quran",
-      "text": "لَا تُدْرِكُهُ الْأَبْصَارُ وَهُوَ يُدْرِكُ الْأَبْصَارَ ۖ وَهُوَ اللَّطِيفُ الْخَبِيرُ",
+      "text": "لا تُدْرِكُهُ الأَبْصَارُ وَهُوَ يُدْرِكُ الأَبْصَارَ وَهُوَ اللَّطِيفُ الْخَبِيرُ",
       "ref": {
         "ar": "الأنعام: ١٠٣",
         "en": "Al-An'am 6:103"
+      },
+      "bookNote": {
+        "ar": "في الكتاب: (الأنعام: ١١٣)",
+        "en": "The book has: (الأنعام: ١١٣)"
       }
     },
     "note": null
@@ -1976,14 +1904,7 @@
       "ar": "أن يطلب العبد جميع مصالحه ومنافعه من الله وحده ويرغب إليه فيها، ويرضى بمنعه كما يشكر عطاءه، فإنه يمنع بحكمته ورحمته.",
       "en": "Seek every benefit and good from Allah alone and direct your desire to Him; accept what He withholds just as you thank Him for what He gives, for He withholds out of wisdom and mercy."
     },
-    "evidence": {
-      "type": "hadith",
-      "text": "اللَّهُمَّ لَا مَانِعَ لِمَا أَعْطَيْتَ، وَلَا مُعْطِيَ لِمَا مَنَعْتَ",
-      "ref": {
-        "ar": "متفق عليه",
-        "en": "Sahih al-Bukhari and Sahih Muslim"
-      }
-    },
+    "evidence": null,
     "note": {
       "ar": "سبق زيادة بيان لمعنى هذا الإسم مع اسمه تعالى: \"الباسط\".",
       "en": "The meaning of this name has already been explained further together with His name \"Al-Basit\" (the Extender)."
@@ -2005,14 +1926,7 @@
       "ar": "أن يتذكر العبد أن الله خلق العباد ليبلوهم أيهم أحسن عملًا، وأن ربه الذي بدأ خلقه سيعيده ليجزيه، فيستعد للقائه بالإحسان.",
       "en": "Remember that you were created to be tested as to who is best in deeds, and that your Lord who began your creation will bring you back to repay you — so prepare to meet Him by doing good."
     },
-    "evidence": {
-      "type": "quran",
-      "text": "وَهُوَ الَّذِي يَبْدَأُ الْخَلْقَ ثُمَّ يُعِيدُهُ وَهُوَ أَهْوَنُ عَلَيْهِ",
-      "ref": {
-        "ar": "الروم: ٢٧",
-        "en": "Ar-Rum 30:27"
-      }
-    },
+    "evidence": null,
     "note": {
       "ar": "لم أقف على نص صحيح يدل على تسمية الله تعالى بهذين الاسمين. وقد عدهما ضمن الأسماء الحسنى الزجاج (ص٥٥) والخطابي في شأن الدعاء (ص٧٩) والبيهقي في كتابه الأسماء والصفات (ص٩٥) والغزالي في كتابه المقصد الأسنى شرح أسماء الله الحسنى (ص٦٣).",
       "en": "I have not found an authentic text naming Allah the Exalted by these two names. They were counted among the Beautiful Names by az-Zajjaj (p. 55), al-Khattabi in Sha'n ad-Du'a' (p. 79), al-Bayhaqi in his book al-Asma' wa as-Sifat (p. 95), and al-Ghazali in his book al-Maqsad al-Asna fi Sharh Asma' Allah al-Husna (p. 63)."
@@ -2036,7 +1950,7 @@
     },
     "evidence": {
       "type": "quran",
-      "text": "الْعَزِيزُ الْجَبَّارُ الْمُتَكَبِّرُ سُبْحَانَ اللَّهِ عَمَّا يُشْرِكُونَ",
+      "text": "هُوَ اللَّهُ الَّذِي لا إِلَهَ إِلَّا هُوَ الْمَلِكُ الْقُدُّوسُ السَّلامُ الْمُؤْمِنُ الْمُهَيْمِنُ الْعَزِيزُ الْجَبَّارُ الْمُتَكَبِّرُ سُبْحَانَ اللَّهِ عَمَّا يُشْرِكُونَ",
       "ref": {
         "ar": "الحشر: ٢٣",
         "en": "Al-Hashr 59:23"
@@ -2091,7 +2005,7 @@
     },
     "evidence": {
       "type": "quran",
-      "text": "إِنَّ رَبِّي قَرِيبٌ مُّجِيبٌ",
+      "text": "إِنَّ رَبِّي قَرِيبٌ مُجِيبٌ",
       "ref": {
         "ar": "هود: ٦١",
         "en": "Hud 11:61"
@@ -2117,7 +2031,7 @@
     },
     "evidence": {
       "type": "quran",
-      "text": "إِنَّهُ حَمِيدٌ مَّجِيدٌ",
+      "text": "رَحْمَتُ اللَّهِ وَبَرَكَاتُهُ عَلَيْكُمْ أَهْلَ الْبَيْتِ إِنَّهُ حَمِيدٌ مَجِيدٌ",
       "ref": {
         "ar": "هود: ٧٣",
         "en": "Hud 11:73"
@@ -2143,7 +2057,7 @@
     },
     "evidence": {
       "type": "quran",
-      "text": "وَكَانَ اللَّهُ بِكُلِّ شَيْءٍ مُّحِيطًا",
+      "text": "وَكَانَ اللَّهُ بِكُلِّ شَيْءٍ مُحِيطاً",
       "ref": {
         "ar": "النساء: ١٢٦",
         "en": "An-Nisa 4:126"
@@ -2167,14 +2081,7 @@
       "ar": "أن يحذر العبد المعاصي فإنها سبب الذل، ويطلب العز بطاعة الله، معترفًا بحكمة ربه فيما يقضيه.",
       "en": "Beware of sins, for they are the cause of humiliation; seek honour through obeying Allah, and acknowledge your Lord's wisdom in all that He decrees."
     },
-    "evidence": {
-      "type": "quran",
-      "text": "وَمَن يُهِنِ اللَّهُ فَمَا لَهُ مِن مُّكْرِمٍ",
-      "ref": {
-        "ar": "الحج: ١٨",
-        "en": "Al-Hajj 22:18"
-      }
-    },
+    "evidence": null,
     "note": {
       "ar": "سبق الكلام عن هذين الاسمين مع اسمه تعالى \"الباسط\".",
       "en": "These two names have already been discussed together with His name \"Al-Basit\" (the Extender)."
@@ -2196,14 +2103,7 @@
       "ar": "أن يتفكر العبد في حكمة الله في تصوير المخلوقات فيحمده عليها، ويعلم أنه لا خالق ولا مصور سواه فيفرده بالعبادة.",
       "en": "Reflect on Allah's wisdom in how He has shaped His creation and praise Him for it, knowing there is no creator or fashioner besides Him, so worship Him alone."
     },
-    "evidence": {
-      "type": "quran",
-      "text": "هُوَ اللَّهُ الْخَالِقُ الْبَارِئُ الْمُصَوِّرُ",
-      "ref": {
-        "ar": "الحشر: ٢٤",
-        "en": "Al-Hashr 59:24"
-      }
-    },
+    "evidence": null,
     "note": {
       "ar": "سبق الكلام عن هذا الاسم مع اسمه تعالى \"الباري\".",
       "en": "This name has already been discussed together with His name \"Al-Bari'\" (the Originator)."
@@ -2225,14 +2125,7 @@
       "ar": "أن يطلب العبد العزة من الله وحده بطاعته، فلا يلتمسها بمعصيته، ويشكره على ما أعطاه.",
       "en": "Seek honour from Allah alone by obeying Him, never by disobeying Him, and thank Him for what He has given you."
     },
-    "evidence": {
-      "type": "quran",
-      "text": "مَن كَانَ يُرِيدُ الْعِزَّةَ فَلِلَّهِ الْعِزَّةُ جَمِيعًا",
-      "ref": {
-        "ar": "فاطر: ١٠",
-        "en": "Fatir 35:10"
-      }
-    },
+    "evidence": null,
     "note": {
       "ar": "سبق الكلام عن هذبن الاسمين مع اسمه تعالى \"الباسط\".",
       "en": "These two names have already been discussed together with His name \"Al-Basit\" (the Extender)."
@@ -2254,14 +2147,7 @@
       "ar": "أن يطلب العبد جميع المصالح والمنافع من ربه وحده ويرغب إليه فيها، ويرضى بما أعطى وما منع لعلمه أنه عن حكمة ورحمة.",
       "en": "Seek every good and benefit from your Lord alone and turn to Him in hope, and be content with what He gives and what He withholds, knowing it comes from wisdom and mercy."
     },
-    "evidence": {
-      "type": "hadith",
-      "text": "اللَّهُمَّ لَا مَانِعَ لِمَا أَعْطَيْتَ، وَلَا مُعْطِيَ لِمَا مَنَعْتَ",
-      "ref": {
-        "ar": "متفق عليه",
-        "en": "Sahih al-Bukhari and Sahih Muslim"
-      }
-    },
+    "evidence": null,
     "note": {
       "ar": "سبق الكلام عن هذا الاسم مع اسمه تعالى \"المانع\".",
       "en": "This name has already been discussed together with His name \"Al-Mani'\" (the Withholder)."
@@ -2283,14 +2169,7 @@
       "ar": "أن يوقن العبد بأن الله يعيده بعد موته ليجزيه، فيحسن العمل في دار الابتلاء استعدادًا لذلك اليوم.",
       "en": "Be certain that Allah will bring you back after death to reward you for your deeds, so make your deeds good in this world of testing, preparing for that Day."
     },
-    "evidence": {
-      "type": "quran",
-      "text": "وَهُوَ الَّذِي يَبْدَأُ الْخَلْقَ ثُمَّ يُعِيدُهُ",
-      "ref": {
-        "ar": "الروم: ٢٧",
-        "en": "Ar-Rum 30:27"
-      }
-    },
+    "evidence": null,
     "note": {
       "ar": "سبق الكلام عن هذا الاسم مع اسمه تعالى المبدئ.",
       "en": "This name has already been discussed together with His name Al-Mubdi' (the Originator)."
@@ -2314,7 +2193,7 @@
     },
     "evidence": {
       "type": "quran",
-      "text": "وَوَجَدَكَ عَائِلًا فَأَغْنَىٰ",
+      "text": "وَوَجَدَكَ عَائِلاً فَأَغْنَى",
       "ref": {
         "ar": "الضحى: ٨",
         "en": "Ad-Duha 93:8"
@@ -2341,14 +2220,7 @@
       "ar": "أن يفزع العبد إلى ربه وحده في الشدائد والكربات ويستغيث به، فإن من استغاثه أغاثه.",
       "en": "Flee to your Lord alone in hardship and distress and cry to Him for help, for whoever seeks His help, He helps."
     },
-    "evidence": {
-      "type": "quran",
-      "text": "قُلْ مَن يُنَجِّيكُم مِّن ظُلُمَاتِ الْبَرِّ وَالْبَحْرِ",
-      "ref": {
-        "ar": "الأنعام: ٦٣",
-        "en": "Al-An'am 6:63"
-      }
-    },
+    "evidence": null,
     "note": {
       "ar": "لم أقف على نص صحيح يدل على أنه اسم لله تعالى.",
       "en": "I have not found an authentic text showing that it is a name of Allah the Exalted."
@@ -2372,10 +2244,10 @@
     },
     "evidence": {
       "type": "hadith",
-      "text": "أَنْتَ الْمُقَدِّمُ وَأَنْتَ الْمُؤَخِّرُ، لَا إِلَهَ إِلَّا أَنْتَ",
+      "text": "اللهم اغفر لي ماقدمت وما أخرت وما أسررت وما أعلنت وما أسرفت، وما أنت أعلم به مني أنت المقدم وأنت المؤخر لا إله إلا أنت",
       "ref": {
-        "ar": "رواه مسلم",
-        "en": "Sahih Muslim"
+        "ar": "أخرجه مسلم (١/ ٥٣٥) كتاب صلاة المسافرين باب الدعاء في صلاة الليل وقيامه من حديث علي رضي الله عنه",
+        "en": "Recorded by Muslim (1/535), Book of the Prayer of Travellers, chapter on supplication in the night prayer, from the hadith of 'Ali (may Allah be pleased with him)."
       }
     },
     "note": null
@@ -2398,10 +2270,14 @@
     },
     "evidence": {
       "type": "quran",
-      "text": "وَكَانَ اللَّهُ عَلَى كُلِّ شَيْءٍ مُقِيتًا",
+      "text": "وَكَانَ اللَّهُ عَلَى كُلِّ شَيْءٍ مُقِيتاً",
       "ref": {
         "ar": "النساء: ٨٥",
         "en": "An-Nisa 4:85"
+      },
+      "bookNote": {
+        "ar": "في الكتاب: (النساء: ١٢٦)",
+        "en": "The book has: (النساء: ١٢٦)"
       }
     },
     "note": null
@@ -2424,7 +2300,7 @@
     },
     "evidence": {
       "type": "quran",
-      "text": "فَتَعَالَى اللَّهُ الْمَلِكُ الْحَقُّ",
+      "text": "فَتَعَالَى اللَّهُ الْمَلِكُ الْحَقُّ لا إِلَهَ إِلَّا هُوَ رَبُّ الْعَرْشِ الْكَرِيمِ",
       "ref": {
         "ar": "المؤمنون: ١١٦",
         "en": "Al-Mu'minun 23:116"
@@ -2453,7 +2329,7 @@
     },
     "evidence": {
       "type": "quran",
-      "text": "الْمُؤْمِنُ الْمُهَيْمِنُ الْعَزِيزُ الْجَبَّارُ الْمُتَكَبِّرُ",
+      "text": "الْمُهَيْمِنُ الْعَزِيزُ الْجَبَّارُ",
       "ref": {
         "ar": "الحشر: ٢٣",
         "en": "Al-Hashr 59:23"
@@ -2479,10 +2355,10 @@
     },
     "evidence": {
       "type": "hadith",
-      "text": "أَنْتَ الْمُقَدِّمُ وَأَنْتَ الْمُؤَخِّرُ، لَا إِلَهَ إِلَّا أَنْتَ",
+      "text": "اللهم اغفر لي ماقدمت وما أخرت وما أسررت وما أعلنت وما أسرفت، وما أنت أعلم به مني أنت المقدم وأنت المؤخر لا إله إلا أنت",
       "ref": {
-        "ar": "رواه مسلم",
-        "en": "Sahih Muslim"
+        "ar": "أخرجه مسلم (١/ ٥٣٥) كتاب صلاة المسافرين باب الدعاء في صلاة الليل وقيامه من حديث علي رضي الله عنه",
+        "en": "Recorded by Muslim (1/535), Book of the Prayer of Travellers, chapter on supplication in the night prayer, from the hadith of 'Ali (may Allah be pleased with him)."
       }
     },
     "note": {
@@ -2508,7 +2384,7 @@
     },
     "evidence": {
       "type": "quran",
-      "text": "الْمَلِكُ الْقُدُّوسُ السَّلَامُ الْمُؤْمِنُ الْمُهَيْمِنُ",
+      "text": "هُوَ اللَّهُ الَّذِي لا إِلَهَ إِلَّا هُوَ الْمَلِكُ الْقُدُّوسُ السَّلامُ الْمُؤْمِنُ الْمُهَيْمِنُ الْعَزِيزُ الْجَبَّارُ الْمُتَكَبِّرُ سُبْحَانَ اللَّهِ عَمَّا يُشْرِكُونَ",
       "ref": {
         "ar": "الحشر: ٢٣",
         "en": "Al-Hashr 59:23"
@@ -2556,7 +2432,7 @@
     },
     "evidence": {
       "type": "quran",
-      "text": "اللَّهُ نُورُ السَّمَاوَاتِ وَالْأَرْضِ",
+      "text": "اللَّهُ نُورُ السَّمَاوَاتِ وَالْأَرْض",
       "ref": {
         "ar": "النور: ٣٥",
         "en": "An-Nur 24:35"
@@ -2580,14 +2456,7 @@
       "ar": "أن يطلب العبد الهداية من ربه وحده في كل أموره، ويسأله التوفيق والتسديد والتقوى وإنابة القلب إليه.",
       "en": "Seek guidance from your Lord alone in all your affairs, and ask Him for success, right direction, taqwa and a heart that turns to Him."
     },
-    "evidence": {
-      "type": "quran",
-      "text": "وَكَفَىٰ بِرَبِّكَ هَادِيًا وَنَصِيرًا",
-      "ref": {
-        "ar": "الفرقان: ٣١",
-        "en": "Al-Furqan 25:31"
-      }
-    },
+    "evidence": null,
     "note": {
       "ar": "لم أقف على دليل يدل على اسميته لله تعالى وإنما ورد بلفظ الصفة كما قال تعالى: ﴿وَكَفَى بِرَبِّكَ هَادِياً وَنَصِيراً﴾ (الفرقان: ٣١).",
       "en": "I have not found evidence that it is a name of Allah the Exalted; it has only come in the wording of a description, as He the Exalted said: ﴿But sufficient is your Lord as a guide and a helper﴾ (Al-Furqan: 31)."
@@ -2640,7 +2509,7 @@
     },
     "evidence": {
       "type": "quran",
-      "text": "وَاللَّهُ يَعِدُكُم مَّغْفِرَةً مِّنْهُ وَفَضْلًا ۗ وَاللَّهُ وَاسِعٌ عَلِيمٌ",
+      "text": "وَاللَّهُ يَعِدُكُمْ مَغْفِرَةً مِنْهُ وَفَضْلاً وَاللَّهُ وَاسِعٌ عَلِيمٌ",
       "ref": {
         "ar": "البقرة: ٢٦٨",
         "en": "Al-Baqarah 2:268"
@@ -2692,7 +2561,7 @@
     },
     "evidence": {
       "type": "quran",
-      "text": "اللَّهُ خَالِقُ كُلِّ شَيْءٍ ۖ وَهُوَ عَلَىٰ كُلِّ شَيْءٍ وَكِيلٌ",
+      "text": "اللَّهُ خَالِقُ كُلِّ شَيْءٍ وَهُوَ عَلَى كُلِّ شَيْءٍ وَكِيلٌ",
       "ref": {
         "ar": "الزمر: ٦٢",
         "en": "Az-Zumar 39:62"
@@ -2718,7 +2587,7 @@
     },
     "evidence": {
       "type": "quran",
-      "text": "وَهَبْ لَنَا مِن لَّدُنكَ رَحْمَةً ۚ إِنَّكَ أَنتَ الْوَهَّابُ",
+      "text": "وَهَبْ لَنَا مِنْ لَدُنْكَ رَحْمَةً إِنَّكَ أَنْتَ الْوَهَّابُ",
       "ref": {
         "ar": "آل عمران: ٨",
         "en": "Al 'Imran 3:8"

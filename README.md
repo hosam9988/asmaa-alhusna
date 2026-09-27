@@ -12,8 +12,9 @@ Abdur-Rahman as-Sa‘di, compiled by ‘Ubayd ibn ‘Ali al-‘Ubayd (Islamic Un
 
 - **All 102 names** in the book's order, as the editor arranged them
 - **For each name:** as-Sa‘di's explanation quoted in full from the book (with a complete
-  English translation), a practical lesson on worshipping Allah by that name, the evidence from
-  the Qur'an or Sunnah, and the printed pages in the book
+  English translation), a practical lesson on worshipping Allah by that name, the evidence the
+  book itself gives from the Qur'an or Sunnah (none where the book or its editor gives none),
+  and the printed pages in the book
 - **Arabic ⇄ English:** switch languages at any time. The layout flips between right-to-left and
   left-to-right.
 - **Colour themes:** black, white, blue, dark blue or pink, all with gold accents (saved in your
@@ -59,7 +60,8 @@ Each entry follows `DivineName` in
   "bookPageEnd": 167,            // …from bookPage to bookPageEnd
   "summary":  { "ar": "…", "en": "…" },   // ar: the book's text verbatim ("\n" between paragraphs); en: full translation
   "lesson":   { "ar": "…", "en": "…" },   // how to worship Allah by this name
-  "evidence": { "type": "quran", "text": "…", "ref": { "ar": "البقرة: ٢٥٥", "en": "Al-Baqarah 2:255" } },  // or null
+  "evidence": { "type": "quran", "text": "…", "ref": { "ar": "البقرة: ٢٥٥", "en": "Al-Baqarah 2:255" } },  // or null; as in the book (Shamela),
+                                 // with "bookNote" where the book's reference was corrected
   "note": null                   // or { ar, en }: the editor's footnote on the heading, verbatim
 }
 ```
