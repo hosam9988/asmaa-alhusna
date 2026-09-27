@@ -22,6 +22,7 @@ export interface UiText {
   studiedProgress: (studied: number, total: number) => string;
   orderNote: (total: number) => string;
   bookSource: (page: string) => string;
+  vowelNote: string;
   meaning: string;
   explanation: string;
   lesson: string;
@@ -65,6 +66,7 @@ export const UI_TEXT: Record<Lang, UiText> = {
     studiedProgress: (s, t) => `درست ${toArabicDigits(s)} من ${toArabicDigits(t)} اسمًا`,
     orderNote: (t) => `${toArabicDigits(t)} اسمًا، مرتبة على حروف الهجاء كما في الكتاب.`,
     bookSource: (page) => `المصدر: تفسير أسماء الله الحسنى للسعدي، ص ${page}`,
+    vowelNote: 'التشكيل مضاف للتيسير وليس من الكتاب.',
     meaning: 'المعنى',
     explanation: 'شرح الاسم',
     lesson: 'أثر الإيمان بهذا الاسم',
@@ -107,6 +109,7 @@ export const UI_TEXT: Record<Lang, UiText> = {
     orderNote: (t) => `${t} names, in the book's order (alphabetical in Arabic).`,
     bookSource: (pages) =>
       `Source: as-Sa‘di, Tafsir Asma' Allah al-Husna, ${pages.includes('–') ? 'pp.' : 'p.'} ${pages}`,
+    vowelNote: 'Vowel marks in the Arabic text were added for easier reading; they are not in the book.',
     meaning: 'Meaning',
     explanation: 'Explanation',
     lesson: 'Living by this name',

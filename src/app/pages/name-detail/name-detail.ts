@@ -37,16 +37,22 @@ export class NameDetail {
     return to > from ? `${n(from)}–${n(to)}` : n(from);
   });
 
-  /** What «استمع / Listen» reads: the name, the explanation paragraph by paragraph, the lesson. */
+  /**
+   * What «استمع / Listen» reads: the name, the explanation paragraph by paragraph, the lesson.
+   * The Arabic text is fully vowelled, so the voice follows the tashkeel.
+   */
   protected readonly readAloud = computed<SpeechSegment[]>(() => {
     const item = this.item();
     if (!item) return [];
     const lang = this.language.lang();
-    const t = this.t();
+    const summary = item.summary[lang];
+    const lesson = item.lesson[lang];
+    const [explanation, lessonTitle] =
+      lang === 'ar' ? ['شَرْحُ الِاسْمِ', 'أَثَرُ الْإِيمَانِ بِهَذَا الِاسْمِ'] : [this.t().explanation, this.t().lesson];
     return [
       { key: 'name', text: lang === 'ar' ? item.name : `${item.transliteration}. ${item.meaning}.` },
-      ...this.paragraphs(item.summary[lang]).map((text, i) => ({ key: `p${i}`, text: i === 0 ? `${t.explanation}. ${text}` : text })),
-      { key: 'lesson', text: `${t.lesson}. ${item.lesson[lang]}` },
+      ...this.paragraphs(summary).map((text, i) => ({ key: `p${i}`, text: i === 0 ? `${explanation}. ${text}` : text })),
+      { key: 'lesson', text: `${lessonTitle}. ${lesson}` },
     ];
   });
 

@@ -94,7 +94,9 @@ Built with Angular 22.
 Each explanation is the book's text for that name, taken verbatim from the digital edition on
 [al-Maktaba al-Shamela](https://shamela.ws/book/10090). Only the editor's footnote numbers are
 left out, and Qur'an quotations are shown in ﴿ ﴾. Names that the book explains under another
-name show that name's text. Small typing errors in the digital edition were kept as they are.
+name show that name's text. Small typing errors in the digital edition were kept as they are. The Arabic explanation and lesson are shown with full tashkeel,
+added for easier reading and correct read-aloud; the tashkeel is not from the book (every text
+was checked to have exactly the book's letters), and the page says so.
 The English is a complete translation. A qualified student of knowledge should still check the
 text and every verse and reference against the printed book; the page numbers make this quick.
 If you find a mistake, please open an issue.

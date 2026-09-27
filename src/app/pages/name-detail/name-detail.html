@@ -17,7 +17,7 @@
         <p class="translit" dir="ltr">{{ name.transliteration }}</p>
         <p class="meaning" dir="ltr">{{ name.meaning }}</p>
         <app-ornament />
-        <app-read-aloud class="listen" [segments]="readAloud()" />
+        <app-read-aloud class="listen" [segments]="readAloud()" [resetKey]="name.slug" />
       </header>
 
       @if (name.note; as note) {
@@ -53,6 +53,7 @@
           </details>
         }
         <p class="source">{{ tx.bookSource(pages()) }}</p>
+        <p class="source">{{ tx.vowelNote }}</p>
       </section>
 
       <section class="panel">

@@ -91,6 +91,10 @@
   font-size: 0.88rem;
 }
 
+.source + .source {
+  margin-block-start: 0.15rem;
+}
+
 h2 {
   margin-block-end: 0.75rem;
 }

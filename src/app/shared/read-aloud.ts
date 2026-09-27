@@ -62,8 +62,10 @@ import { SpeechSegment, SpeechService } from '../core/services/speech.service';
   `,
 })
 export class ReadAloud implements OnDestroy {
-  /** What to read, in order. A new value (another name) stops the current reading. */
+  /** What to read, in order (read when Listen is pressed). */
   readonly segments = input.required<SpeechSegment[]>();
+  /** Identifies the content (e.g. the name's slug): when it changes, the current reading stops. */
+  readonly resetKey = input.required<string>();
 
   protected readonly speech = inject(SpeechService);
   private readonly language = inject(LanguageService);
@@ -71,9 +73,10 @@ export class ReadAloud implements OnDestroy {
   protected readonly missingVoice = signal(false);
 
   constructor() {
-    // Stop when the page switches to another name or the language changes.
+    // Stop when the page switches to another name or the language changes (but not when the
+    // segments are merely refined, e.g. the vowelled text finishes loading mid-reading).
     effect(() => {
-      this.segments();
+      this.resetKey();
       this.language.lang();
       untracked(() => {
         this.speech.stop();
