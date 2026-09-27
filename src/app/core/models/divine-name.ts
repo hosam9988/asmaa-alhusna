@@ -16,12 +16,20 @@ export interface DivineName {
   name: string;
   transliteration: string;
   meaning: string;
-  /** Printed page in «تفسير أسماء الله الحسنى» (ed. al-‘Ubayd, 1421 AH) where the name's heading is. */
+  /** Printed pages in «تفسير أسماء الله الحسنى» (ed. al-‘Ubayd, 1421 AH) holding `summary.ar`. */
   bookPage: number;
+  bookPageEnd: number;
+  /**
+   * `ar`: the book's text for this name, verbatim (footnote numbers omitted), paragraphs separated
+   * by "\n". `en`: its full English translation, paragraph for paragraph.
+   */
   summary: Localized;
   lesson: Localized;
   /** Null when the book gives no evidence for the name. */
   evidence: Evidence | null;
-  /** Editor's remark, or where the name is explained together with another one. */
+  /**
+   * The editor's footnote(s) on the name's heading, verbatim ("\n" between footnotes), with an
+   * English translation. Footnotes that only cite the evidence or a source are left out.
+   */
   note: Localized | null;
 }

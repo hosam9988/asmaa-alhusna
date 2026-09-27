@@ -25,6 +25,18 @@ export class NameDetail {
 
   protected readonly item = computed(() => this.namesService.bySlug(this.slug()));
   protected readonly neighbours = computed(() => this.namesService.neighbours(this.slug()));
+  /** "١٦٤" or "١٦٤–١٦٧" in the reader's digits. */
+  protected readonly pages = computed(() => {
+    const item = this.item();
+    if (!item) return '';
+    const { bookPage: from, bookPageEnd: to } = item;
+    const n = (page: number) => this.language.number(page);
+    return to > from ? `${n(from)}–${n(to)}` : n(from);
+  });
+
+  protected paragraphs(text: string): string[] {
+    return text.split('\n').filter((p) => p.trim());
+  }
 
   constructor() {
     const title = inject(Title);

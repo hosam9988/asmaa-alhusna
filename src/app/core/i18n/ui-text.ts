@@ -27,6 +27,7 @@ export interface UiText {
   lesson: string;
   evidence: string;
   showArabicOriginal: string;
+  editorNote: string;
   markStudied: string;
   studied: string;
   previous: string;
@@ -48,7 +49,7 @@ export const UI_TEXT: Record<Lang, UiText> = {
     bookTitle: 'تفسير أسماء الله الحسنى',
     author: 'للعلامة عبد الرحمن بن ناصر السعدي رحمه الله',
     heroIntro:
-      'ملخصات يسيرة لمعاني أسماء الله الحسنى، تُعرّفك بربك، وتغرس في قلبك توحيده ومحبته وتعظيمه.',
+      'شرح أسماء الله الحسنى بنصّ كلام الشيخ السعدي، يُعرّفك بربك، ويغرس في قلبك توحيده ومحبته وتعظيمه.',
     searchPlaceholder: 'ابحث عن اسم أو معنى…',
     noResults: 'لا توجد نتائج مطابقة.',
     loading: 'جارٍ التحميل…',
@@ -62,14 +63,15 @@ export const UI_TEXT: Record<Lang, UiText> = {
     explanation: 'شرح الاسم',
     lesson: 'أثر الإيمان بهذا الاسم',
     evidence: 'الدليل',
-    showArabicOriginal: 'اقرأ الشرح بالعربية',
+    showArabicOriginal: 'النص العربي',
+    editorNote: 'حاشية المحقق',
     markStudied: 'علّمه كمدروس',
     studied: 'تمت دراسته',
     previous: 'السابق',
     next: 'التالي',
     backToAll: 'جميع الأسماء',
     notFound: 'لم يُعثر على هذا الاسم.',
-    footerNote: 'الشروح ملخّصة بتصرّف من كلام الشيخ السعدي، ويُرجع إلى الكتاب للاستزادة.',
+    footerNote: 'الشروح منقولة بنصّها من كتاب تفسير أسماء الله الحسنى للشيخ السعدي رحمه الله.',
   },
   en: {
     appTitle: 'The Beautiful Names',
@@ -82,7 +84,7 @@ export const UI_TEXT: Record<Lang, UiText> = {
     bookTitle: 'Explanation of the Beautiful Names of Allah',
     author: 'by Shaykh Abdur-Rahman ibn Nasir as-Sa‘di',
     heroIntro:
-      'Short summaries of the Beautiful Names of Allah, to help you know your Lord and build Tawheed, love and reverence for Him in your heart.',
+      'The Beautiful Names of Allah explained in the words of Shaykh as-Sa‘di, to help you know your Lord and build Tawheed, love and reverence for Him in your heart.',
     searchPlaceholder: 'Search a name or meaning…',
     noResults: 'No matching names.',
     loading: 'Loading…',
@@ -91,12 +93,14 @@ export const UI_TEXT: Record<Lang, UiText> = {
     readMore: 'Read the explanation',
     studiedProgress: (s, t) => `You have studied ${s} of ${t} names`,
     orderNote: (t) => `${t} names, in the book's order (alphabetical in Arabic).`,
-    bookSource: (page) => `Source: as-Sa‘di, Tafsir Asma' Allah al-Husna, p. ${page}`,
+    bookSource: (pages) =>
+      `Source: as-Sa‘di, Tafsir Asma' Allah al-Husna, ${pages.includes('–') ? 'pp.' : 'p.'} ${pages}`,
     meaning: 'Meaning',
     explanation: 'Explanation',
     lesson: 'Living by this name',
     evidence: 'Evidence',
-    showArabicOriginal: 'Read the explanation in Arabic',
+    showArabicOriginal: 'Read the original Arabic text',
+    editorNote: 'Editor’s footnote',
     markStudied: 'Mark as studied',
     studied: 'Studied',
     previous: 'Previous',
@@ -104,7 +108,7 @@ export const UI_TEXT: Record<Lang, UiText> = {
     backToAll: 'All names',
     notFound: 'This name could not be found.',
     footerNote:
-      'Explanations are summarized from the words of Shaykh as-Sa‘di. Refer to the book for more.',
+      'Explanations are quoted in full from Shaykh as-Sa‘di’s book; the English is a translation.',
   },
 };
 

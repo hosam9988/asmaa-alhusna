@@ -11,8 +11,9 @@ Abdur-Rahman as-Sa‘di, compiled by ‘Ubayd ibn ‘Ali al-‘Ubayd (Islamic Un
 ## Features
 
 - **All 102 names** in the book's order, as the editor arranged them
-- **For each name:** a summary of as-Sa‘di's explanation, a practical lesson on worshipping Allah
-  by that name, the evidence from the Qur'an or Sunnah, and the printed page number in the book
+- **For each name:** as-Sa‘di's explanation quoted in full from the book (with a complete
+  English translation), a practical lesson on worshipping Allah by that name, the evidence from
+  the Qur'an or Sunnah, and the printed pages in the book
 - **Arabic ⇄ English:** switch languages at any time. The layout flips between right-to-left and
   left-to-right.
 - **Colour themes:** black, white, blue, dark blue or pink, all with gold accents (saved in your
@@ -54,11 +55,12 @@ Each entry follows `DivineName` in
   "name": "اللَّهُ",
   "transliteration": "Allah",
   "meaning": "The God, the One truly worshipped",
-  "bookPage": 164,               // printed page of the name's heading in the book
-  "summary":  { "ar": "…", "en": "…" },   // as-Sa'di's explanation, condensed
+  "bookPage": 164,               // printed pages holding the explanation…
+  "bookPageEnd": 167,            // …from bookPage to bookPageEnd
+  "summary":  { "ar": "…", "en": "…" },   // ar: the book's text verbatim ("\n" between paragraphs); en: full translation
   "lesson":   { "ar": "…", "en": "…" },   // how to worship Allah by this name
   "evidence": { "type": "quran", "text": "…", "ref": { "ar": "البقرة: ٢٥٥", "en": "Al-Baqarah 2:255" } },  // or null
-  "note": null                   // or { ar, en }: editor's remark / "explained with another name"
+  "note": null                   // or { ar, en }: the editor's footnote on the heading, verbatim
 }
 ```
 
@@ -84,7 +86,10 @@ Built with Angular 22.
 
 ## Content note
 
-The summaries condense as-Sa‘di's own words from the book. They are not word-for-word
-quotations. A qualified student of knowledge should check them, along with every verse and
-reference, against the printed book. The page numbers make this quick. If you find a mistake,
-please open an issue.
+Each explanation is the book's text for that name, taken verbatim from the digital edition on
+[al-Maktaba al-Shamela](https://shamela.ws/book/10090). Only the editor's footnote numbers are
+left out, and Qur'an quotations are shown in ﴿ ﴾. Names that the book explains under another
+name show that name's text. Small typing errors in the digital edition were kept as they are.
+The English is a complete translation. A qualified student of knowledge should still check the
+text and every verse and reference against the printed book; the page numbers make this quick.
+If you find a mistake, please open an issue.
