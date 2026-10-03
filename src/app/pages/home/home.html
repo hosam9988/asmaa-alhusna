@@ -90,7 +90,12 @@
             <!-- One card per chapter: the names explained together, each with its own number. -->
             @for (e of group.entries; track e.chapter.slug) {
               <li>
-                <a class="name-card" [routerLink]="['/read', e.chapter.slug]" [class.done]="reading.isRead(e.chapter.slug)">
+                <a
+                  class="name-card"
+                  [routerLink]="['/read', e.chapter.slug]"
+                  [class.done]="reading.isRead(e.chapter.slug)"
+                  [class.many]="e.names.length > 2"
+                >
                   <span class="chapter-num card-chapter">{{ tx.chapterLabel(language.number(e.chapter.number ?? 0)) }}</span>
                   <span class="card-names">
                     @for (n of e.names; track n.slug) {
