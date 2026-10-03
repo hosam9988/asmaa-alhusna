@@ -116,7 +116,7 @@
   text-wrap: balance;
 }
 
-html[lang='en'] .title {
+:host-context(html[lang='en']) .title {
   font-family: var(--font-display-en);
 }
 
@@ -162,6 +162,11 @@ html[lang='en'] .title {
   .big-a {
     font-size: 1.35rem;
   }
+}
+
+:host-context(html[lang='en']) .size .btn {
+  font-family: var(--font-display-en);
+  font-weight: 600;
 }
 
 // ---------- The text ----------
@@ -210,7 +215,7 @@ html[lang='en'] .title {
   }
 }
 
-html[lang='en'] .text {
+:host-context(html[lang='en']) .text {
   font-size: calc(1.08em * var(--text-scale, 1));
   line-height: 1.85;
   text-align: start;

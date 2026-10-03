@@ -51,10 +51,10 @@
           <app-read-aloud [segments]="readAloud()" [resetKey]="c.slug" />
           <div class="size" role="group" [attr.aria-label]="tx.textSize">
             <button type="button" class="btn" [attr.aria-label]="tx.smaller" [attr.title]="tx.smaller" (click)="reading.stepScale(-1)">
-              <span class="small-a">أ</span><span aria-hidden="true">−</span>
+              <span class="small-a">{{ tx.sizeLetter }}</span><span aria-hidden="true">−</span>
             </button>
             <button type="button" class="btn" [attr.aria-label]="tx.larger" [attr.title]="tx.larger" (click)="reading.stepScale(1)">
-              <span class="big-a">أ</span><span aria-hidden="true">+</span>
+              <span class="big-a">{{ tx.sizeLetter }}</span><span aria-hidden="true">+</span>
             </button>
           </div>
         </div>

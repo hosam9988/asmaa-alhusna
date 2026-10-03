@@ -32,6 +32,8 @@ export interface UiText {
   source: (range: string) => string;
   vowelNote: string;
   textSize: string;
+  /** The letter on the text-size buttons: «أ−» «أ+» / "A−" "A+". */
+  sizeLetter: string;
   smaller: string;
   larger: string;
   footnote: string;
@@ -95,6 +97,7 @@ export const UI_TEXT: Record<Lang, UiText> = {
       `المصدر: فقه الأسماء الحسنى، للشيخ عبد الرزاق البدر، الطبعة الثانية ١٤٣٠هـ، ص ${range}. وأرقام الصفحات في الطبعة الأولى (١٤٢٩هـ) تختلف عنها.`,
     vowelNote: 'التشكيل الكامل مضاف للتيسير، وما سواه من نص الكتاب.',
     textSize: 'حجم الخط',
+    sizeLetter: 'أ',
     smaller: 'تصغير الخط',
     larger: 'تكبير الخط',
     footnote: 'حاشية',
@@ -155,6 +158,7 @@ export const UI_TEXT: Record<Lang, UiText> = {
       `Source: al-Badr, Fiqh al-Asma’ al-Husna, 2nd edition (1430 AH), ${range.includes('–') ? 'pp.' : 'p.'} ${range}. The 1st edition (1429 AH) has different page numbers.`,
     vowelNote: 'Full vowel marks were added to the Arabic for easier reading; the rest is the book’s text.',
     textSize: 'Text size',
+    sizeLetter: 'A',
     smaller: 'Smaller text',
     larger: 'Larger text',
     footnote: 'Footnote',

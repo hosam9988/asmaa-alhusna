@@ -166,7 +166,7 @@
   }
 }
 
-html[lang='en'] .contents-head h2 {
+:host-context(html[lang='en']) .contents-head h2 {
   font-family: var(--font-display-en);
 }
 
@@ -251,7 +251,7 @@ html[lang='en'] .contents-head h2 {
   }
 }
 
-html[dir='ltr'] .part-title {
+:host-context(html[dir='ltr']) .part-title {
   --rule-dir: right;
 }
 
