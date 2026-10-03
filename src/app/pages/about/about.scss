@@ -22,6 +22,26 @@
   margin: 0.75rem 0 0;
 }
 
+// The download and contents buttons, side by side (stacking on narrow screens).
+.panel .links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-block-start: 1.25rem;
+}
+
+.panel .download-note {
+  margin-block-start: 0.5rem;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+
+  a {
+    color: var(--gold);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+}
+
 .types {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(11rem, 100%), 1fr));
