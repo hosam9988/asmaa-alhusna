@@ -6,13 +6,14 @@
         <rect x="22" y="22" width="56" height="56" transform="rotate(45 50 50)" />
         <circle cx="50" cy="50" r="7" />
       </svg>
-      <span class="calligraphy gold-text">الأسماء الحسنى</span>
+      <span class="calligraphy gold-text">فقه الأسماء الحسنى</span>
     </a>
 
     <nav>
       <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
         {{ t().home }}
       </a>
+      <a routerLink="/" fragment="contents">{{ t().contents }}</a>
       <a routerLink="/about" routerLinkActive="active">
         <span class="label-full">{{ t().about }}</span>
         <span class="label-short">{{ t().aboutShort }}</span>

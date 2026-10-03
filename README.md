@@ -1,30 +1,35 @@
-# الأسماء الحسنى · The Beautiful Names
+# فقه الأسماء الحسنى · Understanding the Beautiful Names
 
-**Learn Tawheed through the Beautiful Names of Allah, in Arabic and English.**
+**Read the Beautiful Names of Allah explained, chapter by chapter, in Arabic and English.**
 
-An app for Muslims and new reverts built on the book *تفسير أسماء الله الحسنى* by Shaykh
-Abdur-Rahman as-Sa‘di, compiled by ‘Ubayd ibn ‘Ali al-‘Ubayd (Islamic University of Madinah,
-1421 AH). It covers all 102 names in the book's order.
+An app for Muslims and new reverts built on the book *فقه الأسماء الحسنى* by Shaykh ‘Abd ar-Razzaq
+ibn ‘Abd al-Muhsin al-Badr (2nd edition, Madinah, 1430 AH). Page numbers in the app are those of
+this edition; the 1st edition (Dar al-Tawhid, Riyadh, 1429 AH) is paged differently. It covers the whole book:
+- the endorsement and introduction;
+- 17 chapters on knowing Allah's names and the principles behind them;
+- 65 chapters explaining 107 names, one or a few at a time.
 
 🔗 **Live site:** `https://<your-username>.github.io/asmaa-alhusna/`
 
 ## Features
 
-- **All 102 names** in the book's order, as the editor arranged them
-- **For each name:** as-Sa‘di's explanation quoted in full from the book (with a complete
-  English translation), a practical lesson on worshipping Allah by that name, the evidence the
-  book itself gives from the Qur'an or Sunnah (none where the book or its editor gives none),
-  and the printed pages in the book
-- **Arabic ⇄ English:** switch languages at any time. The layout flips between right-to-left and
-  left-to-right.
-- **Listen:** each name page can read the name, explanation and lesson aloud with the device's
-  built-in voice (free, works offline; Qur'an verses are skipped, not recited by a computer voice)
-- **Colour themes:** black, white, blue, dark blue or pink, all with gold accents (saved in your
-  browser)
-- **Name of the day:** a different name shown on the home page each day
-- **Search:** finds names in Arabic or English, with or without tashkeel or hamza
-- **Track your progress:** mark names as studied (saved in your browser)
-- **About page:** the book, its author, and the basics of Tawheed
+- **A reader made for reading.** Each chapter opens with its number and the names it explains in
+  the Mushaf font, and the text is laid out like a well-set book:
+  - Qur'an verses in green Uthmani type;
+  - quotations from hadith and the scholars set apart;
+  - footnotes that open when tapped;
+  - adjustable text size, a reading-progress line and an estimated reading time;
+  - a card for the next chapter at the end of each one.
+- **Picks up where you left off.** The home page offers "Continue reading" at the exact place you
+  stopped. Chapters you finish are marked as read, and the table of contents shows your progress.
+  All of this is saved in your browser.
+- **The book's own table of contents.** It is split into its three parts. Every name chapter is a
+  card, and search finds names and chapters in Arabic or English, with or without tashkeel.
+- **Arabic ⇄ English:** a complete English translation, with the original Arabic one tap away.
+- **Listen:** any chapter can be read aloud with the device's built-in voice. It is free and works
+  offline; Qur'an verses are skipped, not recited by a computer voice.
+- **Page colours:** paper (the default), black, white, blue, dark blue or pink.
+- **Name of the day** on the home page, linking to its chapter.
 
 ## Running locally
 
@@ -44,28 +49,25 @@ repo's **Settings → Pages → Source** to **GitHub Actions**.
 
 ## Editing the content
 
-There is no backend. All the content is in
-[`public/data/names.json`](public/data/names.json). To add a name, fix a summary or reorder the
-list, edit that file. No code changes are needed.
-
-Each entry follows `DivineName` in
+There is no backend. The content is in two files, typed in
 [`src/app/core/models/divine-name.ts`](src/app/core/models/divine-name.ts):
 
 ```jsonc
+// public/data/book.json: the chapters, in the book's order
 {
-  "id": 2,                       // position in the book's order; also the display number
-  "slug": "allah",               // URL: /name/allah
-  "name": "اللَّهُ",
-  "transliteration": "Allah",
-  "meaning": "The God, the One truly worshipped",
-  "bookPage": 164,               // printed pages holding the explanation…
-  "bookPageEnd": 167,            // …from bookPage to bookPageEnd
-  "summary":  { "ar": "…", "en": "…" },   // ar: the book's text verbatim ("\n" between paragraphs); en: full translation
-  "lesson":   { "ar": "…", "en": "…" },   // how to worship Allah by this name
-  "evidence": { "type": "quran", "text": "…", "ref": { "ar": "البقرة: ٢٥٥", "en": "Al-Baqarah 2:255" } },  // or null; as in the book (Shamela),
-                                 // with "bookNote" where the book's reference was corrected
-  "note": null                   // or { ar, en }: the editor's footnote on the heading, verbatim
+  "slug": "n22-al-khaliq",          // URL: /read/n22-al-khaliq
+  "part": "names",                  // front | foundations | names
+  "number": 22,                     // the chapter number printed above its title
+  "title": { "ar": "الخالق، الخلّاق", "en": "…" },
+  "names": ["al-khaliq", "al-khallaq"],
+  "pageFrom": 108, "pageTo": 112,   // printed pages
+  "blocks": [{ "type": "p", "text": { "ar": "…", "en": "…" } }],   // p | h (sub-heading) | poem
+  "footnotes": [{ "n": 1, "text": { "ar": "…", "en": "…" } }]       // markers in the text are [n]
 }
+
+// public/data/names.json: every name, linking to the chapter that explains it
+{ "id": 9, "slug": "al-khaliq", "name": "الْخَالِقُ", "transliteration": "Al-Khaliq",
+  "meaning": "The Creator", "chapter": "n22-al-khaliq" }
 ```
 
 ## Project structure
@@ -74,29 +76,35 @@ Each entry follows `DivineName` in
 src/app/
   core/
     models/divine-name.ts      data types
-    services/names.service.ts  loads names.json, name of the day, prev/next
+    services/book.service.ts   loads the book and the names
+    services/reading.service   reading progress, last place and text size (localStorage)
     services/language.service  Arabic ⇄ English, sets <html dir/lang>
-    services/studied.service   "studied" progress, kept in localStorage
     services/speech.service    read-aloud with the browser's speech synthesis
-    services/theme.service     colour theme, sets <html data-theme> (palettes in styles.scss)
+    services/theme.service     page colour, sets <html data-theme> (palettes in styles.scss)
     i18n/ui-text.ts            interface labels in both languages
     utils/search.ts            search that ignores tashkeel and hamza forms
-  shared/                      star badge and ornament divider
-  pages/home                   hero, name of the day, search and grid
-  pages/name-detail            one name: explanation, lesson, evidence
-  pages/about                  the book, the author, Tawheed basics
+  shared/rich-text.ts          one block of the book: verses, quotations, footnote buttons
+  shared/                      star badge, ornament, read-aloud, theme picker
+  pages/home                   cover, name of the day, table of contents
+  pages/reader                 a chapter (/read/:chapter, or /name/:name to open a name's chapter)
+  pages/about                  the book and the categories of Tawheed
 ```
 
 Built with Angular 22.
 
 ## Content note
 
-Each explanation is the book's text for that name, taken verbatim from the digital edition on
-[al-Maktaba al-Shamela](https://shamela.ws/book/10090). Only the editor's footnote numbers are
-left out, and Qur'an quotations are shown in ﴿ ﴾. Names that the book explains under another
-name show that name's text. Small typing errors in the digital edition were kept as they are. The Arabic explanation and lesson are shown with full tashkeel,
-added for easier reading and correct read-aloud; the tashkeel is not from the book (every text
-was checked to have exactly the book's letters), and the page says so.
-The English is a complete translation. A qualified student of knowledge should still check the
-text and every verse and reference against the printed book; the page numbers make this quick.
-If you find a mistake, please open an issue.
+The text was transcribed page by page from the book's official PDF on the Shaykh's website
+([al-badr.net](https://www.al-badr.net/ebook/57)), and every page was cross-checked against a
+separate OCR. Every Qur'an verse was taken from the Mushaf text (via al-Maktaba al-Shamela)
+instead of being retyped. The book's text is kept as printed, including its own typing errors and
+a few verse references that look wrong. The honorific symbols are written out as words, and
+footnotes are numbered within each chapter.
+
+The full tashkeel on the Arabic was added for easier reading and correct read-aloud. It is not from
+the book, but every paragraph was checked to keep exactly the book's letters and its own vowel
+marks, with every verse untouched. The English is a complete translation.
+
+The book is © the author (حقوق الطبع محفوظة). Please make sure you have permission before
+publishing it. A qualified student of knowledge should still check the text against the printed
+book; the page numbers make this quick.

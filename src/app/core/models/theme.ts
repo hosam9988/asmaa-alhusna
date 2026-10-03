@@ -1,4 +1,4 @@
-export type Theme = 'black' | 'white' | 'blue' | 'navy' | 'pink';
+export type Theme = 'paper' | 'black' | 'white' | 'blue' | 'navy' | 'pink';
 
 export interface ThemeOption {
   id: Theme;
@@ -8,6 +8,7 @@ export interface ThemeOption {
 
 /** Order shown in the picker. Must match the `[data-theme]` blocks in styles.scss. */
 export const THEMES: readonly ThemeOption[] = [
+  { id: 'paper', background: '#f6efe0' },
   { id: 'black', background: '#0a0907' },
   { id: 'white', background: '#faf7f0' },
   { id: 'blue', background: '#15396d' },

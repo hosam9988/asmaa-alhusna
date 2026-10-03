@@ -1,0 +1,155 @@
+@let tx = t();
+@let lang = language.lang();
+
+<div class="progress" aria-hidden="true"><div class="bar" [style.transform]="'scaleX(' + progress() + ')'"></div></div>
+
+<div class="container reader">
+  <a routerLink="/" fragment="contents" class="back">
+    <span aria-hidden="true">{{ language.isArabic() ? '→' : '←' }}</span>
+    {{ tx.backToContents }}
+  </a>
+
+  @if (book.isLoading()) {
+    <p class="state">{{ tx.loading }}</p>
+  } @else if (chapter(); as c) {
+    <article #article [style.--text-scale]="reading.textScale()">
+      <header class="opening">
+        <p class="part">{{ tx.parts[c.part] }}</p>
+        <!-- The chapter's number, in the same label as on the home page; a name chapter also shows
+             each name's own number on its star. -->
+        @if (c.number) {
+          <span class="chapter-num chapter-badge">{{ tx.chapterLabel(language.number(c.number)) }}</span>
+        }
+        @if (names().length) {
+          <h1 class="names" [class.reading]="speech.activeKey() === 'title'">
+            @for (n of names(); track n.slug) {
+              <span class="name" [class.focus]="focusName()?.slug === n.slug">
+                <app-star-badge [label]="language.number(n.id)" />
+                <span class="name-script gold-text">{{ n.name }}</span>
+              </span>
+            }
+          </h1>
+          <ul class="glosses" dir="ltr">
+            @for (n of names(); track n.slug) {
+              <li><b>{{ n.transliteration }}</b> · {{ n.meaning }}</li>
+            }
+          </ul>
+        } @else {
+          <h1 class="title calligraphy gold-text" [class.reading]="speech.activeKey() === 'title'">{{ c.title[lang] }}</h1>
+        }
+        <p class="meta">
+          <span>{{ tx.pages(pages()) }}</span>
+          <span aria-hidden="true">·</span>
+          <span>{{ tx.minutes(minutes()) }}</span>
+          @if (reading.isRead(c.slug)) {
+            <span aria-hidden="true">·</span>
+            <span class="done">✓ {{ tx.isRead }}</span>
+          }
+        </p>
+        <app-ornament />
+        <div class="tools">
+          <app-read-aloud [segments]="readAloud()" [resetKey]="c.slug" />
+          <div class="size" role="group" [attr.aria-label]="tx.textSize">
+            <button type="button" class="btn" [attr.aria-label]="tx.smaller" [attr.title]="tx.smaller" (click)="reading.stepScale(-1)">
+              <span class="small-a">أ</span><span aria-hidden="true">−</span>
+            </button>
+            <button type="button" class="btn" [attr.aria-label]="tx.larger" [attr.title]="tx.larger" (click)="reading.stepScale(1)">
+              <span class="big-a">أ</span><span aria-hidden="true">+</span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <div class="text">
+        @for (b of c.blocks; track $index) {
+          @switch (b.type) {
+            @case ('h') {
+              <h2 [class.reading]="speech.activeKey() === 'b' + $index">
+                <app-rich-text [text]="b.text[lang]" [noteLabel]="tx.footnote" [arabicDigits]="language.isArabic()" (note)="showNote($event)" />
+              </h2>
+            }
+            @case ('poem') {
+              <p class="poem" [class.reading]="speech.activeKey() === 'b' + $index">
+                <app-rich-text [text]="b.text[lang]" [noteLabel]="tx.footnote" [arabicDigits]="language.isArabic()" (note)="showNote($event)" />
+              </p>
+            }
+            @default {
+              <p [class.reading]="speech.activeKey() === 'b' + $index">
+                <app-rich-text
+                  [text]="b.text[lang]"
+                  [highlight]="highlight()"
+                  [noteLabel]="tx.footnote"
+                  [arabicDigits]="language.isArabic()"
+                  (note)="showNote($event)"
+                />
+              </p>
+            }
+          }
+        }
+      </div>
+
+      @if (lang === 'en') {
+        <details class="original">
+          <summary>{{ tx.showArabicOriginal }}</summary>
+          <div class="text arabic" lang="ar" dir="rtl">
+            @for (b of c.blocks; track $index) {
+              <p [class.heading]="b.type === 'h'"><app-rich-text [text]="b.text.ar" (note)="showNote($event)" /></p>
+            }
+          </div>
+        </details>
+      }
+
+      <p class="source">{{ tx.source(pages()) }}</p>
+      @if (lang === 'ar') {
+        <p class="source">{{ tx.vowelNote }}</p>
+      }
+
+      <footer class="end">
+        <app-ornament />
+        <button
+          type="button"
+          class="btn"
+          [class.solid]="reading.isRead(c.slug)"
+          [attr.aria-pressed]="reading.isRead(c.slug)"
+          (click)="reading.setRead(c.slug, !reading.isRead(c.slug))"
+        >
+          @if (reading.isRead(c.slug)) {
+            ✓ {{ tx.isRead }}
+          } @else {
+            {{ tx.markRead }}
+          }
+        </button>
+
+        @if (neighbours().next; as next) {
+          <a class="next-card" [routerLink]="['/read', next.slug]">
+            <span class="label">{{ tx.nextChapter }}</span>
+            @if (nextNames().length) {
+              <span class="next-names">
+                @for (n of nextNames(); track n.slug) {
+                  <span class="name-script gold-text">{{ n.name }}</span>
+                }
+              </span>
+            } @else {
+              <span class="next-title">{{ next.title[lang] }}</span>
+            }
+            <span class="arrow" aria-hidden="true">{{ language.isArabic() ? '←' : '→' }}</span>
+          </a>
+        }
+        @if (neighbours().prev; as prev) {
+          <a class="prev-link" [routerLink]="['/read', prev.slug]">{{ tx.previous }}: {{ prev.title[lang] }}</a>
+        }
+      </footer>
+    </article>
+  } @else {
+    <p class="state">{{ tx.notFound }}</p>
+  }
+</div>
+
+@if (openNote(); as note) {
+  <div class="sheet-backdrop" (click)="openNote.set(null)"></div>
+  <aside class="sheet" role="dialog" aria-modal="true" [attr.aria-label]="tx.footnote">
+    <p class="sheet-label">{{ tx.footnote }} {{ language.number(note.n) }}</p>
+    <p class="sheet-text">{{ note.text[lang] }}</p>
+    <button type="button" class="btn" (click)="openNote.set(null)">{{ tx.closeNote }}</button>
+  </aside>
+}

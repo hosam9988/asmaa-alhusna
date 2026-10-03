@@ -116,11 +116,12 @@ nav {
       inline-size: 1.75rem;
     }
     span {
-      font-size: 1.3rem;
+      font-size: 1.2rem;
     }
   }
   // The brand already links home, so the separate link can go.
-  nav a[href='/'] {
+  nav a[href='/'],
+  nav a[href='/#contents'] {
     display: none;
   }
   .label-full {

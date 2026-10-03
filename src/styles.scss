@@ -3,8 +3,32 @@
 // The gold accent is the app's identity, so every theme keeps it; the light themes use a darker
 // gold so text stays readable. RGB channels exist for colours used at partial opacity.
 
+// The default: warm paper and ink, like the printed book, with gold and a deep green for verses.
 :root,
-:root[data-theme='black'] {
+:root[data-theme='paper'] {
+  color-scheme: light;
+
+  --bg-rgb: 246 239 224;
+  --bg-soft: #fbf6ea;
+  --surface: #fdf9f0;
+  --surface-raised: #fffcf6;
+  --accent-rgb: 138 102 20;
+  --gold: #8a6614;
+  --gold-light: #7a5a0e;
+  --gold-deep: #c9a24a;
+  --on-accent: #ffffff;
+  --text: #2d2418;
+  --text-muted: #6f604a;
+  --gold-gradient: linear-gradient(135deg, #b8892a 0%, #8f6a14 45%, #6e510b 70%, #a67c1a 100%);
+  --pattern-alpha: 7%;
+  --verse: #1d5b4a;
+  --hadith: #6d3f1a;
+}
+
+// The dark base; blue and navy override some of it below.
+:root[data-theme='black'],
+:root[data-theme='blue'],
+:root[data-theme='navy'] {
   color-scheme: dark;
 
   --bg-rgb: 10 9 7;
@@ -20,6 +44,24 @@
   --text-muted: #a99c7d;
   --gold-gradient: linear-gradient(135deg, #f8e9a8 0%, #d4af37 38%, #a8841f 62%, #f1d98a 100%);
   --pattern-alpha: 6%;
+}
+
+// Verse and hadith colours: on the dark themes, a pale gold and a warm sand.
+:root[data-theme='black'],
+:root[data-theme='blue'],
+:root[data-theme='navy'] {
+  --verse: #f1d98a;
+  --hadith: #e8cfa0;
+}
+
+:root[data-theme='white'] {
+  --verse: #1d5b4a;
+  --hadith: #6d3f1a;
+}
+
+:root[data-theme='pink'] {
+  --verse: #6b2a4a;
+  --hadith: #7a4a1d;
 }
 
 :root[data-theme='blue'] {
@@ -254,6 +296,24 @@ html[lang='ar'] .eyebrow {
     border-radius: calc(var(--radius) - 5px);
     pointer-events: none;
   }
+}
+
+// A chapter's number («الفصل ١٨» / "Chapter 18"), the same everywhere it appears. (The names'
+// own order uses the star badge.)
+.chapter-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  min-inline-size: 2.1rem;
+  padding: 0.2em 0.75em;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: rgb(var(--accent-rgb) / 6%);
+  color: var(--gold);
+  font-size: var(--chapter-num-font, 0.85rem);
+  line-height: 1.4;
+  white-space: nowrap;
 }
 
 .btn {

@@ -1,4 +1,5 @@
 @let tx = t();
+@let lang = language.lang();
 
 <section class="hero">
   <svg class="rosette" viewBox="0 0 200 200" aria-hidden="true">
@@ -14,11 +15,23 @@
 
   <div class="container hero-content">
     <p class="bismillah name-script">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
-    <h1 class="calligraphy gold-text">الأسماء الحسنى</h1>
-    <app-ornament />
-    <p class="book">{{ tx.bookTitle }}</p>
-    <p class="author">{{ tx.author }}</p>
+    <div class="cover">
+      <h1 class="calligraphy gold-text">فقه الأسماء الحسنى</h1>
+      <app-ornament />
+      <p class="author">{{ tx.author }}</p>
+    </div>
     <p class="intro">{{ tx.heroIntro }}</p>
+    <div class="cta">
+      @if (resume(); as r) {
+        <a class="btn solid" [routerLink]="['/read', r.slug]" [queryParams]="{ resume: 1 }">{{ tx.continueReading }}</a>
+      } @else if (book.chapters()[0]; as first) {
+        <a class="btn solid" [routerLink]="['/read', first.slug]">{{ tx.startReading }}</a>
+      }
+      <a class="btn" routerLink="/" fragment="contents">{{ tx.contents }}</a>
+    </div>
+    @if (resume(); as r) {
+      <p class="where">{{ tx.continueWhere(r.title[lang]) }}</p>
+    }
   </div>
 </section>
 
@@ -30,89 +43,89 @@
     }
     <figcaption>{{ language.isArabic() ? 'الأعراف: ١٨٠' : 'Al-A‘raf 7:180' }}</figcaption>
   </figure>
-  <figure class="panel">
-    <blockquote class="hadith">
-      «إِنَّ لِلَّهِ تِسْعَةً وَتِسْعِينَ اسْمًا، مِائَةً إِلَّا وَاحِدًا، مَنْ أَحْصَاهَا دَخَلَ الْجَنَّةَ»
-    </blockquote>
-    @if (!language.isArabic()) {
-      <p class="translation">
-        “Allah has ninety-nine names, one hundred less one; whoever preserves them will enter
-        Paradise.” Preserving them means learning them, understanding their meanings and
-        worshipping Allah by them.
-      </p>
-    }
-    <figcaption>{{ language.isArabic() ? 'متفق عليه' : 'Al-Bukhari & Muslim' }}</figcaption>
-  </figure>
+
+  @if (book.nameOfTheDay(); as today) {
+    <a class="panel today" [routerLink]="['/name', today.slug]">
+      <p class="eyebrow">{{ tx.nameOfTheDay }}</p>
+      <p class="today-name name-script gold-text">{{ today.name }}</p>
+      <p class="today-meta" dir="ltr">{{ today.transliteration }} · {{ today.meaning }}</p>
+      @if (todaysChapter(); as tc) {
+        <span class="today-link">{{ tx.readChapter }} {{ language.isArabic() ? '←' : '→' }}</span>
+      }
+    </a>
+  }
 </section>
 
-@if (namesService.nameOfTheDay(); as today) {
-  <section class="container">
-    <a class="panel today" [routerLink]="['/name', today.slug]">
-      <div>
-        <p class="eyebrow">{{ tx.nameOfTheDay }}</p>
-        <p class="today-name name-script gold-text">{{ today.name }}</p>
-        <p class="today-meta">
-          <bdi dir="ltr">{{ today.transliteration }} · {{ today.meaning }}</bdi>
-        </p>
+<section id="contents" class="container contents" aria-labelledby="contents-heading">
+  <header class="contents-head">
+    <h2 id="contents-heading" class="calligraphy gold-text">{{ tx.contents }}</h2>
+    @if (total()) {
+      <div class="progress" role="status">
+        <span>{{ tx.progress(reading.readCount(), total()) }}</span>
+        <div class="track"><div class="fill" [style.inline-size.%]="percent()"></div></div>
       </div>
-      <p class="today-summary">{{ today.summary[language.lang()] }}</p>
-      <span class="btn solid">{{ tx.readMore }}</span>
-    </a>
-  </section>
-}
-
-<section class="container names" aria-labelledby="names-heading">
-  <h2 id="names-heading" class="visually-hidden">{{ tx.appTitle }}</h2>
-
-  <div class="toolbar">
+    }
     <label class="search">
       <span class="visually-hidden">{{ tx.searchPlaceholder }}</span>
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <circle cx="11" cy="11" r="7" />
         <path d="m20 20-4-4" />
       </svg>
-      <input
-        type="search"
-        [placeholder]="tx.searchPlaceholder"
-        [value]="query()"
-        (input)="query.set($any($event.target).value)"
-      />
+      <input type="search" [placeholder]="tx.searchPlaceholder" [value]="query()" (input)="query.set($any($event.target).value)" />
     </label>
+  </header>
 
-    @if (namesService.names().length) {
-      <div class="progress" role="status">
-        <span>{{ tx.studiedProgress(studied.count(), namesService.names().length) }}</span>
-        <div class="track"><div class="fill" [style.inline-size.%]="progress()"></div></div>
-      </div>
-    }
-  </div>
-
-  @if (namesService.isLoading()) {
+  @if (book.isLoading()) {
     <p class="state">{{ tx.loading }}</p>
-  } @else if (namesService.error()) {
+  } @else if (book.error()) {
     <p class="state">{{ tx.loadError }}</p>
   } @else {
-    <p class="order-note">{{ tx.orderNote(namesService.names().length) }}</p>
-    <ul class="grid">
-      @for (item of filtered(); track item.id) {
-        <li>
-          <a class="card" [routerLink]="['/name', item.slug]" [class.done]="studied.has(item.slug)">
-            <app-star-badge [label]="language.number(item.id)" />
-            <span class="card-name name-script gold-text">{{ item.name }}</span>
-            <span class="card-translit" dir="ltr">{{ item.transliteration }}</span>
-            @if (!language.isArabic()) {
-              <span class="card-meaning">{{ item.meaning }}</span>
+    @for (group of parts(); track group.part) {
+      <section class="part">
+        <h3 class="part-title">{{ tx.parts[group.part] }}</h3>
+        <p class="part-intro">{{ tx.partIntros[group.part] }}</p>
+
+        @if (group.part === 'names') {
+          <ol class="names-grid">
+            <!-- One card per chapter: the names explained together, each with its own number. -->
+            @for (e of group.entries; track e.chapter.slug) {
+              <li>
+                <a class="name-card" [routerLink]="['/read', e.chapter.slug]" [class.done]="reading.isRead(e.chapter.slug)">
+                  <span class="chapter-num card-chapter">{{ tx.chapterLabel(language.number(e.chapter.number ?? 0)) }}</span>
+                  <span class="card-names">
+                    @for (n of e.names; track n.slug) {
+                      <span class="card-name">
+                        <app-star-badge [label]="language.number(n.id)" />
+                        <span class="name-script gold-text">{{ n.name }}</span>
+                      </span>
+                    }
+                  </span>
+                  <span class="card-translit" dir="ltr">{{ e.translit }}</span>
+                  @if (reading.isRead(e.chapter.slug)) {
+                    <svg class="check" viewBox="0 0 24 24" [attr.aria-label]="tx.isRead"><path d="m5 12.5 4.5 4.5L19 7.5" /></svg>
+                  }
+                </a>
+              </li>
             }
-            @if (studied.has(item.slug)) {
-              <svg class="check" viewBox="0 0 24 24" [attr.aria-label]="tx.studied">
-                <path d="m5 12.5 4.5 4.5L19 7.5" />
-              </svg>
+          </ol>
+        } @else {
+          <ol class="chapter-list">
+            @for (e of group.entries; track e.chapter.slug) {
+              <li>
+                <a [routerLink]="['/read', e.chapter.slug]" [class.done]="reading.isRead(e.chapter.slug)">
+                  <span class="chapter-num">{{ e.chapter.number ? tx.chapterLabel(language.number(e.chapter.number)) : '۞' }}</span>
+                  <span class="chapter-title">{{ e.chapter.title[lang] }}</span>
+                  @if (reading.isRead(e.chapter.slug)) {
+                    <svg class="check" viewBox="0 0 24 24" [attr.aria-label]="tx.isRead"><path d="m5 12.5 4.5 4.5L19 7.5" /></svg>
+                  }
+                </a>
+              </li>
             }
-          </a>
-        </li>
-      } @empty {
-        <li class="state">{{ tx.noResults }}</li>
-      }
-    </ul>
+          </ol>
+        }
+      </section>
+    } @empty {
+      <p class="state">{{ tx.noResults }}</p>
+    }
   }
 </section>

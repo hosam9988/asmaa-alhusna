@@ -25,5 +25,5 @@ export class ThemeService {
 
 function initialTheme(): Theme {
   const saved = readStorage(KEY);
-  return THEMES.find((t) => t.id === saved)?.id ?? 'black';
+  return THEMES.find((t) => t.id === saved)?.id ?? 'paper';
 }

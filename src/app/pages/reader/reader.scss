@@ -1,0 +1,416 @@
+// ---------- Reading progress, just under the header ----------
+
+.progress {
+  position: fixed;
+  inset-inline: 0;
+  inset-block-start: calc(4.25rem + env(safe-area-inset-top));
+  z-index: 9;
+  block-size: 3px;
+  pointer-events: none;
+
+  .bar {
+    block-size: 100%;
+    background: var(--gold-gradient);
+    transform-origin: right;
+    transition: transform 0.15s linear;
+  }
+}
+
+:host-context(html[dir='ltr']) .progress .bar {
+  transform-origin: left;
+}
+
+// ---------- Page ----------
+
+.reader {
+  max-inline-size: calc(var(--reading-width) + 2rem);
+  padding-block-start: 1.5rem;
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-block-size: 2.75rem;
+  color: var(--text-muted);
+  font-size: 1rem;
+
+  &:hover {
+    color: var(--gold-light);
+  }
+}
+
+// ---------- Chapter opening: chapter number, names, meta ----------
+
+.opening {
+  padding-block: 1rem 2rem;
+  text-align: center;
+  --badge-size: 3.4rem;
+}
+
+.part {
+  margin: 0 0 0.6rem;
+  color: var(--gold);
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+}
+
+.chapter-badge {
+  --chapter-num-font: 1rem;
+}
+
+.names {
+  // The names read right to left in both languages.
+  direction: rtl;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0 1.25rem;
+  margin: 0.5rem 0 0;
+  font-size: clamp(2.6rem, 11vw, 4.6rem);
+  font-weight: 400;
+  line-height: 1.9;
+  filter: drop-shadow(0 4px 24px rgb(var(--accent-rgb) / 22%));
+
+  .name {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-wrap: normal;
+    --badge-size: 2.4rem;
+  }
+
+  .name app-star-badge {
+    margin-block-end: -0.6rem;
+  }
+
+  // On a name's own page, the other names of the chapter step back a little.
+  &:has(.focus) .name:not(.focus) {
+    opacity: 0.55;
+  }
+}
+
+.glosses {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.25rem 1.25rem;
+  margin: 0.25rem 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--text-muted);
+  font-family: var(--font-body-en);
+  font-size: 0.98rem;
+
+  b {
+    color: var(--gold-light);
+    font-family: var(--font-display-en);
+    font-weight: 600;
+  }
+}
+
+.title {
+  margin: 0.5rem 0 0;
+  font-size: clamp(2rem, 7vw, 3.1rem);
+  line-height: 1.6;
+  text-wrap: balance;
+}
+
+html[lang='en'] .title {
+  font-family: var(--font-display-en);
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.25rem 0.6rem;
+  margin: 0.75rem 0 0;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+
+  .done {
+    color: var(--verse);
+  }
+}
+
+.tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.75rem 1.25rem;
+  margin-block-start: 1.25rem;
+}
+
+.size {
+  display: flex;
+  gap: 0.4rem;
+
+  .btn {
+    inline-size: 3.1rem;
+    padding: 0;
+    gap: 0.1rem;
+    font-family: var(--font-body-ar);
+    line-height: 1;
+  }
+
+  .small-a {
+    font-size: 0.95rem;
+  }
+
+  .big-a {
+    font-size: 1.35rem;
+  }
+}
+
+// ---------- The text ----------
+
+.text {
+  font-size: calc(1.18em * var(--text-scale, 1));
+  line-height: 2.05;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: none;
+
+  p {
+    margin: 0;
+  }
+
+  p + p {
+    margin-block-start: 0.85em;
+  }
+
+  // The first paragraph opens a little larger, like the first lines of a printed chapter.
+  > p:first-child {
+    font-size: 1.06em;
+  }
+
+  h2 {
+    position: relative;
+    margin: 1.8em 0 0.6em;
+    color: var(--gold-light);
+    font-size: 1.12em;
+    font-weight: 700;
+    text-align: start;
+
+    &::before {
+      content: '۞';
+      margin-inline-end: 0.45em;
+      color: var(--gold);
+      font-weight: 400;
+    }
+  }
+
+  .poem {
+    margin-block: 0.6em;
+    color: var(--hadith);
+    text-align: center;
+    word-spacing: 0.1em;
+  }
+}
+
+html[lang='en'] .text {
+  font-size: calc(1.08em * var(--text-scale, 1));
+  line-height: 1.85;
+  text-align: start;
+}
+
+// The paragraph being read aloud.
+.reading {
+  border-radius: 6px;
+  background: rgb(var(--accent-rgb) / 10%);
+  box-shadow: 0 0 0 0.35em rgb(var(--accent-rgb) / 10%);
+  transition:
+    background-color 0.3s var(--ease),
+    box-shadow 0.3s var(--ease);
+}
+
+.names.reading,
+.title.reading {
+  box-shadow: none;
+  background: none;
+}
+
+.original {
+  margin-block-start: 1.5rem;
+  padding-block-start: 0.75rem;
+  border-block-start: 1px solid var(--line);
+
+  summary {
+    cursor: pointer;
+    color: var(--gold);
+    font-size: 0.95rem;
+  }
+
+  .arabic {
+    margin-block-start: 0.75rem;
+    font-family: var(--font-body-ar);
+    font-size: calc(1.25rem * var(--text-scale, 1));
+    line-height: 2;
+    text-align: justify;
+  }
+
+  .heading {
+    color: var(--gold-light);
+    font-weight: 700;
+  }
+}
+
+.source {
+  margin: 1.5rem 0 0;
+  color: var(--text-muted);
+  font-size: 0.86rem;
+  text-align: center;
+}
+
+.source + .source {
+  margin-block-start: 0.15rem;
+}
+
+// ---------- End of chapter ----------
+
+.end {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  margin-block: 2.5rem 1rem;
+}
+
+.next-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  inline-size: 100%;
+  padding: 1.25rem 3rem;
+  background: linear-gradient(180deg, var(--surface-raised), var(--surface));
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  color: var(--text);
+  text-align: center;
+  transition:
+    transform 0.3s var(--ease),
+    box-shadow 0.3s var(--ease);
+
+  @media (hover: hover) {
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 34px -14px rgb(var(--accent-rgb) / 40%);
+    }
+  }
+
+  .label {
+    color: var(--gold);
+    font-size: 0.9rem;
+  }
+
+  .next-names {
+    direction: rtl;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0 0.9rem;
+    font-size: clamp(1.7rem, 7vw, 2.3rem);
+    line-height: 2;
+  }
+
+  .next-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+  }
+
+  .arrow {
+    position: absolute;
+    inset-inline-end: 1.1rem;
+    inset-block-start: 50%;
+    translate: 0 -50%;
+    color: var(--gold);
+    font-size: 1.4rem;
+  }
+}
+
+.prev-link {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  text-align: center;
+
+  &:hover {
+    color: var(--gold-light);
+  }
+}
+
+.state {
+  padding-block: 4rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+// ---------- Footnote sheet ----------
+
+.sheet-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  background: rgb(0 0 0 / 25%);
+  animation: fade 0.2s var(--ease);
+}
+
+.sheet {
+  position: fixed;
+  inset-inline: 0;
+  inset-block-end: 0;
+  z-index: 31;
+  inline-size: min(40rem, 100%);
+  margin-inline: auto;
+  padding: 1.25rem max(1.25rem, env(safe-area-inset-left)) calc(1.25rem + env(safe-area-inset-bottom));
+  background: var(--surface-raised);
+  border: 1px solid var(--line-strong);
+  border-block-end: 0;
+  border-radius: var(--radius) var(--radius) 0 0;
+  box-shadow: 0 -16px 40px -16px rgb(0 0 0 / 35%);
+  animation: rise 0.25s var(--ease);
+
+  .sheet-label {
+    margin: 0;
+    color: var(--gold);
+    font-size: 0.9rem;
+  }
+
+  .sheet-text {
+    margin: 0.4rem 0 1rem;
+  }
+}
+
+@keyframes rise {
+  from {
+    translate: 0 100%;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .progress {
+    inset-block-start: calc(3.75rem + env(safe-area-inset-top));
+  }
+
+  .reader {
+    padding-block-start: 0.5rem;
+  }
+
+  .text {
+    font-size: calc(1.1em * var(--text-scale, 1));
+    line-height: 2;
+  }
+
+  .next-card {
+    padding-inline: 2.5rem;
+  }
+}
