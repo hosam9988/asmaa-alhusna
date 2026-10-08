@@ -1,6 +1,6 @@
 import { httpResource } from '@angular/common/http';
 import { computed, Injectable } from '@angular/core';
-import { Chapter, DivineName } from '../models/divine-name';
+import { Chapter, DivineName, SectionContent } from '../models/divine-name';
 
 /** Reads the book — static JSON files served from `public/data`. */
 @Injectable({ providedIn: 'root' })
@@ -42,7 +42,7 @@ export class BookService {
   }
 }
 
-/** Words in a chapter (Arabic), for the reading-time estimate. */
-export function wordCount(chapter: Chapter): number {
-  return chapter.blocks.reduce((sum, b) => sum + b.text.ar.split(/\s+/).length, 0);
+/** Words in a text (Arabic), for the reading-time estimate. */
+export function wordCount(text: SectionContent): number {
+  return text.blocks.reduce((sum, b) => sum + b.text.ar.split(/\s+/).length, 0);
 }

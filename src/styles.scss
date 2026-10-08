@@ -298,24 +298,6 @@ html[lang='ar'] .eyebrow {
   }
 }
 
-// A chapter's number («الفصل ١٨» / "Chapter 18"), the same everywhere it appears. (The names'
-// own order uses the star badge.)
-.chapter-num {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  min-inline-size: 2.1rem;
-  padding: 0.2em 0.75em;
-  border: 1px solid var(--line-strong);
-  border-radius: 999px;
-  background: rgb(var(--accent-rgb) / 6%);
-  color: var(--gold);
-  font-size: var(--chapter-num-font, 0.85rem);
-  line-height: 1.4;
-  white-space: nowrap;
-}
-
 .btn {
   display: inline-flex;
   align-items: center;

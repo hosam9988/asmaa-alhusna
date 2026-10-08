@@ -91,6 +91,16 @@ nav {
     font-size: clamp(1.3rem, 5vw, 1.6rem);
   }
 
+  // The project is a waqf: said plainly, under the verse on every page.
+  .waqf {
+    display: inline-block;
+    margin: 1rem 0 0;
+    padding: 0.35rem 1.1rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--text-muted);
+    font-size: 0.92rem;
+  }
 }
 
 // ---------- Phones ----------

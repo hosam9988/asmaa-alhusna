@@ -1,4 +1,4 @@
-import { computed, effect, Injectable, signal } from '@angular/core';
+import { effect, Injectable, signal } from '@angular/core';
 import { readStorage, writeStorage } from './storage';
 
 const READ_KEY = 'asmaa.read.v1';
@@ -19,8 +19,6 @@ export class ReadingService {
   private readonly read = signal<ReadonlySet<string>>(new Set(parse<string[]>(READ_KEY) ?? []));
   readonly place = signal<Place | null>(parse<Place>(PLACE_KEY));
   readonly textScale = signal<number>(Number(readStorage(SCALE_KEY)) || 1);
-
-  readonly readCount = computed(() => this.read().size);
 
   constructor() {
     effect(() => writeStorage(READ_KEY, JSON.stringify([...this.read()])));

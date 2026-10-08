@@ -1,4 +1,4 @@
-import { BookPart, Lang } from '../models/divine-name';
+import { BookPart, Lang, NameSection } from '../models/divine-name';
 import { Theme } from '../models/theme';
 
 export interface UiText {
@@ -17,11 +17,25 @@ export interface UiText {
   loading: string;
   loadError: string;
   nameOfTheDay: string;
-  readChapter: string;
-  progress: (read: number, total: number) => string;
+  /** The name of the day's link. */
+  readName: string;
+  /** «قرأت ١٢ من ١٠٧ أسماء، و٣ من ١٧ موضوعًا». */
+  progress: (namesRead: number, names: number, topicsRead: number, topics: number) => string;
   parts: Record<BookPart, string>;
-  partIntros: Record<BookPart, string>;
-  chapterLabel: (n: string) => string;
+  /** The line under the names section's heading. */
+  namesIntro: string;
+  /** «١٧ موضوعًا» / "17 topics", beside the collapsed introduction. */
+  topicCount: (n: string) => string;
+  /** On the introduction's toggle, closed and open. */
+  showTopics: string;
+  hideTopics: string;
+  /** In the footer of every page. */
+  waqfNote: string;
+  /** The tabs of a name's page. */
+  sections: Record<NameSection, string>;
+  sectionsLabel: string;
+  /** Shown in a tab that has no content yet. */
+  sectionEmpty: string;
   minutes: (n: string) => string;
   textSize: string;
   /** The letter on the text-size buttons: «أ−» «أ+» / "A−" "A+". */
@@ -33,7 +47,8 @@ export interface UiText {
   showArabicOriginal: string;
   markRead: string;
   isRead: string;
-  nextChapter: string;
+  /** Over the card leading on, by what comes next: a name or a topic. */
+  nextUp: Record<BookPart, string>;
   previous: string;
   next: string;
   backToContents: string;
@@ -55,26 +70,37 @@ export const UI_TEXT: Record<Lang, UiText> = {
     themeLabel: 'لون الصفحات',
     themeNames: { paper: 'ورقي', black: 'أسود', white: 'أبيض', blue: 'أزرق', navy: 'كحلي', pink: 'وردي' },
     heroIntro:
-      'تعرّف على ربك بأسمائه الحسنى اسمًا اسمًا: معناه، وما يدل عليه، وأثره في قلبك وعبادتك ودعائك؛ في فصولٍ قصيرة تُقرأ في دقائق.',
+      'تعرّف على ربك بأسمائه الحسنى اسمًا اسمًا: معناه، وما يدل عليه، وأثره في قلبك وعبادتك ودعائك؛ في شروحٍ قصيرة تُقرأ في دقائق.',
     startReading: 'ابدأ القراءة',
     continueReading: 'تابع القراءة',
     continueWhere: (title) => `توقفت عند: ${title}`,
-    searchPlaceholder: 'ابحث عن اسم أو فصل…',
+    searchPlaceholder: 'ابحث عن اسم أو موضوع…',
     noResults: 'لا توجد نتائج مطابقة.',
     loading: 'جارٍ التحميل…',
-    loadError: 'تعذّر تحميل الكتاب. حاول مرة أخرى.',
+    loadError: 'تعذّر تحميل المحتوى. حاول مرة أخرى.',
     nameOfTheDay: 'اسم اليوم',
-    readChapter: 'اقرأ الفصل',
-    progress: (r, t) => `قرأت ${toArabicDigits(r)} من ${toArabicDigits(t)} فصلًا`,
+    readName: 'اقرأ عن الاسم',
+    progress: (nr, n, tr, t) =>
+      `قرأت ${toArabicDigits(nr)} من ${toArabicDigits(n)} أسماء، و${toArabicDigits(tr)} من ${toArabicDigits(t)} موضوعًا`,
     parts: {
-      foundations: 'في فقه الأسماء الحسنى',
+      foundations: 'مقدمة',
       names: 'شرح الأسماء الحسنى',
     },
-    partIntros: {
-      foundations: 'فصول في منزلة العلم بأسماء الله وقواعده.',
-      names: 'الأسماء الحسنى اسمًا اسمًا، وما تدل عليه، وأثرها في قلب العبد.',
+    namesIntro: 'الأسماء الحسنى اسمًا اسمًا، وما تدل عليه، وأثرها في قلب العبد.',
+    topicCount: (n) => `${n} موضوعًا`,
+    showTopics: 'عرض المواضيع',
+    hideTopics: 'إخفاء المواضيع',
+    waqfNote: 'هذا المشروع وقفٌ لله تعالى، وهو غير ربحي.',
+    sections: {
+      meaning: 'معنى الاسم',
+      uses: 'استخداماته',
+      duas: 'أدعية متعلقة به',
+      story: 'قصة حول الاسم',
+      life: 'الربط بين الاسم وواقع الحياة',
+      faith: 'الأثر الإيماني بالاسم',
     },
-    chapterLabel: (n) => `الفصل ${n}`,
+    sectionsLabel: 'أقسام الاسم',
+    sectionEmpty: 'لم يُضَف محتوى هذا القسم بعد، وسيُضاف قريبًا بإذن الله.',
     minutes: (n) => `${n} دقائق`,
     textSize: 'حجم الخط',
     sizeLetter: 'أ',
@@ -83,9 +109,9 @@ export const UI_TEXT: Record<Lang, UiText> = {
     footnote: 'حاشية',
     closeNote: 'إغلاق',
     showArabicOriginal: 'النص العربي',
-    markRead: 'أتممت قراءة الفصل',
-    isRead: 'قرأتَ هذا الفصل',
-    nextChapter: 'الفصل التالي',
+    markRead: 'أتممت القراءة',
+    isRead: 'تمّت القراءة',
+    nextUp: { foundations: 'الموضوع التالي', names: 'الاسم التالي' },
     previous: 'السابق',
     next: 'التالي',
     backToContents: 'الفهرس',
@@ -105,26 +131,36 @@ export const UI_TEXT: Record<Lang, UiText> = {
     themeLabel: 'Page colour',
     themeNames: { paper: 'Paper', black: 'Black', white: 'White', blue: 'Blue', navy: 'Dark blue', pink: 'Pink' },
     heroIntro:
-      'Come to know your Lord through His Beautiful Names, one at a time: what each means, what it points to, and what it does to your heart, worship and supplication — in short chapters you can read in minutes.',
+      'Come to know your Lord through His Beautiful Names, one at a time: what each means, what it points to, and what it does to your heart, worship and supplication — in short explanations you can read in minutes.',
     startReading: 'Start reading',
     continueReading: 'Continue reading',
     continueWhere: (title) => `You stopped at: ${title}`,
-    searchPlaceholder: 'Search for a name or chapter…',
+    searchPlaceholder: 'Search for a name or topic…',
     noResults: 'Nothing matches.',
     loading: 'Loading…',
-    loadError: 'Could not load the book. Please try again.',
+    loadError: 'Could not load the content. Please try again.',
     nameOfTheDay: 'Name of the day',
-    readChapter: 'Read the chapter',
-    progress: (r, t) => `You have read ${r} of ${t} chapters`,
+    readName: 'Read about this name',
+    progress: (nr, n, tr, t) => `You have read ${nr} of ${n} names and ${tr} of ${t} topics`,
     parts: {
-      foundations: 'Understanding the Beautiful Names',
+      foundations: 'Introduction',
       names: 'The Beautiful Names explained',
     },
-    partIntros: {
-      foundations: 'Chapters on the worth of knowing Allah’s names, and the principles behind them.',
-      names: 'The Beautiful Names one by one: what each means, and what it does to the heart.',
+    namesIntro: 'The Beautiful Names one by one: what each means, and what it does to the heart.',
+    topicCount: (n) => `${n} topics`,
+    showTopics: 'Show topics',
+    hideTopics: 'Hide topics',
+    waqfNote: 'This project is a waqf (an endowment for the sake of Allah) and is non-profit.',
+    sections: {
+      meaning: 'Meaning',
+      uses: 'How it is used',
+      duas: 'Related supplications',
+      story: 'A story about the name',
+      life: 'The name in daily life',
+      faith: 'Its effect on faith',
     },
-    chapterLabel: (n) => `Chapter ${n}`,
+    sectionsLabel: 'About this name',
+    sectionEmpty: 'Nothing has been added to this section yet; it is coming soon, in sha’ Allah.',
     minutes: (n) => `${n} min`,
     textSize: 'Text size',
     sizeLetter: 'A',
@@ -133,9 +169,9 @@ export const UI_TEXT: Record<Lang, UiText> = {
     footnote: 'Footnote',
     closeNote: 'Close',
     showArabicOriginal: 'Read the original Arabic',
-    markRead: 'I have read this chapter',
-    isRead: 'You have read this chapter',
-    nextChapter: 'Next chapter',
+    markRead: 'I have finished reading',
+    isRead: 'Finished reading',
+    nextUp: { foundations: 'Next topic', names: 'Next name' },
     previous: 'Previous',
     next: 'Next',
     backToContents: 'Contents',

@@ -34,11 +34,24 @@ export interface Footnote {
   text: Localized;
 }
 
+/**
+ * The tabs of a name's page, in order. «معنى الاسم» holds the chapter's own explanation; the
+ * others are filled from further sources.
+ */
+export const NAME_SECTIONS = ['meaning', 'uses', 'duas', 'story', 'life', 'faith'] as const;
+export type NameSection = (typeof NAME_SECTIONS)[number];
+
+/** The text of one section: blocks, with their footnotes. */
+export interface SectionContent {
+  blocks: Block[];
+  footnotes: Footnote[];
+}
+
 /** One chapter of the book. */
 export interface Chapter {
   slug: string;
   part: BookPart;
-  /** The chapter's number, shown for the chapters on the names in general. */
+  /** The chapter's number in its source (not shown). */
   number?: number;
   title: Localized;
   /** Slugs of the names this chapter explains (empty for the chapters on the names in general). */
@@ -46,6 +59,9 @@ export interface Chapter {
   /** Printed pages. */
   pageFrom: number;
   pageTo: number;
+  /** The chapter's own text: on a name's page, the «معنى الاسم» tab. */
   blocks: Block[];
   footnotes: Footnote[];
+  /** A name chapter's other tabs, where there is content for them (absent tabs show as "coming"). */
+  sections?: Partial<Record<Exclude<NameSection, 'meaning'>, SectionContent>>;
 }

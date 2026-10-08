@@ -47,8 +47,23 @@ export class Home {
     return parts;
   });
 
-  protected readonly total = computed(() => this.book.chapters().length);
-  protected readonly percent = computed(() => (this.total() ? (this.reading.readCount() / this.total()) * 100 : 0));
+  /**
+   * How far the reader has come: names and introductory topics, and the share of the whole. A name
+   * counts once any chapter explaining it is read (الخالق is explained in two).
+   */
+  protected readonly readProgress = computed(() => {
+    const chapters = this.book.chapters();
+    const names = this.book.names();
+    const read = chapters.filter((c) => this.reading.isRead(c.slug));
+    const readNames = new Set(read.flatMap((c) => c.names));
+    return {
+      namesRead: names.filter((n) => readNames.has(n.slug)).length,
+      names: names.length,
+      topicsRead: read.filter((c) => c.part === 'foundations').length,
+      topics: chapters.filter((c) => c.part === 'foundations').length,
+      percent: chapters.length ? (read.length / chapters.length) * 100 : 0,
+    };
+  });
 
   /** Where to pick up: the chapter the reader was in, unless they finished it. */
   protected readonly resume = computed(() => {

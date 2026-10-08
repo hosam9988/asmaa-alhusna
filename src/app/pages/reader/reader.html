@@ -15,11 +15,6 @@
     <article #article [style.--text-scale]="reading.textScale()">
       <header class="opening">
         <p class="part">{{ tx.parts[c.part] }}</p>
-        <!-- The chapters on the names in general show their number; a name chapter shows each name's
-             own number on its star instead. -->
-        @if (c.number && !names().length) {
-          <span class="chapter-num chapter-badge">{{ tx.chapterLabel(language.number(c.number)) }}</span>
-        }
         @if (names().length) {
           <h1 class="names" [class.reading]="speech.activeKey() === 'title'">
             @for (n of names(); track n.slug) {
@@ -38,15 +33,21 @@
           <h1 class="title calligraphy gold-text" [class.reading]="speech.activeKey() === 'title'">{{ c.title[lang] }}</h1>
         }
         <p class="meta">
-          <span>{{ tx.minutes(minutes()) }}</span>
-          @if (reading.isRead(c.slug)) {
+          @if (minutes()) {
+            <span>{{ tx.minutes(minutes()) }}</span>
+          }
+          @if (minutes() && reading.isRead(c.slug)) {
             <span aria-hidden="true">·</span>
+          }
+          @if (reading.isRead(c.slug)) {
             <span class="done">✓ {{ tx.isRead }}</span>
           }
         </p>
         <app-ornament />
         <div class="tools">
-          <app-read-aloud [segments]="readAloud()" [resetKey]="c.slug" />
+          @if (content()) {
+            <app-read-aloud [segments]="readAloud()" [resetKey]="c.slug + '/' + tab()" />
+          }
           <div class="size" role="group" [attr.aria-label]="tx.textSize">
             <button type="button" class="btn" [attr.aria-label]="tx.smaller" [attr.title]="tx.smaller" (click)="reading.stepScale(-1)">
               <span class="small-a">{{ tx.sizeLetter }}</span><span aria-hidden="true">−</span>
@@ -58,44 +59,76 @@
         </div>
       </header>
 
-      <div class="text">
-        @for (b of c.blocks; track $index) {
-          @switch (b.type) {
-            @case ('h') {
-              <h2 [class.reading]="speech.activeKey() === 'b' + $index">
-                <app-rich-text [text]="b.text[lang]" [noteLabel]="tx.footnote" [arabicDigits]="language.isArabic()" (note)="showNote($event)" />
-              </h2>
-            }
-            @case ('poem') {
-              <p class="poem" [class.reading]="speech.activeKey() === 'b' + $index">
-                <app-rich-text [text]="b.text[lang]" [noteLabel]="tx.footnote" [arabicDigits]="language.isArabic()" (note)="showNote($event)" />
-              </p>
-            }
-            @default {
-              <p [class.reading]="speech.activeKey() === 'b' + $index">
-                <app-rich-text
-                  [text]="b.text[lang]"
-                  [highlight]="highlight()"
-                  [noteLabel]="tx.footnote"
-                  [arabicDigits]="language.isArabic()"
-                  (note)="showNote($event)"
-                />
-              </p>
-            }
+      @if (hasTabs()) {
+        <div class="tabs" #tabs role="tablist" [attr.aria-label]="tx.sectionsLabel">
+          @for (s of sections; track s; let i = $index) {
+            <button
+              type="button"
+              role="tab"
+              class="tab"
+              [id]="'tab-' + s"
+              aria-controls="section-panel"
+              [attr.aria-selected]="tab() === s"
+              [tabIndex]="tab() === s ? 0 : -1"
+              (click)="selectTab(s)"
+              (keydown)="onTabKey($event, i)"
+            >
+              {{ tx.sections[s] }}
+            </button>
           }
-        }
-      </div>
+        </div>
+      }
 
-      @if (lang === 'en') {
-        <details class="original">
-          <summary>{{ tx.showArabicOriginal }}</summary>
-          <div class="text arabic" lang="ar" dir="rtl">
-            @for (b of c.blocks; track $index) {
-              <p [class.heading]="b.type === 'h'"><app-rich-text [text]="b.text.ar" (note)="showNote($event)" /></p>
+      <div
+        #panel
+        class="tab-panel"
+        id="section-panel"
+        [attr.role]="hasTabs() ? 'tabpanel' : null"
+        [attr.aria-labelledby]="hasTabs() ? 'tab-' + tab() : null"
+      >
+        @if (content(); as body) {
+          <div class="text">
+            @for (b of body.blocks; track $index) {
+              @switch (b.type) {
+                @case ('h') {
+                  <h2 [class.reading]="speech.activeKey() === 'b' + $index">
+                    <app-rich-text [text]="b.text[lang]" [noteLabel]="tx.footnote" [arabicDigits]="language.isArabic()" (note)="showNote($event)" />
+                  </h2>
+                }
+                @case ('poem') {
+                  <p class="poem" [class.reading]="speech.activeKey() === 'b' + $index">
+                    <app-rich-text [text]="b.text[lang]" [noteLabel]="tx.footnote" [arabicDigits]="language.isArabic()" (note)="showNote($event)" />
+                  </p>
+                }
+                @default {
+                  <p [class.reading]="speech.activeKey() === 'b' + $index">
+                    <app-rich-text
+                      [text]="b.text[lang]"
+                      [highlight]="highlight()"
+                      [noteLabel]="tx.footnote"
+                      [arabicDigits]="language.isArabic()"
+                      (note)="showNote($event)"
+                    />
+                  </p>
+                }
+              }
             }
           </div>
-        </details>
-      }
+
+          @if (lang === 'en') {
+            <details class="original">
+              <summary>{{ tx.showArabicOriginal }}</summary>
+              <div class="text arabic" lang="ar" dir="rtl">
+                @for (b of body.blocks; track $index) {
+                  <p [class.heading]="b.type === 'h'"><app-rich-text [text]="b.text.ar" (note)="showNote($event)" /></p>
+                }
+              </div>
+            </details>
+          }
+        } @else {
+          <p class="empty">{{ tx.sectionEmpty }}</p>
+        }
+      </div>
 
       <footer class="end">
         <app-ornament />
@@ -115,7 +148,7 @@
 
         @if (neighbours().next; as next) {
           <a class="next-card" [routerLink]="['/read', next.slug]">
-            <span class="label">{{ tx.nextChapter }}</span>
+            <span class="label">{{ tx.nextUp[next.part] }}</span>
             @if (nextNames().length) {
               <span class="next-names">
                 @for (n of nextNames(); track n.slug) {
