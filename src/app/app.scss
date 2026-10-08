@@ -75,10 +75,6 @@ nav {
   }
 }
 
-.label-short {
-  display: none;
-}
-
 .lang {
   padding: 0.3rem 0.95rem;
   font-size: 0.9rem;
@@ -95,12 +91,6 @@ nav {
     font-size: clamp(1.3rem, 5vw, 1.6rem);
   }
 
-  .note {
-    margin: 0.5rem auto 0;
-    max-inline-size: 36rem;
-    color: var(--text-muted);
-    font-size: 0.95rem;
-  }
 }
 
 // ---------- Phones ----------
@@ -120,15 +110,8 @@ nav {
     }
   }
   // The brand already links home, so the separate link can go.
-  nav a[href='/'],
-  nav a[href='/#contents'] {
+  nav a[href='/'] {
     display: none;
-  }
-  .label-full {
-    display: none;
-  }
-  .label-short {
-    display: inline;
   }
   .lang {
     padding-inline: 0.8rem;

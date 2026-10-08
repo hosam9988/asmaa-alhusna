@@ -3,11 +3,11 @@ export type Lang = 'ar' | 'en';
 export type Localized = Record<Lang, string>;
 
 /**
- * One name of Allah explained in «فقه الأسماء الحسنى». Several names often share a chapter
- * (e.g. «الخالق، الخلّاق»); `chapter` is that chapter's slug.
+ * One name of Allah. Several names often share a chapter (e.g. «الخالق، الخلّاق»); `chapter` is
+ * that chapter's slug.
  */
 export interface DivineName {
-  /** Position in the book's order, starting at 1. */
+  /** Position in the list of names, starting at 1. */
   id: number;
   slug: string;
   /** Vowelled, for display in Amiri Quran. */
@@ -18,7 +18,7 @@ export interface DivineName {
 }
 
 /** The book's parts, in order. */
-export type BookPart = 'front' | 'foundations' | 'names';
+export type BookPart = 'foundations' | 'names';
 
 /**
  * A block of a chapter: a paragraph, a sub-heading or a line of poetry. Footnote markers are
@@ -38,7 +38,7 @@ export interface Footnote {
 export interface Chapter {
   slug: string;
   part: BookPart;
-  /** The chapter's number as printed above its title, «(٣)»; absent before the first one. */
+  /** The chapter's number, shown for the chapters on the names in general. */
   number?: number;
   title: Localized;
   /** Slugs of the names this chapter explains (empty for the chapters on the names in general). */

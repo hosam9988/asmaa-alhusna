@@ -16,9 +16,8 @@
   <div class="container hero-content">
     <p class="bismillah name-script">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
     <div class="cover">
-      <h1 class="calligraphy gold-text">فقه الأسماء الحسنى</h1>
+      <h1 class="calligraphy gold-text">أسماء الله الحسنى</h1>
       <app-ornament />
-      <p class="author">{{ tx.author }}</p>
     </div>
     <p class="intro">{{ tx.heroIntro }}</p>
     <div class="cta">
@@ -96,7 +95,6 @@
                   [class.done]="reading.isRead(e.chapter.slug)"
                   [class.many]="e.names.length > 2"
                 >
-                  <span class="chapter-num card-chapter">{{ tx.chapterLabel(language.number(e.chapter.number ?? 0)) }}</span>
                   <span class="card-names">
                     @for (n of e.names; track n.slug) {
                       <span class="card-name">

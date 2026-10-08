@@ -49,12 +49,6 @@
   }
 }
 
-.author {
-  margin: 0.5rem 0 0;
-  color: var(--text-muted);
-  font-size: 1.05rem;
-}
-
 .intro {
   max-inline-size: 36rem;
   margin: 1.75rem auto 0;
@@ -367,12 +361,6 @@
   span {
     overflow-wrap: normal; // wrap between names only, never inside one
   }
-}
-
-// The book's chapter number, at the top of the card above its names.
-.card-chapter {
-  margin-block-end: 0.15rem;
-  --chapter-num-font: 0.78rem;
 }
 
 // A name with its own number above it.

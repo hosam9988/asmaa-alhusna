@@ -15,9 +15,9 @@
     <article #article [style.--text-scale]="reading.textScale()">
       <header class="opening">
         <p class="part">{{ tx.parts[c.part] }}</p>
-        <!-- The chapter's number, in the same label as on the home page; a name chapter also shows
-             each name's own number on its star. -->
-        @if (c.number) {
+        <!-- The chapters on the names in general show their number; a name chapter shows each name's
+             own number on its star instead. -->
+        @if (c.number && !names().length) {
           <span class="chapter-num chapter-badge">{{ tx.chapterLabel(language.number(c.number)) }}</span>
         }
         @if (names().length) {
@@ -38,8 +38,6 @@
           <h1 class="title calligraphy gold-text" [class.reading]="speech.activeKey() === 'title'">{{ c.title[lang] }}</h1>
         }
         <p class="meta">
-          <span>{{ tx.pages(pages()) }}</span>
-          <span aria-hidden="true">·</span>
           <span>{{ tx.minutes(minutes()) }}</span>
           @if (reading.isRead(c.slug)) {
             <span aria-hidden="true">·</span>
@@ -97,11 +95,6 @@
             }
           </div>
         </details>
-      }
-
-      <p class="source">{{ tx.source(pages()) }}</p>
-      @if (lang === 'ar') {
-        <p class="source">{{ tx.vowelNote }}</p>
       }
 
       <footer class="end">

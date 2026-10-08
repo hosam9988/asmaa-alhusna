@@ -69,13 +69,6 @@ export class Reader {
     return next ? this.book.namesOf(next) : [];
   });
 
-  /** "١٢٣–١٢٧" in the reader's digits. */
-  protected readonly pages = computed(() => {
-    const c = this.chapter();
-    if (!c) return '';
-    const n = (p: number) => this.language.number(p);
-    return c.pageTo > c.pageFrom ? `${n(c.pageFrom)}–${n(c.pageTo)}` : n(c.pageFrom);
-  });
   protected readonly minutes = computed(() => {
     const c = this.chapter();
     return c ? this.language.number(Math.max(1, Math.round(wordCount(c) / WORDS_PER_MINUTE))) : '';
