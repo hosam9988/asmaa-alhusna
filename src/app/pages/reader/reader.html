@@ -16,7 +16,7 @@
       <header class="opening">
         <p class="part">{{ tx.parts[c.part] }}</p>
         @if (names().length) {
-          <h1 class="names" [class.reading]="speech.activeKey() === 'title'">
+          <h1 #heading class="names" [class.reading]="speech.activeKey() === 'title'">
             @for (n of names(); track n.slug) {
               <span class="name" [class.focus]="focusName()?.slug === n.slug">
                 <app-star-badge [label]="language.number(n.id)" />
@@ -60,22 +60,33 @@
       </header>
 
       @if (hasTabs()) {
-        <div class="tabs" #tabs role="tablist" [attr.aria-label]="tx.sectionsLabel">
-          @for (s of sections; track s; let i = $index) {
-            <button
-              type="button"
-              role="tab"
-              class="tab"
-              [id]="'tab-' + s"
-              aria-controls="section-panel"
-              [attr.aria-selected]="tab() === s"
-              [tabIndex]="tab() === s ? 0 : -1"
-              (click)="selectTab(s)"
-              (keydown)="onTabKey($event, i)"
-            >
-              {{ tx.sections[s] }}
-            </button>
-          }
+        <div class="reading-bar" #readingBar>
+          <!-- The heading's names, in sight once it has scrolled away (a copy, so hidden from screen readers). -->
+          <p class="now-reading" [class.show]="!headingInView()" [class.many]="names().length > 2" aria-hidden="true">
+            @for (n of names(); track n.slug) {
+              <span class="now-name" [class.focus]="focusName()?.slug === n.slug">
+                <app-star-badge [label]="language.number(n.id)" />
+                <span class="name-script gold-text">{{ n.name }}</span>
+              </span>
+            }
+          </p>
+          <div class="tabs" #tabs role="tablist" [attr.aria-label]="tx.sectionsLabel">
+            @for (s of sections; track s; let i = $index) {
+              <button
+                type="button"
+                role="tab"
+                class="tab"
+                [id]="'tab-' + s"
+                aria-controls="section-panel"
+                [attr.aria-selected]="tab() === s"
+                [tabIndex]="tab() === s ? 0 : -1"
+                (click)="selectTab(s)"
+                (keydown)="onTabKey($event, i)"
+              >
+                {{ tx.sections[s] }}
+              </button>
+            }
+          </div>
         </div>
       }
 

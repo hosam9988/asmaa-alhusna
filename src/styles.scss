@@ -251,6 +251,14 @@ a {
   line-height: 2.1;
 }
 
+// Amiri Quran's lowest marks (the kasra under ي in «الْحَيِيُّ») reach 0.68em below the line, past the
+// gold's padding wherever a name stands in its own box, and the gold (a background clipped to the
+// letters) stops at the box. Reach further down; the negative margin keeps everything in place.
+.name-script.gold-text {
+  padding-block-end: 0.3em;
+  margin-block-end: -0.18em;
+}
+
 .quran {
   font-family: var(--font-quran);
   line-height: 2.3;

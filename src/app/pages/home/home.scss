@@ -120,7 +120,8 @@
 }
 
 .today-name {
-  margin: 0;
+  // The negative bottom margin balances the gold's extra room below the letters (see styles.scss).
+  margin: 0 0 -0.18em;
   font-size: clamp(2.3rem, 10vw, 3rem);
 }
 

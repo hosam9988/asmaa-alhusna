@@ -165,18 +165,81 @@
   font-weight: 600;
 }
 
-// ---------- A name's tabs: stay under the header while reading ----------
+// ---------- A name's page: under the header while reading, the name, then its tabs ----------
 
-.tabs {
+.reading-bar {
   position: sticky;
   inset-block-start: calc(4.25rem + env(safe-area-inset-top));
   z-index: 8;
+  margin-block-end: 2rem;
+  margin-inline: -1rem;
+}
+
+// The bar already sits right under the tools, so the opening needs no space of its own below them.
+.opening:has(+ .reading-bar) {
+  padding-block-end: 0;
+}
+
+// The name being studied, kept in sight once the heading has scrolled away. Its place is held
+// while it is hidden, so nothing on the page moves when it appears.
+.now-reading {
+  // The names read right to left in both languages.
+  direction: rtl;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0 1.25rem;
+  // A set height, room enough for the tallest marks and deepest tails of any name (1.93em in all),
+  // clear of the reading-progress line above.
+  block-size: 3.3rem;
+  margin: 0;
+  padding-inline: 1rem;
+  font-size: 1.5rem;
+  white-space: nowrap;
+  background: rgb(var(--bg-rgb) / 92%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.25s var(--ease),
+    visibility 0.25s;
+  --badge-size: 2.15rem;
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .now-name {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  // Amiri Quran sits low in its line (it keeps room above for stacked marks): lift it so the
+  // letters, not the line, are centred, level with the star.
+  .name-script {
+    translate: 0 -0.23em;
+  }
+
+  // On a name's own page, the other names of the chapter step back, as in the heading.
+  &:has(.focus) .now-name:not(.focus) {
+    opacity: 0.55;
+  }
+
+  &.many {
+    gap: 0 1rem;
+    font-size: 1.35rem;
+    --badge-size: 1.9rem;
+  }
+}
+
+.tabs {
   // Two even rows of three.
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0.4rem;
-  margin-block-end: 2rem;
-  margin-inline: -1rem;
   padding: 0.6rem 1rem;
   background: rgb(var(--bg-rgb) / 92%);
   backdrop-filter: blur(10px);
@@ -461,9 +524,29 @@
     padding-block-start: 0.5rem;
   }
 
+  .reading-bar {
+    inset-block-start: calc(3.75rem + env(safe-area-inset-top));
+  }
+
+  .now-reading {
+    gap: 0 0.9rem;
+    block-size: 2.95rem;
+    font-size: 1.3rem;
+    --badge-size: 1.95rem;
+
+    // Three or four names: smaller, and without their numbers, to stay on one line.
+    &.many {
+      gap: 0 0.75rem;
+      font-size: 1.15rem;
+
+      app-star-badge {
+        display: none;
+      }
+    }
+  }
+
   // One row that scrolls sideways, so the bar stays short.
   .tabs {
-    inset-block-start: calc(3.75rem + env(safe-area-inset-top));
     display: flex;
     overflow-x: auto;
     overscroll-behavior-x: contain;
@@ -488,9 +571,9 @@
   }
 }
 
-// The header scrolls away on phones held sideways (see app.scss), so the tabs stick to the top.
+// The header scrolls away on phones held sideways (see app.scss), so the bar sticks to the top.
 @media (max-height: 480px) and (orientation: landscape) {
-  .tabs {
+  .reading-bar {
     inset-block-start: 0;
   }
 }

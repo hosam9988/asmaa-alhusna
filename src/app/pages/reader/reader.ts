@@ -54,6 +54,8 @@ export class Reader {
   private readonly resume = toSignal(inject(ActivatedRoute).queryParamMap);
 
   private readonly article = viewChild<ElementRef<HTMLElement>>('article');
+  private readonly heading = viewChild<ElementRef<HTMLElement>>('heading');
+  private readonly readingBar = viewChild<ElementRef<HTMLElement>>('readingBar');
   private readonly tabList = viewChild<ElementRef<HTMLElement>>('tabs');
   private readonly panel = viewChild<ElementRef<HTMLElement>>('panel');
 
@@ -101,6 +103,8 @@ export class Reader {
 
   /** 0–1: how far down the chapter the reader is. */
   protected readonly progress = signal(0);
+  /** False once the heading with the names has scrolled away; the bar then shows them instead. */
+  protected readonly headingInView = signal(true);
   protected readonly openNote = signal<Footnote | null>(null);
 
   /** What «استمع / Listen» reads: the title, then every block of the text shown. */
@@ -164,12 +168,22 @@ export class Reader {
     const scrollable = Math.max(1, el.offsetHeight - innerHeight);
     const progress = Math.min(1, Math.max(0, (scrollY - el.offsetTop) / scrollable));
     this.progress.set(progress);
+    this.headingInView.set(this.isHeadingInView());
     if (!this.onMainText()) return;
     const rounded = Math.round(progress * 100) / 100;
     const place = this.reading.place();
     if (place?.slug !== c.slug || place.progress !== rounded) this.reading.place.set({ slug: c.slug, progress: rounded });
     // Reaching the end counts as having read the chapter.
     if (progress > 0.97 && !this.reading.isRead(c.slug)) this.reading.setRead(c.slug, true);
+  }
+
+  /** Whether most of the heading still shows below the site header (where the bar sticks). */
+  private isHeadingInView(): boolean {
+    const heading = this.heading()?.nativeElement;
+    const bar = this.readingBar()?.nativeElement;
+    if (!heading || !bar) return true;
+    const r = heading.getBoundingClientRect();
+    return r.bottom - r.height / 3 > parseFloat(getComputedStyle(bar).top);
   }
 
   protected showNote(n: number): void {
