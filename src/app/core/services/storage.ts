@@ -14,3 +14,11 @@ export function writeStorage(key: string, value: string): void {
     // Not persisting is acceptable; the in-memory state still works.
   }
 }
+
+export function removeStorage(key: string): void {
+  try {
+    localStorage.removeItem(key);
+  } catch {
+    // As above.
+  }
+}

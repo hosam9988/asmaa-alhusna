@@ -65,8 +65,8 @@
           <span>{{ tx.progress(p.namesRead, p.names, p.topicsRead, p.topics) }}</span>
           <div class="track"><div class="fill" [style.inline-size.%]="p.percent"></div></div>
         </div>
-        <!-- Clears every read mark, once confirmed. -->
-        @if (p.namesRead || p.topicsRead) {
+        <!-- Clears every read mark and where the reader stopped, once confirmed. -->
+        @if (p.namesRead || p.topicsRead || reading.place()) {
           <div class="reset" (keydown.escape)="cancelReset()">
             @if (confirmingReset()) {
               <span>{{ tx.resetAllConfirm }}</span>

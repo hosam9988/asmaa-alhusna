@@ -48,7 +48,7 @@ export interface UiText {
   markRead: string;
   isRead: string;
   markUnread: string;
-  /** The home page's button that clears every read mark, and its confirmation. */
+  /** The home page's button that clears every read mark and where the reader stopped, and its confirmation. */
   resetAll: string;
   resetAllConfirm: string;
   resetAllYes: string;
@@ -119,7 +119,7 @@ export const UI_TEXT: Record<Lang, UiText> = {
     isRead: 'تمّت القراءة',
     markUnread: 'إلغاء علامة القراءة',
     resetAll: 'إعادة ضبط',
-    resetAllConfirm: 'مسح علامات القراءة عن كل الأسماء والمواضيع؟',
+    resetAllConfirm: 'مسح علامات القراءة عن كل الأسماء والمواضيع، والموضع الذي توقفت عنده؟',
     resetAllYes: 'نعم، امسحها',
     cancel: 'إلغاء',
     nextUp: { foundations: 'الموضوع التالي', names: 'الاسم التالي' },
@@ -184,7 +184,7 @@ export const UI_TEXT: Record<Lang, UiText> = {
     isRead: 'Finished reading',
     markUnread: 'Mark as unread',
     resetAll: 'Reset',
-    resetAllConfirm: 'Clear the read marks on every name and topic?',
+    resetAllConfirm: 'Clear the read marks on every name and topic, and where you stopped reading?',
     resetAllYes: 'Yes, clear them',
     cancel: 'Cancel',
     nextUp: { foundations: 'Next topic', names: 'Next name' },

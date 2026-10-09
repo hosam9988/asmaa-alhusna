@@ -1,5 +1,5 @@
 import { effect, Injectable, signal } from '@angular/core';
-import { readStorage, writeStorage } from './storage';
+import { readStorage, removeStorage, writeStorage } from './storage';
 
 const READ_KEY = 'asmaa.read.v1';
 const PLACE_KEY = 'asmaa.place.v1';
@@ -25,6 +25,7 @@ export class ReadingService {
     effect(() => {
       const place = this.place();
       if (place) writeStorage(PLACE_KEY, JSON.stringify(place));
+      else removeStorage(PLACE_KEY);
     });
     effect(() => writeStorage(SCALE_KEY, String(this.textScale())));
   }
@@ -42,9 +43,10 @@ export class ReadingService {
     });
   }
 
-  /** Forgets every read mark. (Where the reader stopped is kept, for «تابع القراءة».) */
+  /** Starts over: forgets every read mark, and where the reader stopped («تابع القراءة»). */
   resetAll(): void {
     this.read.set(new Set());
+    this.place.set(null);
   }
 
   /** Bigger or smaller text, one step at a time. */
