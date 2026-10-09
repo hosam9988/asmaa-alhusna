@@ -41,6 +41,7 @@
           }
           @if (reading.isRead(c.slug)) {
             <span class="done">✓ {{ tx.isRead }}</span>
+            <button type="button" class="btn quiet" (click)="reading.setRead(c.slug, false)">{{ tx.markUnread }}</button>
           }
         </p>
         <app-ornament />
@@ -143,15 +144,18 @@
 
       <footer class="end">
         <app-ornament />
+        @if (reading.isRead(c.slug)) {
+          <p class="done-note">✓ {{ tx.isRead }}</p>
+        }
+        <!-- One button either way, so it keeps the focus when it flips. -->
         <button
           type="button"
           class="btn"
-          [class.solid]="reading.isRead(c.slug)"
-          [attr.aria-pressed]="reading.isRead(c.slug)"
+          [class.quiet]="reading.isRead(c.slug)"
           (click)="reading.setRead(c.slug, !reading.isRead(c.slug))"
         >
           @if (reading.isRead(c.slug)) {
-            ✓ {{ tx.isRead }}
+            ↺ {{ tx.markUnread }}
           } @else {
             {{ tx.markRead }}
           }

@@ -47,6 +47,12 @@ export interface UiText {
   showArabicOriginal: string;
   markRead: string;
   isRead: string;
+  markUnread: string;
+  /** The home page's button that clears every read mark, and its confirmation. */
+  resetAll: string;
+  resetAllConfirm: string;
+  resetAllYes: string;
+  cancel: string;
   /** Over the card leading on, by what comes next: a name or a topic. */
   nextUp: Record<BookPart, string>;
   previous: string;
@@ -111,6 +117,11 @@ export const UI_TEXT: Record<Lang, UiText> = {
     showArabicOriginal: 'النص العربي',
     markRead: 'أتممت القراءة',
     isRead: 'تمّت القراءة',
+    markUnread: 'إلغاء علامة القراءة',
+    resetAll: 'إعادة ضبط',
+    resetAllConfirm: 'مسح علامات القراءة عن كل الأسماء والمواضيع؟',
+    resetAllYes: 'نعم، امسحها',
+    cancel: 'إلغاء',
     nextUp: { foundations: 'الموضوع التالي', names: 'الاسم التالي' },
     previous: 'السابق',
     next: 'التالي',
@@ -171,6 +182,11 @@ export const UI_TEXT: Record<Lang, UiText> = {
     showArabicOriginal: 'Read the original Arabic',
     markRead: 'I have finished reading',
     isRead: 'Finished reading',
+    markUnread: 'Mark as unread',
+    resetAll: 'Reset',
+    resetAllConfirm: 'Clear the read marks on every name and topic?',
+    resetAllYes: 'Yes, clear them',
+    cancel: 'Cancel',
     nextUp: { foundations: 'Next topic', names: 'Next name' },
     previous: 'Previous',
     next: 'Next',

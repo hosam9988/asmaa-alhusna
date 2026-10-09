@@ -338,6 +338,18 @@ html[lang='ar'] .eyebrow {
     color: var(--on-accent);
     font-weight: 700;
   }
+
+  // Smaller and muted, for a secondary action such as «إلغاء علامة القراءة».
+  &.quiet {
+    min-block-size: 2.25rem;
+    padding: 0.25rem 0.9rem;
+    color: var(--text-muted);
+    font-size: 0.88em;
+
+    &:hover {
+      color: var(--gold-light);
+    }
+  }
 }
 
 .visually-hidden {

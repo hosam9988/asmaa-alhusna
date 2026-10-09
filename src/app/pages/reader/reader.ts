@@ -143,6 +143,8 @@ export class Reader {
       if (!c || !article) return;
       untracked(() => {
         this.openNote.set(null);
+        // A new chapter's progress starts at 0, not where the last one was left (see onScroll).
+        this.progress.set(0);
         const place = this.reading.place();
         const wantsResume = this.resume()?.get('resume') === '1' && place?.slug === c.slug;
         if (wantsResume && place) {
@@ -167,14 +169,16 @@ export class Reader {
     if (!el || !c) return;
     const scrollable = Math.max(1, el.offsetHeight - innerHeight);
     const progress = Math.min(1, Math.max(0, (scrollY - el.offsetTop) / scrollable));
+    const before = this.progress();
     this.progress.set(progress);
     this.headingInView.set(this.isHeadingInView());
     if (!this.onMainText()) return;
     const rounded = Math.round(progress * 100) / 100;
     const place = this.reading.place();
     if (place?.slug !== c.slug || place.progress !== rounded) this.reading.place.set({ slug: c.slug, progress: rounded });
-    // Reaching the end counts as having read the chapter.
-    if (progress > 0.97 && !this.reading.isRead(c.slug)) this.reading.setRead(c.slug, true);
+    // Reaching the end counts as having read the chapter: on arriving there, so that marking it
+    // unread while at the end sticks.
+    if (progress > 0.97 && before <= 0.97 && !this.reading.isRead(c.slug)) this.reading.setRead(c.slug, true);
   }
 
   /** Whether most of the heading still shows below the site header (where the bar sticks). */

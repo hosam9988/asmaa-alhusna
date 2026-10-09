@@ -1,4 +1,14 @@
-import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
+import {
+  afterNextRender,
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  ElementRef,
+  inject,
+  Injector,
+  signal,
+  viewChild,
+} from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { BookPart, Chapter, DivineName } from '../../core/models/divine-name';
 import { BookService } from '../../core/services/book.service';
@@ -64,6 +74,29 @@ export class Home {
       percent: chapters.length ? (read.length / chapters.length) * 100 : 0,
     };
   });
+
+  /** «إعادة ضبط» asks first: true while it waits for the answer. */
+  protected readonly confirmingReset = signal(false);
+  private readonly resetButton = viewChild<ElementRef<HTMLButtonElement>>('resetButton');
+  private readonly cancelResetButton = viewChild<ElementRef<HTMLButtonElement>>('cancelResetButton');
+  private readonly injector = inject(Injector);
+
+  protected askReset(): void {
+    this.confirmingReset.set(true);
+    // Focus the safe answer, so a second Enter can't clear everything by accident.
+    afterNextRender(() => this.cancelResetButton()?.nativeElement.focus(), { injector: this.injector });
+  }
+
+  protected cancelReset(): void {
+    if (!this.confirmingReset()) return;
+    this.confirmingReset.set(false);
+    afterNextRender(() => this.resetButton()?.nativeElement.focus(), { injector: this.injector });
+  }
+
+  protected resetAll(): void {
+    this.reading.resetAll();
+    this.confirmingReset.set(false);
+  }
 
   /** Where to pick up: the chapter the reader was in, unless they finished it. */
   protected readonly resume = computed(() => {

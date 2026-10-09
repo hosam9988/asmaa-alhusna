@@ -42,6 +42,11 @@ export class ReadingService {
     });
   }
 
+  /** Forgets every read mark. (Where the reader stopped is kept, for «تابع القراءة».) */
+  resetAll(): void {
+    this.read.set(new Set());
+  }
+
   /** Bigger or smaller text, one step at a time. */
   stepScale(direction: 1 | -1): void {
     const i = TEXT_SCALES.indexOf(this.textScale() as (typeof TEXT_SCALES)[number]);

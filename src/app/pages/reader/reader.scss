@@ -120,6 +120,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
   gap: 0.25rem 0.6rem;
   margin: 0.75rem 0 0;
   color: var(--text-muted);
@@ -395,6 +396,12 @@
   align-items: center;
   gap: 1.25rem;
   margin-block: 2.5rem 1rem;
+}
+
+.done-note {
+  margin: 0 0 -0.5rem;
+  color: var(--verse);
+  font-weight: 700;
 }
 
 .next-card {
