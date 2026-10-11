@@ -30,5 +30,10 @@
   <div class="container">
     <p class="quran gold-text verse" lang="ar" dir="rtl">﴿ وَلِلَّهِ الْأَسْمَاءُ الْحُسْنَىٰ فَادْعُوهُ بِهَا ﴾</p>
     <p class="waqf">{{ t().waqfNote }}</p>
+    @if (admin.enabled) {
+      <p class="admin-link">
+        <a routerLink="/admin">{{ admin.status() === 'signed-out' ? t().adminLink : t().adminAccount }}</a>
+      </p>
+    }
   </div>
 </footer>

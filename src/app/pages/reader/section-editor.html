@@ -1,0 +1,21 @@
+@let tx = t();
+@let text = draft();
+
+<form (submit)="save($event)">
+  <label class="field">
+    <span class="field-label">{{ tx.editorArabic }}</span>
+    <textarea lang="ar" dir="rtl" rows="12" [maxLength]="maxLength" [value]="text.ar" (input)="edit('ar', $any($event.target).value)"></textarea>
+  </label>
+  <label class="field">
+    <span class="field-label">{{ tx.editorEnglish }}</span>
+    <textarea lang="en" dir="ltr" rows="6" [maxLength]="maxLength" [value]="text.en" (input)="edit('en', $any($event.target).value)"></textarea>
+  </label>
+  <p class="hint">{{ tx.editorHelp }}</p>
+  @if (problem(); as p) {
+    <p class="problem" role="alert">{{ tx[p] }}</p>
+  }
+  <div class="editor-actions">
+    <button type="submit" class="btn solid" [disabled]="saving()">{{ saving() ? tx.saving : tx.save }}</button>
+    <button type="button" class="btn" [disabled]="saving()" (click)="cancel()">{{ tx.cancel }}</button>
+  </div>
+</form>

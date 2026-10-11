@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { AdminService } from './core/services/admin.service';
 import { LanguageService } from './core/services/language.service';
 import { ThemePicker } from './shared/theme-picker';
 
@@ -12,5 +13,6 @@ import { ThemePicker } from './shared/theme-picker';
 })
 export class App {
   protected readonly language = inject(LanguageService);
+  protected readonly admin = inject(AdminService);
   protected readonly t = this.language.t;
 }

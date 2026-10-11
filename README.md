@@ -49,8 +49,10 @@ repo's **Settings → Pages → Source** to **GitHub Actions**.
 
 ## Editing the content
 
-There is no backend. The content is in two files, typed in
-[`src/app/core/models/divine-name.ts`](src/app/core/models/divine-name.ts):
+The book's text is in two files, typed in
+[`src/app/core/models/divine-name.ts`](src/app/core/models/divine-name.ts). The other tabs on each
+name's page are written by the site's admins, on the site itself, and kept in Firebase; setting that up is
+described in [`docs/firebase-setup.md`](docs/firebase-setup.md).
 
 ```jsonc
 // public/data/book.json: the chapters, in the book's order
@@ -81,13 +83,18 @@ src/app/
     services/language.service  Arabic ⇄ English, sets <html dir/lang>
     services/speech.service    read-aloud with the browser's speech synthesis
     services/theme.service     page colour, sets <html data-theme> (palettes in styles.scss)
+    services/sections.service  the added tabs of each name's page (Firestore), and unsaved edits
+    services/admin.service     the admins' sign-in (Firebase Authentication)
+    firebase/                  the Firebase project's settings, and loading Firebase only when needed
     i18n/ui-text.ts            interface labels in both languages
     utils/search.ts            search that ignores tashkeel and hamza forms
   shared/rich-text.ts          one block of the book: verses, quotations, footnote buttons
   shared/                      star badge, ornament, read-aloud, theme picker
   pages/home                   cover, name of the day, table of contents
-  pages/reader                 a chapter (/read/:chapter, or /name/:name to open a name's chapter)
-  pages/about                  the book and the categories of Tawheed
+  pages/reader                 a chapter (/read/:chapter, or /name/:name to open a name's chapter);
+                               section-editor is the admins' editor for an added tab
+  pages/admin                  the admins' sign-in (/admin)
+firestore.rules                who may read and write the database
 ```
 
 Built with Angular 22.

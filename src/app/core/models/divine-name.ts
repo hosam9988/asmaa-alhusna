@@ -36,10 +36,23 @@ export interface Footnote {
 
 /**
  * The tabs of a name's page, in order. «معنى الاسم» holds the chapter's own explanation; the
- * others are filled from further sources.
+ * others are written by the site's admins (see SectionsService).
  */
 export const NAME_SECTIONS = ['meaning', 'uses', 'duas', 'story', 'life', 'faith'] as const;
 export type NameSection = (typeof NAME_SECTIONS)[number];
+
+/** The tabs the admins write: all but «معنى الاسم». */
+export type AddedSection = Exclude<NameSection, 'meaning'>;
+export const ADDED_SECTIONS: readonly AddedSection[] = ['uses', 'duas', 'story', 'life', 'faith'];
+
+/**
+ * An added tab's text as the admin typed it: paragraphs separated by blank lines, a heading on a
+ * line starting with ##. English is optional (empty when there is none).
+ */
+export interface SectionText {
+  ar: string;
+  en: string;
+}
 
 /** The text of one section: blocks, with their footnotes. */
 export interface SectionContent {
@@ -62,6 +75,4 @@ export interface Chapter {
   /** The chapter's own text: on a name's page, the «معنى الاسم» tab. */
   blocks: Block[];
   footnotes: Footnote[];
-  /** A name chapter's other tabs, where there is content for them (absent tabs show as "coming"). */
-  sections?: Partial<Record<Exclude<NameSection, 'meaning'>, SectionContent>>;
 }

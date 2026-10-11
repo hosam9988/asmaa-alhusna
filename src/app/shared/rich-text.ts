@@ -26,8 +26,9 @@ const TOKENS = /(﴿[^﴾]*﴾|﴾[^﴿]*﴿)(\s*\[[^\]\d][^\]]*\])?|(«[^»]*»
       font-size: 1.06em;
       line-height: 2.2;
     }
-    // English verse translations keep the colour but use the body font.
-    :host-context(html[lang='en']) .verse {
+    // English verse translations keep the colour but use the body font. (By the text's own
+    // language: Arabic shown on the English site keeps the Mushaf font.)
+    .verse:lang(en) {
       font-family: inherit;
       font-size: inherit;
       line-height: inherit;

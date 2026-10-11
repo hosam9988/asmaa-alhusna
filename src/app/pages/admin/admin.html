@@ -1,0 +1,83 @@
+@let tx = t();
+
+<section class="container admin">
+  <h1 class="calligraphy gold-text">{{ tx.adminTitle }}</h1>
+  <app-ornament />
+
+  <div class="panel card">
+    @if (!admin.enabled) {
+      <p class="note">{{ tx.notConfigured }}</p>
+    } @else {
+      @switch (admin.status()) {
+        @case ('starting') {
+          <p class="note">{{ tx.loading }}</p>
+        }
+        @case ('admin') {
+          <p class="signed-in">✓ {{ tx.signedInAs(admin.email() ?? '') }}</p>
+          <p class="note">{{ tx.adminHelp }}</p>
+          <div class="actions">
+            <a class="btn solid" routerLink="/" fragment="contents">{{ tx.browseNames }}</a>
+            <button type="button" class="btn" (click)="signOut()">{{ tx.signOut }}</button>
+          </div>
+          <div class="backup">
+            <p class="note">{{ tx.backupNote }}</p>
+            <button type="button" class="btn" [disabled]="backingUp()" (click)="downloadBackup()">
+              ⤓ {{ backingUp() ? tx.backupPreparing : tx.backupButton }}
+            </button>
+            @if (backup(); as result) {
+              <p class="backup-result" role="status">
+                {{ result === 'failed' ? tx.backupFailed : tx.backupDone(language.number(result.count)) }}
+              </p>
+            }
+          </div>
+        }
+        @case ('not-admin') {
+          <p class="note">{{ tx.notAdmin }} ({{ admin.email() }})</p>
+          <div class="actions">
+            <button type="button" class="btn" (click)="signOut()">{{ tx.signOut }}</button>
+          </div>
+        }
+        @case ('error') {
+          <p class="note">{{ tx.adminCheckFailed }}</p>
+          <div class="actions">
+            <button type="button" class="btn" (click)="signOut()">{{ tx.signOut }}</button>
+          </div>
+        }
+        @default {
+          <form class="sign-in" (submit)="signIn($event)">
+            <label class="field">
+              <span>{{ tx.email }}</span>
+              <input
+                type="email"
+                dir="ltr"
+                autocomplete="username"
+                required
+                [value]="email()"
+                (input)="email.set($any($event.target).value)"
+              />
+            </label>
+            <label class="field">
+              <span>{{ tx.password }}</span>
+              <input
+                type="password"
+                dir="ltr"
+                autocomplete="current-password"
+                required
+                [value]="password()"
+                (input)="password.set($any($event.target).value)"
+              />
+            </label>
+            @if (problem(); as p) {
+              <p class="problem" role="alert">{{ tx.signInProblems[p] }}</p>
+            }
+            @if (resetSentTo(); as to) {
+              <p class="sent" role="status">{{ tx.resetSent(to) }}</p>
+            }
+            <button type="submit" class="btn solid" [disabled]="busy()">{{ busy() ? tx.signingIn : tx.signIn }}</button>
+            <button type="button" class="forgot" [disabled]="busy()" (click)="forgotPassword()">{{ tx.forgotPassword }}</button>
+          </form>
+        }
+      }
+    }
+  </div>
+</section>

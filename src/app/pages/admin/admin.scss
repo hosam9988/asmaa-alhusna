@@ -1,0 +1,110 @@
+.admin {
+  max-inline-size: 30rem;
+  padding-block: 2.5rem 1rem;
+  text-align: center;
+
+  h1 {
+    margin: 0;
+    font-size: clamp(2rem, 7vw, 2.6rem);
+  }
+}
+
+:host-context(html[lang='en']) .admin h1 {
+  font-family: var(--font-display-en);
+}
+
+.card {
+  margin-block-start: 1.5rem;
+  text-align: start;
+}
+
+.note,
+.signed-in {
+  position: relative;
+  margin: 0 0 1rem;
+}
+
+.signed-in {
+  color: var(--verse);
+  font-weight: 700;
+}
+
+.actions {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+// The backup, set apart under the admin's actions.
+.backup {
+  position: relative;
+  margin-block-start: 1.5rem;
+  padding-block-start: 1.25rem;
+  border-block-start: 1px solid var(--line);
+
+  .backup-result {
+    margin: 0.75rem 0 0;
+    padding-inline-start: 0.75rem;
+    border-inline-start: 3px solid var(--gold);
+  }
+}
+
+.sign-in {
+  position: relative;
+  display: grid;
+  gap: 1rem;
+
+  .field {
+    display: grid;
+    gap: 0.4rem;
+    color: var(--gold);
+    font-size: 0.95rem;
+  }
+
+  input {
+    box-sizing: border-box;
+    inline-size: 100%;
+    min-block-size: 2.9rem;
+    padding: 0.55rem 0.9rem;
+    border: 1px solid var(--line-strong);
+    border-radius: calc(var(--radius) - 4px);
+    background: var(--surface);
+    color: var(--text);
+    font: inherit;
+    font-size: 1rem;
+
+    &:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 1px;
+    }
+  }
+
+  .problem,
+  .sent {
+    margin: 0;
+    padding-inline-start: 0.75rem;
+    border-inline-start: 3px solid var(--gold);
+  }
+
+  .problem {
+    font-weight: 600;
+  }
+
+  .forgot {
+    justify-self: center;
+    min-block-size: 2.75rem;
+    padding: 0 0.5rem;
+    border: 0;
+    background: none;
+    color: var(--text-muted);
+    font: inherit;
+    font-size: 0.92rem;
+    text-decoration: underline;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--gold-light);
+    }
+  }
+}

@@ -46,7 +46,7 @@
         </p>
         <app-ornament />
         <div class="tools">
-          @if (content()) {
+          @if (canListen()) {
             <app-read-aloud [segments]="readAloud()" [resetKey]="c.slug + '/' + tab()" />
           }
           <div class="size" role="group" [attr.aria-label]="tx.textSize">
@@ -98,8 +98,31 @@
         [attr.role]="hasTabs() ? 'tabpanel' : null"
         [attr.aria-labelledby]="hasTabs() ? 'tab-' + tab() : null"
       >
-        @if (content(); as body) {
-          <div class="text">
+        @if (draft()) {
+          <!-- An admin editing this tab. -->
+          <app-section-editor [chapter]="c.slug" [tab]="addedTab()!" />
+        } @else if (tabStatus() === 'loading') {
+          <p class="empty">{{ tx.sectionLoading }}</p>
+        } @else if (tabStatus() === 'error') {
+          <p class="empty">
+            {{ tx.sectionError }}
+            <button type="button" class="btn quiet" (click)="retryTabs()">{{ tx.retry }}</button>
+          </p>
+        } @else if (content(); as body) {
+          @if (canEdit()) {
+            <div class="admin-bar">
+              <button type="button" class="btn quiet" (click)="startEdit()">✎ {{ tx.edit }}</button>
+            </div>
+          }
+          @if (body.arabicOnly) {
+            <p class="arabic-note">{{ tx.arabicOnlyNote }}</p>
+          }
+          <div
+            class="text"
+            [class.arabic-only]="body.arabicOnly"
+            [attr.lang]="body.arabicOnly ? 'ar' : null"
+            [attr.dir]="body.arabicOnly ? 'rtl' : null"
+          >
             @for (b of body.blocks; track $index) {
               @switch (b.type) {
                 @case ('h') {
@@ -127,18 +150,23 @@
             }
           </div>
 
-          @if (lang === 'en') {
+          @if (lang === 'en' && body.original) {
             <details class="original">
               <summary>{{ tx.showArabicOriginal }}</summary>
               <div class="text arabic" lang="ar" dir="rtl">
-                @for (b of body.blocks; track $index) {
+                @for (b of body.original; track $index) {
                   <p [class.heading]="b.type === 'h'"><app-rich-text [text]="b.text.ar" (note)="showNote($event)" /></p>
                 }
               </div>
             </details>
           }
         } @else {
-          <p class="empty">{{ tx.sectionEmpty }}</p>
+          <div class="empty">
+            <p>{{ tx.sectionEmpty }}</p>
+            @if (canEdit()) {
+              <button type="button" class="btn" (click)="startEdit()">✎ {{ tx.addContent }}</button>
+            }
+          </div>
         }
       </div>
 

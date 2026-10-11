@@ -14,23 +14,36 @@ import {
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { Footnote, NAME_SECTIONS, NameSection, SectionContent } from '../../core/models/divine-name';
+import { AddedSection, Block, Footnote, NAME_SECTIONS, NameSection, SectionContent } from '../../core/models/divine-name';
+import { AdminService } from '../../core/services/admin.service';
 import { BookService, wordCount } from '../../core/services/book.service';
 import { LanguageService } from '../../core/services/language.service';
 import { ReadingService } from '../../core/services/reading.service';
+import { draftKey, SectionsService } from '../../core/services/sections.service';
 import { SpeechSegment, SpeechService } from '../../core/services/speech.service';
+import { textToBlocks } from '../../core/utils/section-text';
 import { Ornament } from '../../shared/ornament';
 import { ReadAloud } from '../../shared/read-aloud';
 import { RichText } from '../../shared/rich-text';
 import { StarBadge } from '../../shared/star-badge';
+import { SectionEditor } from './section-editor';
 
 /** Words read per minute, for the reading-time estimate. */
 const WORDS_PER_MINUTE = 130;
 
+/** What the open tab shows. */
+interface PanelText extends SectionContent {
+  /** The Arabic under an English translation, for «Read the original Arabic». */
+  original: Block[] | null;
+  /** Arabic shown on the English site, as the tab has no translation yet. */
+  arabicOnly: boolean;
+}
+
+
 /** A chapter of the book, laid out for comfortable reading. Reached as /read/:chapter or /name/:name. */
 @Component({
   selector: 'app-reader',
-  imports: [RouterLink, Ornament, ReadAloud, RichText, StarBadge],
+  imports: [RouterLink, Ornament, ReadAloud, RichText, SectionEditor, StarBadge],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './reader.html',
   styleUrl: './reader.scss',
@@ -49,6 +62,8 @@ export class Reader {
   protected readonly book = inject(BookService);
   protected readonly reading = inject(ReadingService);
   protected readonly speech = inject(SpeechService);
+  protected readonly admin = inject(AdminService);
+  private readonly addedTabs = inject(SectionsService);
   protected readonly t = this.language.t;
   private readonly host = inject(ElementRef<HTMLElement>);
   private readonly resume = toSignal(inject(ActivatedRoute).queryParamMap);
@@ -77,13 +92,55 @@ export class Reader {
   protected readonly sections = NAME_SECTIONS;
   protected readonly hasTabs = computed(() => this.names().length > 0);
   protected readonly tab = signal<NameSection>('meaning');
-  /** The text shown: the chapter's own, or the open tab's (null when that tab has nothing yet). */
-  protected readonly content = computed<SectionContent | null>(() => {
-    const c = this.chapter();
+  /** The open tab, when it is one the admins write. */
+  protected readonly addedTab = computed(() => {
     const tab = this.tab();
+    return this.hasTabs() && tab !== 'meaning' ? (tab as AddedSection) : null;
+  });
+  /** The chapter's added tabs, fetched when a name's page opens. */
+  private readonly added = computed(() => {
+    const c = this.chapter();
+    return c && this.hasTabs() ? this.addedTabs.of(c.slug)() : null;
+  });
+  /** Whether the open tab is still loading, or failed to. */
+  protected readonly tabStatus = computed(() => (this.addedTab() ? (this.added()?.status ?? 'ready') : 'ready'));
+  /** The open added tab's text as saved (null when it has none yet). */
+  private readonly savedText = computed(() => {
+    const tab = this.addedTab();
+    const added = this.added();
+    return tab && added?.status === 'ready' ? (added.tabs[tab] ?? null) : null;
+  });
+  /** The text shown: the chapter's own, or the open added tab's (null when it has none yet). */
+  protected readonly content = computed<PanelText | null>(() => {
+    const c = this.chapter();
     if (!c) return null;
-    if (!this.hasTabs() || tab === 'meaning') return c;
-    return c.sections?.[tab] ?? null;
+    if (!this.addedTab()) return { blocks: c.blocks, footnotes: c.footnotes, original: c.blocks, arabicOnly: false };
+    const text = this.savedText();
+    if (!text) return null;
+    const english = this.language.lang() === 'en';
+    if (english && text.en.trim()) {
+      return { blocks: textToBlocks(text.en), footnotes: [], original: textToBlocks(text.ar), arabicOnly: false };
+    }
+    return { blocks: textToBlocks(text.ar), footnotes: [], original: null, arabicOnly: english };
+  });
+
+  /** Names the open added tab's unsaved edit. */
+  private readonly draftKey = computed(() => {
+    const c = this.chapter();
+    const tab = this.addedTab();
+    return c && tab ? draftKey(c.slug, tab) : null;
+  });
+  /** The open added tab's unsaved edit, while an admin is editing it. */
+  protected readonly draft = computed(() => {
+    const key = this.draftKey();
+    return key ? (this.addedTabs.drafts()[key] ?? null) : null;
+  });
+  /** Admins edit an added tab once it has loaded, so nothing saved is overwritten unseen. */
+  protected readonly canEdit = computed(() => this.admin.isAdmin() && !!this.addedTab() && this.tabStatus() === 'ready');
+  /** «استمع» reads the text shown, but not Arabic on the English site (an English voice would read it). */
+  protected readonly canListen = computed(() => {
+    const body = this.content();
+    return !!body && !body.arabicOnly && !this.draft();
   });
   /** Only the chapter's own text counts toward reading progress and "read". */
   private readonly onMainText = computed(() => !this.hasTabs() || this.tab() === 'meaning');
@@ -125,6 +182,7 @@ export class Reader {
       this.chapter();
       untracked(() => this.tab.set('meaning'));
     });
+
 
     // Keep the paragraph being read in view.
     effect(() => {
@@ -192,6 +250,18 @@ export class Reader {
 
   protected showNote(n: number): void {
     this.openNote.set(this.content()?.footnotes.find((f) => f.n === n) ?? null);
+  }
+
+  protected retryTabs(): void {
+    const c = this.chapter();
+    if (c) this.addedTabs.retry(c.slug);
+  }
+
+  /** Opens the editor on the tab's saved text (or an empty one). */
+  protected startEdit(): void {
+    const key = this.draftKey();
+    if (!key || !this.canEdit()) return;
+    this.addedTabs.setDraft(key, this.savedText() ?? { ar: '', en: '' });
   }
 
   /**
